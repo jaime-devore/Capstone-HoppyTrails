@@ -12,6 +12,7 @@ namespace Capstone.Models
         public string PhoneNumber { get; set; }
         public string About { get; set; }
         public string WebSite { get; set; }
+        public string Address { get; set; }
         public string Image { get; set; }
         public string Hours { get; set; }
         public string City { get; set; }
