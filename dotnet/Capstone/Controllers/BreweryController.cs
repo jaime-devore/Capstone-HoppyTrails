@@ -2,6 +2,8 @@ using system;
 using system.collections.generic;
 using system.linq;
 using Microsoft.AspNetCore.Mvc;
+using Capstone.DAO;
+using Capstone.Models;
 
 
 namespace Capstone.Controllers
@@ -26,7 +28,12 @@ namespace Capstone.Controllers
         [HttpGet("/breweries/{id}")]
         public ActionResult<Brewery> BreweryById(int id)
         {
-            return Ok(breweryDao.GetBrewery(id));
+            return Ok(breweryDao.GetBreweryByBreweryId(id));
+        }
+        [HttpGet("/breweries/{tag}")]
+        public ActionResult<List<Brewery>> BreweryByTag(string tag)
+        {
+            return Ok(breweryDao.GetBreweryByTag(tag))
         }
     }
 }
