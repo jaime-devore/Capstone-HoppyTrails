@@ -1,6 +1,6 @@
-using system;
-using system.collections.generic;
-using system.linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Models;
 using Capstone.DAO;
@@ -12,29 +12,37 @@ namespace Capstone.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
-        private IReviewDao reviewDao;
+        private readonly IReviewDAO reviewDao;
 
-        public BreweryController(IReviewDao reviewDao)
+        public ReviewController(IReviewDAO _reviewDao)
         {
-            this.reviewDao = reviewDao;
+            reviewDao = _reviewDao;
         }
-        
-        [HttpGet("/routes/reviews")]
+
+        [HttpGet()]
         public ActionResult<List<Review>> AllReviews()
         {
             return Ok(reviewDao.GetAllReviews());
         }
 
-        [HttpGet("/routes/{id}/reviews")]
-        public ActionResult<List<Review>> ReviewsByRouteId(int id)
+        [HttpGet("/breweries/{reviewID}")]
+        public ActionResult<List<Review>> ReviewsByBreweryID(int reviewID)
         {
-            return Ok(reviewDao.GetReviews(id));
+            return Ok(reviewDao.GetReviewsByBreweryID(reviewID));
         }
 
-        [HttpGet("/routes/reviews/{reviewId}")]
+        [HttpGet("{reviewId}")]
         public ActionResult<Review> SingleReviewById(int reviewId)
         {
-            return Ok(reviewDao.GetReviews(reviewId));
+            return Ok(reviewDao.GetReview(reviewId));
+        }
+
+        [HttpGet("users/{userID}")]
+        public ActionResult<List<Review>> GetAllReviewsByUserID(int userID)
+        {
+            List<Review> allReviews = reviewDao.GetReviewsByUserID(userID);
+
+            return Ok(allReviews);
         }
 
     }

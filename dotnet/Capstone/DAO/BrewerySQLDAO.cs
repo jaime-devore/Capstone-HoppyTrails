@@ -65,8 +65,6 @@ namespace Capstone.DAO
             }
             return brewery;
         }
-
-        //I want to get a brewery based on the Tag ID
         
 
         //I need a method that creates a Brewery from the data returned by the SQL Data Reader

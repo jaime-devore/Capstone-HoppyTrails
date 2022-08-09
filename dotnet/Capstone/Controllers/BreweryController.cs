@@ -1,9 +1,10 @@
-using system;
-using system.collections.generic;
-using system.linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.DAO;
 using Capstone.Models;
+
 
 
 namespace Capstone.Controllers
@@ -12,28 +13,24 @@ namespace Capstone.Controllers
     [ApiController]
     public class BreweryController : ControllerBase
     {
-        private IBreweryDao breweryDao;
+        private readonly IBreweryDAO breweryDao;
 
-        public BreweryController(IBreweryDao breweryDao)
+        public BreweryController(IBreweryDAO _breweryDao)
         {
-            this.breweryDao = breweryDao;
+            breweryDao = _breweryDao;
         }
         
-        [HttpGet("/breweries")]
+        [HttpGet()]
         public ActionResult<List<Brewery>> AllBreweries()
         {
             return Ok(breweryDao.GetAllBreweries());
         }
 
-        [HttpGet("/breweries/{id}")]
-        public ActionResult<Brewery> BreweryById(int id)
+        [HttpGet("{breweryID}")]
+        public ActionResult<Brewery> BreweryById(int breweryID)
         {
-            return Ok(breweryDao.GetBreweryByBreweryId(id));
+            return Ok(breweryDao.GetBreweryByBreweryID(breweryID));
         }
-        [HttpGet("/breweries/{tag}")]
-        public ActionResult<List<Brewery>> BreweryByTag(string tag)
-        {
-            return Ok(breweryDao.GetBreweryByTag(tag))
-        }
+
     }
 }
