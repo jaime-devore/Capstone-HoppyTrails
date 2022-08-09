@@ -2,6 +2,8 @@ using system;
 using system.collections.generic;
 using system.linq;
 using Microsoft.AspNetCore.Mvc;
+using Capstone.Models;
+using Capstone.DAO;
 
 
 namespace Capstone.Controllers
