@@ -117,7 +117,7 @@ namespace Capstone.DAO
         {
             Beer beer = new Beer();
             beer.BeerID = Convert.ToInt32(reader["beer_id"]);
-            beer.Name = Convert.ToString(reader["name"]);
+            beer.Name = Convert.ToString(reader["beer_name"]);
             beer.Type = Convert.ToString(reader["type"]);
             beer.ABV = Convert.ToDecimal(reader["abv"]);
 
