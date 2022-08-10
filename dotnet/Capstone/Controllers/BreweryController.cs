@@ -32,5 +32,6 @@ namespace Capstone.Controllers
             return Ok(breweryDao.GetBreweryByBreweryID(breweryID));
         }
 
+        //[HttpGet("")]
     }
 }

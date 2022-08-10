@@ -67,6 +67,32 @@ namespace Capstone.DAO
         }
         
 
+        //I want to get a list of beers by searching by the BreweryID
+
+        public List<Beer> GetBeersByBreweryID(int breweryID)
+        {
+            List<Beer> beers = new List<Beer>();
+
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM beer_list " +
+                    "JOIN beer_brewery ON beer_brewery.beer_id = beer_list.beer_id " +
+                    "WHERE beer_brewery.brewery_id = @BreweryID ", conn);
+                cmd.Parameters.AddWithValue("@BreweryID", breweryID);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Beer beer = CreateBeerFromReader(reader);
+                    beers.Add(beer);
+                }
+            }
+            return beers;
+        }
+
         //I need a method that creates a Brewery from the data returned by the SQL Data Reader
         private Brewery CreateBreweryFromReader(SqlDataReader reader)
         {
@@ -84,6 +110,18 @@ namespace Capstone.DAO
             brewery.ZipCode = Convert.ToString(reader["zip"]);
 
             return brewery;
+        }
+
+        //Method to construct Beer object from SQL data reader
+        private Beer CreateBeerFromReader(SqlDataReader reader)
+        {
+            Beer beer = new Beer();
+            beer.BeerID = Convert.ToInt32(reader["beer_id"]);
+            beer.Name = Convert.ToString(reader["name"]);
+            beer.Type = Convert.ToString(reader["type"]);
+            beer.ABV = Convert.ToDecimal(reader["abv"]);
+
+            return beer;
         }
     }
 }
