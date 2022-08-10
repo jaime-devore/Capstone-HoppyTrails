@@ -7,6 +7,7 @@
              <h5 class="card-title">{{brewery.name}}</h5>
            </div>
         <div class="card-body">
+            <!-- <img class="brewery-image" {{brewery.image-url}}/> -->
             <h5 class="card-title">Ipsum Lorum</h5>
             <p><span class="fw-bold" >PHONE: </span>{{brewery.phoneNumber}}</p>
             <p><span class="fw-bold" >WEBSITE: </span>{{brewery.webSite}}</p>
