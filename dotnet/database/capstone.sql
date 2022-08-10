@@ -61,9 +61,10 @@ CREATE TABLE brewery_tag (
 	CONSTRAINT Brewery_fk FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
 CREATE TABLE user_review (
+	user_review_id int Identity (1,1),
 	user_id int,
 	review_id int,
-	CONSTRAINT user_review_pk PRIMARY KEY (user_id, review_id),
+	CONSTRAINT user_review_pk PRIMARY KEY (user_review_id),
 	CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
 	CONSTRAINT review_id_fk FOREIGN KEY (review_id) REFERENCES review (review_id)
 )
@@ -72,7 +73,7 @@ CREATE TABLE user_review (
 --populate default data
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('JoeyLitten','axZvUV/AMhRxhtl9Sc5Krg8/HII=','5a+ULxS8xUw=','user');
 
 --   INSERT INTO brewery (name, address, city, state, zip, website, phone, about,) VALUES ('', '', '', '', '', '', '', '')
 
@@ -111,8 +112,10 @@ INSERT INTO tag (type) VALUES ('Patio') --2003
 
 
 
+INSERT INTO review (brewery_id, rating, content) VALUES (1000, 3.0, 'The place was okay. I think it could have had better food for the price. Great atmosphere though!'), (1010, 5.0, 'THIS PLACE WAS SO AMAZING WOW')
 
-COMMIT
+
+
 
 
 INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
@@ -174,6 +177,13 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	(2003, 1026)
 
 
+	INSERT INTO user_review (user_id, review_id) VALUES (1, 3000)
+	
+	INSERT INTO user_review (user_id, review_id) VALUES (3, 3001)
+
+	COMMIT
+	
+
 
 	--SELECT * FROM brewery WHERE id = 1000
 
@@ -184,3 +194,7 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	--select name, id from brewery
 
 	--UPDATE brewery SET image = 'https://images.squarespace-cdn.com/content/v1/59e7b07a8dd04156df25edaf/1584376002697-CZR8WVKWUZ4H94ZLP3NA/_CRU8860.jpg?format=2500w' WHERE id = 1000
+
+	--select * from users
+
+	--select * from review
