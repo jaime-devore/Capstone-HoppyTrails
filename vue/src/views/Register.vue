@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class="text-center">
+  <!-- <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -37,7 +37,60 @@
         Create Account
       </button>
     </form>
-  </div>
+  </div> -->
+  <div class="row">
+        <div class="form-signin w-50 mx-auto mt-5 border border-dark rounded" id="regFormContainer">
+          <form id="registerForm " @submit.prevent="register">
+            <h1 class="h3 mb-3 fw-normal mx-auto text-center">New User Registration</h1>
+
+            <div class="form-floating">
+              <input 
+                type="text" 
+                class="form-control" 
+                id="regUserName" 
+                placeholder="Username" 
+                v-model="user.username" 
+                required
+              />
+              <label for="regUserName">New Username</label>
+            </div>
+            <div class="form-floating">
+              <input 
+                type="password" 
+                class="form-control" 
+                id="regPassword" 
+                placeholder="Password" 
+                v-model="user.password" 
+                required
+              />
+              <label for="regPassword">Password</label>
+            </div>
+            <div class="form-floating">
+              <input 
+                type="password" 
+                class="form-control" 
+                id="confirmRegPassword" 
+                placeholder="Password" 
+                v-model="user.confirmPassword"
+                required
+              />
+              <label for="confirmRegPassword">Confirm Password</label>
+            </div>
+
+            <div class="checkbox mb-3">
+              <p class="text-center"><router-link :to="{ name: 'login' }">Have an account?</router-link></p>
+            </div>
+            <div class="d-flex justify-center" >
+              <button class=" btn btn-success login-btn mx-auto" type="submit">Create Account</button>
+            </div>
+            <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+              {{ registrationErrorMsg }}
+            </div>
+            <p class="mt-5 mb-3 text-muted"></p>
+          </form>
+        </div>
+
+     </div>
 </template>
 
 <script>
@@ -90,4 +143,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.login-btn{
+  background-color: #2a453d !important;
+}
+</style>

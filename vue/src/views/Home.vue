@@ -28,9 +28,13 @@
               <div class="flex-fill ">
                 <img src="../img/TrailHops-Minimal-logo.png" alt="logo" class="img-responsive" height="50px">
               </div>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end" 
+                v-if="auth">
                 <router-link class="btn btn-success rounded-pill me-md-2" to="register" >Sign Up</router-link>
-                <router-link class="btn btn-outline-dark rounded-pill" to="login">Log In</router-link>
+                <router-link 
+                class="btn btn-outline-dark rounded-pill" 
+                to="login"
+                >Log In</router-link>
               </div>
       </div><!-- end of nav menu container-->
     </nav>
@@ -251,6 +255,12 @@
 <script>
 export default {
   name: "home",
+  data(){
+    return {
+      auth: false,
+
+}
+  },
   methods: {
   say(message) {
     alert(message)
