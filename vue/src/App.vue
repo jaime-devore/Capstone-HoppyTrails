@@ -1,9 +1,22 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-    </div> -->
+    <!--Added Navigation Component: Jaime-->
+    <div id="nav">
+      <navigation-bar></navigation-bar>
+    </div>
     <router-view />
   </div>
 </template>
+
+    <!--Added Navigation Import: Jaime-->
+<script>
+import NavigationBar from "./components/NavigationBar.vue"
+    //Added Navigation Component: Jaime
+export default {
+  name: "app",
+  components: {
+    NavigationBar
+  }
+}
+</script>
+

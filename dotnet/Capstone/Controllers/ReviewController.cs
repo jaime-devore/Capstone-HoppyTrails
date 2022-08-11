@@ -25,10 +25,10 @@ namespace Capstone.Controllers
             return Ok(reviewDao.GetAllReviews());
         }
 
-        [HttpGet("/breweries/{reviewID}")]
-        public ActionResult<List<Review>> ReviewsByBreweryID(int reviewID)
+        [HttpGet("breweries/{breweryID}")]
+        public ActionResult<List<Review>> ReviewsByBreweryID(int breweryID)
         {
-            return Ok(reviewDao.GetReviewsByBreweryID(reviewID));
+            return Ok(reviewDao.GetReviewsByBreweryID(breweryID));
         }
 
         [HttpGet("{reviewId}")]

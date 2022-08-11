@@ -1,0 +1,47 @@
+http://localhost:53041
+
+SQL INT IDENTITY starting Number
+	breweryID: 1000
+	tagID: 2000
+	reviewID: 3000
+	beerID: 4000
+	userID: 1
+
+Brewery Controller
+Base: "brewery"
+
+	Get all Breweries
+	Endpoint: "brewery"
+
+	Get single Brewery
+	Endpoint: "brewery/{breweryID}"
+
+	Get all Beers at a Brewery
+	Endpoint: "brewery/beers/{breweryID}"
+
+Tag Controller
+Base: "tag"
+
+	Get all tags
+	Endpoint: "tag"
+
+	Get single tag
+	Endpoint: "tag/{tagID}"
+
+	Get all breweries with tag
+	Endpoint: "tag/{tagID}/breweries"
+
+Review Controller
+Endpoint: "review"
+
+	Get single review
+	Endpoint: "review/{reviewID}"
+
+	Get all reviews for some reason I have no idea why
+	Endpoint: "review"
+
+	Get all reviews of brewery
+	Endpoint: "review/breweries/{breweryID}"
+
+	Get all reviews by a user
+	Endpoint: "review/users/{userID}"
