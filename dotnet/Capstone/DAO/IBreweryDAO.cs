@@ -17,6 +17,9 @@ namespace Capstone.DAO
         //method to get brewery by tag ID
         //Brewery GetBreweryByTagID(int tagID);
 
+        //Method to get Beers by Brewery Id
+
+        List<Beer> GetBeersByBreweryID(int breweryID);
 
     }
 }

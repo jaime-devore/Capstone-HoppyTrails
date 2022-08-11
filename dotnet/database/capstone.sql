@@ -52,6 +52,21 @@ CREATE TABLE tag (
 	type varchar (20) NOT NULL,
 	CONSTRAINT PK_tag PRIMARY KEY (tag_id)
 )
+CREATE TABLE beer_list(
+	beer_id int IDENTITY (5000,1),
+	beer_name varchar (200),
+	type varchar (30),
+	abv decimal (4,2)
+	CONSTRAINT PK_beer PRIMARY KEY (beer_id)
+)
+CREATE TABLE beer_brewery(
+	beer_brewery_id int IDENTITY (1,1),
+	beer_id int,
+	brewery_id int
+	CONSTRAINT brewery_beer_PK PRIMARY KEY (beer_brewery_id),
+	CONSTRAINT beer_fk FOREIGN KEY (beer_id) REFERENCES beer_list (beer_id),
+	CONSTRAINT brewery_id_fk FOREIGN KEY (brewery_id) REFERENCES brewery (id)
+)
 CREATE TABLE brewery_tag (
 	brewery_tag_id int IDENTITY (1,1),
 	tag_id int,
@@ -68,6 +83,7 @@ CREATE TABLE user_review (
 	CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
 	CONSTRAINT review_id_fk FOREIGN KEY (review_id) REFERENCES review (review_id)
 )
+
 
 
 --populate default data
@@ -178,8 +194,149 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 
 
 	INSERT INTO user_review (user_id, review_id) VALUES (1, 3000)
-	
 	INSERT INTO user_review (user_id, review_id) VALUES (3, 3001)
+
+
+	--INSERT INTO beer_list (beer_name, type, abv) VALUES ('', '',)
+
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Deep Diver Volume 1', 'Double IPA',7.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Tmavé Pivo', 'Dark Lager',4.25)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Blatant Pandering', 'Traditional Bock',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Apple Forward', 'Dry Cider',5.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Punch Out', 'Double Hazy Juicy IPA',8.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Holy Toledo', 'German Pilsner',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Dog Pound Brown', 'American Brown Ale',5.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Gimme SMore', 'Porter ',6.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Locktender ', 'Imperial Stout',9.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Community', 'Pilsner',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Orange Blossom Special', 'Honey-Fermented IPA',8.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Zero Mile', 'Smoked Lager',4.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Bridge is Up', 'American Wheat',6.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Bitter Chief', 'IPA',7.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Buckeye Breakaway', 'Pale Ale',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Futile to Resist', 'Fruit Sour',6.1)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Faustian Exchange', 'Helles Bock',7.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Slim Shandy', 'Lemon Shandy',4.1)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Farmers Daughter', 'Rye Saison',6.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Keep On Keepin On', 'Session IPA',4.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Square One', 'Session IPA',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('C-Town', 'American IPA',6.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Imperial Sunset', 'American Pale Wheat',8.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Bollard Pull', 'American Porter',6.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Bumble Berry', 'Honey Blueberry Ale',5.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Goggle Fogger', 'Hefeweizen',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Old World', ' Alt Bier',4.9)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Headhunter', 'IPA',7.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Forest City Chocolate Milk', 'Milk Stout',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Let it Rye', 'IPA',6.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('One Arm Daily', 'Cream Ale',5.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Verano Oscuro', 'Mexican Lager',5.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Polka City', 'Pilsner',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Moment of Inertia', 'Belgian Blonde',6.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Long Blink', 'Session IPA',4.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Dead Mans Curve', 'American IPA',8.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Commodore Perry', 'IPA',7.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Joe Thomas 73', 'Kolsch',5.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Great Lakes IPA', 'American IPA ',6.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Eliot Ness', 'Amber Lager',6.1)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Mr. MeeSeeks', 'Blueberry Gose',4.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Farmers Only', 'Saison',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Bye Felicia', 'Nut Brown Ale',5.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Black Flag', 'Schwarzbier',4.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('The Original Lager', 'Bavarian Lager',5.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Hefe Weizen', 'Wheat Ale',5.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Dunkel', 'Dark Lager',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Light Lager', 'American Light Lager',3.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Progress Pilsner', ' Pilsner',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Prosperity Wheat', 'Hefeweizen',6.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('CitraMax IPA', 'IPA',7.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Nano OG Lager', 'Lager',4.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Vanilla Underverse', 'Imperial Stout',13.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Double Barrel Old Timey', 'Barleywine',14.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Phantasmal Bliss', ' IPA',8.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Oni Giri', 'Lager',4.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Nano Lager Life', ' Lager',4.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Butcher & The Brewer Albino Stout', 'Stout',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Shacksbury Rose Cider', 'Cider',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Urban Artifact Keypunch', 'Gose',4.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Evil Motives IPA', 'IPA',7.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Rose Apothecary', 'Fruit Beer',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Dearly Departed Black IPA', 'IPA',6.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Tropic Blond', 'Blond',5.1)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Nomu', 'Lager',4.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Blackberry Krush', 'Sour',6.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Odd Future', 'IPA',8.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Hyper Retro', 'Farmhouse Ale',4.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Red White and Blueberry Cider', 'Cider',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('White Rajah', 'IPA',6.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Summer Shandy', 'Shandy',4.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('DreamWeaver Wheat', 'Wheat',4.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Hop Goblin IPA', 'IPA',7.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Oompa Loompa', 'Stout',5.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Rocky River Pirate Light', 'Blonde',4.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Cooper’s Gold Kolsch', 'German',6.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Juicy Asap', 'IPA',6.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Love You Bye', 'IPA',8.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('El Lager', 'Lager',4.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('White Light', 'White Ale',3.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Taco Party', 'Pilsner',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Coffee Red', 'Red Ale',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Third Wheel', 'Belgian',9.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Olly Olly', 'Pale Ale',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('8 Days a Week', 'Blonde Ale',4.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Legacy Lager', 'Lager',4.7)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('The Changer', 'IPA',7.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('3 Citrus Peel Out', 'Wheat',8.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Swill', 'Lager',5.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Star Party V2', 'IPA',7.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Bikini Bottom Porter', 'Porter',6.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Canopy Crusher', 'IPA',6.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Muellerfest', 'Lager',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Buzz Beer', 'Stout',7.8)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('185th St. Wheat', 'Wheat',5.4)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Lakeview Cemetery', 'Pumpkin',7.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Cold Beer Here!', 'Lager',5.1)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Strawberry Banana Bag', 'Fruit',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Academic Burnout', 'IPA',5.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Jolly Dry Stout', 'Stout',4.2)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Ploughman’s Pilsner', 'Pilsner',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Pit Boss', 'Pale Ale',6.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Gunselman’s Kolsch', 'German',5.3)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Hooligan Irish Stout', 'Stout',5.0)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Sunshine On Our Faces', 'Sour',3.6)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Worthy Wit', 'Wheat',5.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Caviator Doppelback', 'Bock',7.5)
+	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Sloane Shandy', 'Shandy',5.5)
+
+	INSERT INTO beer_brewery (brewery_id, beer_id)
+	VALUES
+	(1000, 5000), (1000, 5001), (1000, 5002), (1000, 5003),
+	(1001, 5004), (1001, 5005), (1001, 5006), (1001, 5007),
+	(1002, 5008), (1002, 5009), (1002, 5010), (1002, 5011),
+	(1003, 5012), (1003, 5013), (1003, 5014), (1003, 5015),
+	(1004, 5016), (1004, 5017), (1004, 5018), (1004, 5019),
+	(1005, 5020), (1005, 5021), (1005, 5022), (1005, 5023),
+	(1006, 5024), (1006, 5025), (1006, 5026), (1006, 5027),
+	(1007, 5028), (1007, 5029), (1007, 5030), (1007, 5031),
+	(1008, 5032), (1008, 5033), (1008, 5034), (1008, 5035),
+	(1009, 5036), (1009, 5037), (1009, 5038), (1009, 5039),
+	(1010, 5040), (1010, 5041), (1010, 5042), (1010, 5043),
+	(1011, 5044), (1011, 5045), (1011, 5046), (1011, 5047),
+	(1012, 5048), (1012, 5049), (1012, 5050), (1012, 5051),
+	(1013, 5052), (1013, 5053), (1013, 5054), (1013, 5055),
+	(1014, 5056), (1014, 5057), (1014, 5058), (1014, 5059),
+	(1015, 5060), (1015, 5061), (1015, 5062), (1015, 5063),
+	(1016, 5064), (1016, 5065), (1016, 5066), (1016, 5067),
+	(1017, 5068), (1017, 5069), (1017, 5070), (1017, 5071),
+	(1018, 5072), (1018, 5073), (1018, 5074), (1018, 5075),
+	(1019, 5076), (1019, 5077), (1019, 5078), (1019, 5079),
+	(1020, 5080), (1020, 5081), (1020, 5082), (1020, 5083),
+	(1021, 5084), (1021, 5085), (1021, 5086), (1021, 5087),
+	(1022, 5088), (1022, 5089), (1022, 5090), (1022, 5091),
+	(1023, 5092), (1023, 5093), (1023, 5094), (1023, 5095),
+	(1024, 5096), (1024, 5097), (1024, 5098), (1024, 5099),
+	(1025, 5100), (1025, 5101), (1025, 5102), (1025, 5103),
+	(1026, 5104), (1026, 5105), (1026, 5106), (1026, 5107)
 
 	COMMIT
 	
@@ -191,10 +348,13 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 
 	--SELECT * fROM brewery JOIN brewery_tag on brewery_tag.brewery_id = brewery.id JOIN tag on tag.tag_id = brewery_tag.tag_id WHERE tag.tag_id = 2000
 
-	--select name, id from brewery
+	
 
 	--UPDATE brewery SET image = 'https://images.squarespace-cdn.com/content/v1/59e7b07a8dd04156df25edaf/1584376002697-CZR8WVKWUZ4H94ZLP3NA/_CRU8860.jpg?format=2500w' WHERE id = 1000
 
 	--select * from users
 
 	--select * from review
+	--select * from beer_list
+	--select name, id from brewery
+	--select * from beer_brewery
