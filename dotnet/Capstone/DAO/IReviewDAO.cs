@@ -21,5 +21,7 @@ namespace Capstone.DAO
 
         //I want a list of all review by Brewery ID
         public List<Review> GetReviewsByBreweryID(int breweryID);
+
+
     }
 }
