@@ -93,6 +93,8 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('JoeyLitten
 
 --   INSERT INTO brewery (name, address, city, state, zip, website, phone, about,) VALUES ('', '', '', '', '', '', '', '')
 
+
+--brewery info. MVT 'Most Valuable Table'.
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image) VALUES ('Bookhouse Brewing, LLC.', '1526 W 25th St', 'Cleveland', 'Ohio', '44113-3104', 'http://www.bookhouse.beer', '4144264555', 'Innovative and approachable beers and ciders served in a cozy, historic taproom. The location originally housed the Jacob and Magdalena Baehr Brewery, founded in 1873. The owners of Bookhouse are in the process of restoring it to its original glory, and the original brick, wallpaper, and tin are visible throughout. Plants, warm lighting, and bookshelf-lined walls create an inviting atmosphere. The menu is always changing and has something for everyone, so stop in and check out the menu!', 'https://images.squarespace-cdn.com/content/v1/59e7b07a8dd04156df25edaf/1584376002697-CZR8WVKWUZ4H94ZLP3NA/_CRU8860.jpg?format=2500w')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image) VALUES ('Boss Dog Brewing', '2179 Lee Rd', 'Cleveland', 'Ohio', '44118-2907', 'http://www.bossdogbrewing.com', '2163212337', 'A casual brewpub that serves up a variety of delicious fare. While Boss Dog may be a small outfit, they certainly bring a lot to the table. Featuring both a brunch and dinner food menu, as well as an extensive draft list, you are sure to find something you’ll enjoy. They even have a doggie menu for your furry friends! All of Boss Dog’s ingredients are locally sourced, and they offer full tours of their brewing facility, so if food transparency is your jam, this is the place to go.', 'https://scontent.tbdine.com/merchants/boss-dog-brewing/image/11ed5aa5-9244-4b21-bb9e-97b6105412b5.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image) VALUES ('BottleHouse Brewery', '13368 Madison Ave', 'Lakewood', 'Ohio', '44107-4840', 'http://www.thebottlehousebrewingcompany.com', '2162142120', 'A community-oriented brewery and mead hall. BottleHouse’s full-service food menu, board games, live music and more create an environment that’s more than a place to drink. If the drinks are what you’re here for, though, fret not– BottleHouse has won multiple national awards for its ciders and beers, and their meads are a local favorite. For a truly special experience, try their 5 course dinner, each course paired with a curated mead based drink.', 'https://images.squarespace-cdn.com/content/v1/5b809579da02bc5c8fb70073/1535161103511-9P9NU80F6GGCJ0HBGSJ4/Lakewood+taproom.jpg')
@@ -121,19 +123,26 @@ INSERT INTO brewery (name, address, city, state, zip, website, phone, about, ima
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image) VALUES ('Working Class Brewery', '17448 Lorain Ave', 'Cleveland', 'Ohio', '44111-4028', 'http://www.workingclassbrewery.com', '2164175112', 'Working Class Brewery is a working class guy following a passion and dream to create great fresh local craft beer for hard working people.Located in the Kamm’s Corners area at 17448  Lorain Avenue, Cleveland, Ohio. Working Class Brewery has its own tap room where retail customers may come to view the operation of the brewery, purchase beer by the glass, beer to go, snacks, and retail items such as T-shirts, hats and glassware with our logo printed on them.', 'https://media-cdn.tripadvisor.com/media/photo-s/14/c1/72/5a/inside.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image) VALUES ('Immigrant Son Brewing', '18120 Sloane Ave', 'Lakewood', 'Ohio', '44107', 'immigrantsonbrewing.com', '2166004483', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead.', 'https://clevelandmagazine.azureedge.net/sitefinity/images/default-source/archive/immigrant-son-brewery-interior.jpg?sfvrsn=6e7ceb8c_1')
 
+
+--these are tags the describe breweries
 INSERT INTO tag (type) VALUES ('Pet Friendly') --2000
 INSERT INTO tag (type) VALUES ('Family Friendly') --2001
 INSERT INTO tag (type) VALUES ('Budget') --2002
 INSERT INTO tag (type) VALUES ('Patio') --2003
 
 
+--adding reviews to start with so app isnt empty. Thanks everyone who sent a review!
+INSERT INTO review (brewery_id, rating, content) VALUES 
+	(1000, 3.0, 'The place was okay. I think it could have had better food for the price. Great atmosphere though!'), 
+	(1010, 5.0, 'THIS PLACE WAS SO AMAZING WOW'),
+	(1013, 4, 'I love the atmosphere and the food, especially the pizza. The cocktail menu is a little limited. In the warm months, the outdoor space is nice, and the long picnic tables make it very easy to hang out with any size groups in any season.'),
+	(1007, 3.5, 'Ive gone to a couple of swing dances at Forest City Brewery. The stage and dance floor are nice, but it is too hot in the summer and too cold in the winter, and the odd split up space is not my favorite. I havent tried the outdoor space, which might swing my rating higher, as I hear it is nice.'),
+	(1009, 4.0, 'I was impressed by the spacious dining area and food options, in addition to the drinks. The parking situation was not ideal, but that didnt take away from the great atmosphere. I would visit again.'),
+	(1004, 4.5, 'My go to spot before all Cavs and Guardians games. A wide variety of beers to choose from and the food is fantastic! I highly recommend the Albino Stout and Fried Chicken Sliders'),
 
-INSERT INTO review (brewery_id, rating, content) VALUES (1000, 3.0, 'The place was okay. I think it could have had better food for the price. Great atmosphere though!'), (1010, 5.0, 'THIS PLACE WAS SO AMAZING WOW')
 
 
-
-
-
+--assigning tags to brweries
 INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	(2000, 1001),
 	(2001, 1001),
@@ -192,13 +201,14 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	(2000, 1025),
 	(2003, 1026)
 
-
+	--assigning reviews to useres
 	INSERT INTO user_review (user_id, review_id) VALUES (1, 3000)
 	INSERT INTO user_review (user_id, review_id) VALUES (3, 3001)
 
 
 	--INSERT INTO beer_list (beer_name, type, abv) VALUES ('', '',)
 
+	--big beer list!
 	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Deep Diver Volume 1', 'Double IPA',7.8)
 	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Tmavé Pivo', 'Dark Lager',4.25)
 	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Blatant Pandering', 'Traditional Bock',5.4)
@@ -308,6 +318,8 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Caviator Doppelback', 'Bock',7.5)
 	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Sloane Shandy', 'Shandy',5.5)
 
+
+	--assigning beer to brewries!
 	INSERT INTO beer_brewery (brewery_id, beer_id)
 	VALUES
 	(1000, 5000), (1000, 5001), (1000, 5002), (1000, 5003),
@@ -358,3 +370,5 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	--select * from beer_list
 	--select name, id from brewery
 	--select * from beer_brewery
+
+	
