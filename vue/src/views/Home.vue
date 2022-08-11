@@ -26,7 +26,7 @@
 
         </div><!-- end of nav menu-->
               <div class="flex-fill ">
-                <img src="../img/TrailHops-Minimal-logo.png" alt="logo" class="img-responsive" height="50px">
+                <img src="../img/HoppyTrails-Hunter-Green-Logo.png" alt="logo" class="img-responsive" >
               </div>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end" 
                 v-if="auth">
