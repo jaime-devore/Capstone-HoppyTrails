@@ -20,11 +20,10 @@ namespace Capstone.DAO
         }
 
         //METHODS
-
         //I want a single Review by Review ID
         public Review GetReview(int reviewID)
         {
-            Review review = new Review();
+            Review review = null;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -112,6 +111,28 @@ namespace Capstone.DAO
             }
 
             return allReviews;
+        }
+
+        //I want to create a new Review and push it to the DB
+        public Review CreateReview(Review review)
+        {
+            int newReviewID = 0;
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO review (brewery_id, rating, content) OUTPUT INSERTED.review_id VALUES (@BREWERYID, @RATING, @CONTENT)", conn);
+                    cmd.Parameters.AddWithValue("@BREWERYID", review.BreweryId);
+                    cmd.Parameters.AddWithValue("@RATING", review.Rating);
+                    cmd.Parameters.AddWithValue("@CONTENT", review.Content);
+
+                    newReviewID = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+            Review newReview = GetReview(newReviewID);
+
+            return newReview;
         }
 
 
