@@ -16,10 +16,10 @@
 </div>
 
 
-    <div class="col-lg-3" v-for="(brewery, index) in allBreweries" v-bind:key="brewery.id">
+    <div class="col-lg-3" v-for="(brewery) in allBreweries" v-bind:key="brewery.id">
         <div class="card border border-secondary w-100 p-2" >
             <div class="card-header  bg-success text-white ">
-                <h5 class="card-title"> {{index}} - {{brewery.name}}</h5>
+                <h5 class="card-title">  {{brewery.name}}</h5>
             </div>
             <div class="card-body">
                 <img class="img-thumbnail" v-bind:src="brewery.image" />
@@ -27,6 +27,7 @@
                 <p><span class="fw-bold" >PHONE: </span>{{brewery.phoneNumber}}</p>
                 <p><span class="fw-bold" >WEBSITE: </span>{{brewery.webSite}}</p>
                 <p><span class="fw-bold" >ADDRESS:</span> {{brewery.address}}</p>
+                <p><span class="fw-bold" >CITY:</span> {{brewery.city}}</p>
                 <h4 class="fw-bold" > ABOUT</h4>
                 <p class="card-text">{{brewery.about}}</p>
                 
@@ -108,4 +109,5 @@ export default {
   color: white;
   transform: rotateY(180deg);
 }
+
 </style>
