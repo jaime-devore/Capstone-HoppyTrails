@@ -22,7 +22,8 @@ export default {
 
 <style>
 .bgpic{
-  background-image: url('../img/AleSmith-Tasting-Room.jpg');
+  /* background-image: url('../img/AleSmith-Tasting-Room.jpg'); */
+  background-color: #2a453d;
   height: 100vh;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -30,7 +31,7 @@ export default {
 }
 .about{
   text-align: center;
-  color: #2a453d;
+  color:white;
   text-size-adjust: 50px;
 }
 </style>
