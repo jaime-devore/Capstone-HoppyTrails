@@ -27,6 +27,7 @@
                 <p><span class="fw-bold" >PHONE: </span>{{brewery.phoneNumber}}</p>
                 <p><span class="fw-bold" >WEBSITE: </span>{{brewery.webSite}}</p>
                 <p><span class="fw-bold" >ADDRESS:</span> {{brewery.address}}</p>
+                <p><span class="fw-bold" >CITY:</span> {{brewery.city}}</p>
                 <h4 class="fw-bold" > ABOUT</h4>
                 <p class="card-text">{{brewery.about}}</p>
                 
