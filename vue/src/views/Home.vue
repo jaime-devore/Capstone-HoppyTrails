@@ -36,6 +36,7 @@ export default {
   top: 40%;
   width: 90%; 
   text-align: center;
-  border: 6px solid white;
+  
+  
 }
 </style>

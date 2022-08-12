@@ -7,7 +7,7 @@
     <div class="flip-card-front">
       
         <!-- *********** FRONTCARD *********** -->
-            <div class="">
+            <div class="frt-card" >
                     <div class="card border border-secondary w-100 p-2" >
                         <div class="card-header  bg-success text-white ">
                             <h5 class="card-title">{{brewery.name}}</h5>
@@ -25,10 +25,10 @@
 
       
     </div>
-    <div class="flip-card-back">
+    <div class="flip-card-back" >
       
 
-            <div class="bckCard">
+            <div class="bckCard" >
                     <div class="card border border-secondary w-100 p-2" >
                         <div class="card-header ">
                             <h5 class="card-title"> {{brewery.name}}</h5>
@@ -106,7 +106,10 @@ export default {
 }
 
 .flip-card:hover .flip-card-inner {
+  
   transform: rotateY(180deg);
+  position: absolute;
+  
 }
 
 .flip-card-front, .flip-card-back {
@@ -120,14 +123,17 @@ export default {
 .flip-card-front {
   /* background-color: #bbb; */
   color: black; 
+  
 }
 
 .flip-card-back {
   /* background-color: #2980b9;
   color: white; */
   transform: rotateY(180deg);
+  
 }
 .bckCard{
   height: 400px;
 }
+
 </style>
