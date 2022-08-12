@@ -49,11 +49,12 @@ export default {
 
 div #card {
   border-radius: 25px;
-  border: 2px solid #73AD21;
+  border: 2px solid #2a453d;
   margin: 10px;
   padding: 20px;
   width: 95vw;
   height: 1.5rm;
+  background: rgb(224, 236, 224);
 }
 
 </style>
