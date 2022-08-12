@@ -225,7 +225,7 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 
 
 
-	--INSERT INTO beer_list (beer_name, type, abv) VALUES ('', '',)
+	--INSERT INTO beer_list (beer_name, type, abv) VALUES ('', '',)   <-- inserting beer template
 
 	--big beer list!
 	INSERT INTO beer_list (beer_name, type, abv) VALUES ('Deep Diver Volume 1', 'Double IPA',7.8)
@@ -372,22 +372,14 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	COMMIT
 	
 
+	/* regularly used queries:
 
-	--SELECT * FROM brewery WHERE id = 1000
+	SELECT * FROM brewery
+	select * from users
+	select * from review
+	select * from beer_list
+	select name, id from brewery
+	select * from beer_brewery
 
-	--SELECT * FROM brewery
-
-	--SELECT * fROM brewery JOIN brewery_tag on brewery_tag.brewery_id = brewery.id JOIN tag on tag.tag_id = brewery_tag.tag_id WHERE tag.tag_id = 2000
-
-	
-
-	--UPDATE brewery SET image = 'https://images.squarespace-cdn.com/content/v1/59e7b07a8dd04156df25edaf/1584376002697-CZR8WVKWUZ4H94ZLP3NA/_CRU8860.jpg?format=2500w' WHERE id = 1000
-
-	--select * from users
-
-	--select * from review
-	--select * from beer_list
-	--select name, id from brewery
-	--select * from beer_brewery
-
+	*/
 	
