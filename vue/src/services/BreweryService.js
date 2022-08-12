@@ -8,5 +8,9 @@ getAllBreweries(){
 
 getBreweryById(id){
     return axios.get(`/brewery/${id}`)
+},
+
+getBeersByBreweryId(id){
+    return axios.get(`brewery/beers/${id}`)
 }
 }
