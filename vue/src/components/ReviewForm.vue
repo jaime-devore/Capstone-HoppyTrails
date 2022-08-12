@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div id = "full-review-field">
+      <h4 id="review-header"> Leave them a review!</h4>
       <form>
-        <label for="rating">Star Rating:</label>
+        <label for="rating" id="starlabel">Star Rating:</label><br/>
         <fieldset class="rate">
             <input type="radio" id="rating10" name="rating" value="10" /><label for="rating10" title="5 stars"></label>
             <input type="radio" id="rating9" name="rating" value="9" /><label class="half" for="rating9" title="4 1/2 stars"></label>
@@ -14,10 +15,8 @@
             <input type="radio" id="rating2" name="rating" value="2" /><label for="rating2" title="1 star"></label>
             <input type="radio" id="rating1" name="rating" value="1" /><label class="half" for="rating1" title="1/2 star"></label>
         </fieldset>
-
-        <label for="review-title">Title:</label>
-        <input type="text" name="review-title" id="review-title">
-        <label for="review-body">Review:</label>
+        <br/>
+        <label for="review-body">Review:</label><br/>
         <input type="text" name="review-body" id="review-body">
       </form>
   </div>
@@ -30,6 +29,36 @@ export default {
 </script>
 
 <style>
+
+form{
+    margin-left: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+fieldset {
+    margin-bottom: -10px;
+}
+
+#review-body {
+    width: 95vw;
+    height: 200px;
+    border: 2px solid #2a453d;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+#review-header {
+    display: block;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: dashed 4px #2a453d;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
 /* Base setup */
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
