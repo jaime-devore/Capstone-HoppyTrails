@@ -146,7 +146,8 @@ INSERT INTO review (brewery_id, rating, content) VALUES
 	(1004, 9, 'My go to spot before all Cavs and Guardians games. A wide variety of beers to choose from and the food is fantastic! I highly recommend the Albino Stout and Fried Chicken Sliders'),
 	(1015, 9, 'Great food and drink. Cool industrial vibe inside with an amazing skylight. Has parking next door'),
 	(1020, 8, ' Family-friendly and dog-friendly with great beers that are NOT just a long list of IPAs and a fantastic patio!'),
-	(1019, 10, 'Amazing pizza and a great beer selection. Huge outdoor area with picnic tables - great spot for big groups!')
+	(1019, 10, 'Amazing pizza and a great beer selection. Huge outdoor area with picnic tables - great spot for big groups!'),
+	(1013, 10, 'MY CAPS BUTTON IS BROKEN BUT I LOVED THIS PLACE')
 
 	
 	--assigning reviews to useres
@@ -159,6 +160,7 @@ INSERT INTO review (brewery_id, rating, content) VALUES
 	INSERT INTO user_review (user_id, review_id) VALUES (6, 3006);
 	INSERT INTO user_review (user_id, review_id) VALUES (7, 3007);
 	INSERT INTO user_review (user_id, review_id) VALUES (7, 3008);
+	INSERT INTO user_review (user_id, review_id) VALUES (7, 3009);
 
 
 
