@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div>
+    <div id="info-block">
         <h1>{{brewery.name}}</h1>
             <img class="img-thumbnail" v-bind:src="brewery.image" /> 
-            <p><span class="fw-bold" >PHONE: </span>{{brewery.phoneNumber}}</p>
-            <p><span class="fw-bold" >WEBSITE: </span>{{brewery.webSite}}</p>
-            <p><span class="fw-bold" >ADDRESS:</span> {{brewery.address}}</p>
+            <div id="quick-info">
+            <p><i class="bi bi-telephone-fill"></i><span class="fw-bold" >  PHONE: </span>{{brewery.phoneNumber}}</p>
+            <p><i class="bi bi-laptop"></i><span class="fw-bold" > WEBSITE: </span>{{brewery.webSite}}</p>
+            <p><i class="bi bi-building"></i><span class="fw-bold" > ADDRESS:</span> {{brewery.address}}</p>
+            </div>
         <h4>ABOUT</h4>
-            <p>{{brewery.about}}</p>
+            <p id="about-section">{{brewery.about}}</p>
         <h4>FEATURED BEERS</h4>
             <ul>
                 <li v-for="b in beer" v-bind:key="b.beerid"> <strong>{{b.name}}</strong> -- {{b.type}} -- {{b.abv}}% ABV </li>
@@ -17,7 +19,8 @@
     <div>
         <review-form/>
     </div>
-    <div>
+    <div id="reviews-section">
+        <h5> Reviews From Other Hoppers </h5>
         <review-card/>
     </div>
   </div>
@@ -53,5 +56,44 @@ export default {
 </script>
 
 <style>
+#info-block > h1, #info-block > h4 {
+    margin: 10px
+}
 
+#info-block > h4 {
+    text-decoration: underline;
+}
+
+#info-block > h1 {
+    text-align: center;
+}
+
+#quick-info {
+    padding-top: 15px;
+    display: block;
+    text-align: center;
+}
+#quick-info > p {
+    display: inline;
+    margin-left: 50px;
+}
+
+#about-section{
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#reviews-section > h5 {
+    margin-left: 15px;
+    text-decoration: underline;
+}
+
+#info-block > img {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px
+}
 </style>
