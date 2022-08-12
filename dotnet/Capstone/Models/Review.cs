@@ -17,6 +17,7 @@ namespace Capstone.Models
         [Required(ErrorMessage = "Rating is required.")]
         public decimal Rating { get; set; }
 
+        public User Reviewer { get; set; }
         public string Content { get; set; }
     }
 }
