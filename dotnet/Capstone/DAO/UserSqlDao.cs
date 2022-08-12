@@ -70,6 +70,29 @@ namespace Capstone.DAO
             return GetUser(username);
         }
 
+        //I want to get a username from a review 
+        public User GetUserFromReview(int reviewID)
+        {
+            User user = new User();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM users JOIN user_review ON users.user_id = user_review.user_id JOIN review ON user_review.review_id = review.review_id WHERE review.review_id = @REVIEWID", conn);
+                cmd.Parameters.AddWithValue("@REVIEWID", reviewID);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if(reader.Read())
+                {
+                    user = GetUserFromReader(reader);
+                }
+            }
+
+            return user;
+        }
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
