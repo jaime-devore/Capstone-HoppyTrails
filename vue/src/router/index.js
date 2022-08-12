@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import AllBreweries from '../views/AllBreweries'
 import store from '../store/index'
+import Trails from '../views/Trails.vue'
 import BreweryDetail from '../views/BreweryDetails'
 
 
@@ -63,6 +64,11 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/trails",
+      name: "trails",
+      component: Trails,
     },
     {
       path: "/brewerydetail/:id",
