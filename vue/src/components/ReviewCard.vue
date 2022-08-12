@@ -1,9 +1,9 @@
 <template>
   <div>
-      <div v-for="r in review" v-bind:key="r.id">
-      <span v-for="n in getStars(r)" v-bind:key="n"><i class="bi bi-star-fill"></i></span>
-      <span v-if="getHalfStars(r)"><i class="bi bi-star-half"></i></span>
-      <div> {{ r.content }} </div>
+      <div v-for="r in review" v-bind:key="r.id" id="card">
+        <span v-for="n in getStars(r)" v-bind:key="n"><i class="bi bi-star-fill"></i></span>
+        <span v-if="getHalfStars(r)"><i class="bi bi-star-half"></i></span>
+        <div> {{ r.content }} </div>
       </div>
   </div>
 </template>
@@ -46,6 +46,15 @@ export default {
 </script>
 
 <style>
+
+div #card {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  margin: 10px;
+  padding: 20px;
+  width: 95vw;
+  height: 1.5rm;
+}
 
 </style>
 
