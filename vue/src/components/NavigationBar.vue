@@ -2,7 +2,7 @@
 <template>
   <div>
     <div id="nav-container"  class="container-fluid">
-      <nav class="navbar navbar-expand-lg d-flex  justify-content-around ">
+      <nav class="navbar navbar-expand-lg  navbar-light" >
         <div class="container-fluid flex-fill">
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,14 +11,14 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <router-link to="/" class="nav-link active" aria-current="page" href="#">Home</router-link>
+                    <router-link to="/" class="nav-link"  href="#">Home</router-link>
                   </li>
                   <li class="nav-item">
                     <!-- <a class="nav-link" href="#">See All Breweries</a> -->
-                    <router-link to="allbreweries" class="nav-link" >See All Breweries</router-link>
+                    <router-link to="/allbreweries" class="nav-link" >See All Breweries</router-link>
                   </li>
                   <li class="nav-item">
-                    <router-link to="trails" class="nav-link">See All Trails</router-link>
+                    <router-link to="/trails" class="nav-link">See All Trails</router-link>
                   </li>
               <li class="nav-item">
                     <a class="nav-link" href="#">Find A Brewery Near You</a>
@@ -28,11 +28,18 @@
 
         </div><!-- end of nav menu-->
               <div class="flex-fill ">
+                <router-link to="/" class="">
                 <img src="../img/HoppyTrailsLogo.png" alt="logo" class="img-responsive" height="50px">
+                </router-link>
               </div>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <router-link class="btn btn-success rounded-pill me-md-2" to="register" >Sign Up</router-link>
+                <router-link class="nav-link" to="/logout"  v-if="loggedIn">Sign-Out
+                <img src="https://avatars.dicebear.com/api/bottts/:seed.svg" width="54px" height="54px" alt="avatar" class="border border-dark border-3 rounded-circle p-1" />
+                </router-link>
+                <span class="signInUp" v-else>
+                <router-link class="btn text-white bg-HunterGreen rounded-pill me-md-2" to="register" >Sign Up</router-link>
                 <router-link class="btn btn-outline-dark rounded-pill" to="login">Log In</router-link>
+                </span>
               </div>
       </div><!-- end of nav menu container-->
     </nav>
@@ -42,11 +49,38 @@
 
 <script>
 export default {
-    name: "navigation-bar"
+    name: "navigation-bar",
+    data(){
+        return{
+            awesome: true,
+        }
+    },
+    computed: {
+        loggedIn(){
+          
+          if(this.$store.state.token == ""){
+            return false;
+          }
+          return true;
+        }
+    },
 
 }
 </script>
 
-<style>
-
+<style scoped>
+.bg-HunterGreen{
+ background-color: #2a453d;
+}
+.router-link-exact-active{
+  font-weight: bold;
+  color: #2a453d;
+}
+ nav li:hover,
+ nav li.router-link-active,
+ nav li.router-link-exact-active {
+   background-color: #F0F0F0;
+   cursor: pointer;
+   border-radius: 10px;
+ }
 </style>
