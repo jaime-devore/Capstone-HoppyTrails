@@ -1,7 +1,7 @@
 <!--Created Navigation Component: Jaime -->
 <template>
-  <div>
-    <div id="nav-container"  class="container-fluid">
+  <div class="row">
+    <div id="nav-container"  class="col-lg-5">
       <nav class="navbar navbar-expand-lg  navbar-light" >
         <div class="container-fluid flex-fill">
 
@@ -26,25 +26,32 @@
 
                 </ul>
 
-        </div><!-- end of nav menu-->
-              <div class="flex-fill ">
-                <router-link to="/" class="">
-                <img src="../img/HoppyTrailsLogo.png" alt="logo" class="img-responsive" height="50px">
-                </router-link>
-              </div>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <router-link class="nav-link" to="/logout"  v-if="loggedIn">Sign-Out
-                <img src="https://avatars.dicebear.com/api/bottts/:seed.svg" width="54px" height="54px" alt="avatar" class="border border-dark border-3 rounded-circle p-1" />
-                </router-link>
-                <span class="signInUp" v-else>
-                <router-link class="btn text-white bg-HunterGreen rounded-pill me-md-2" to="register" >Sign Up</router-link>
-                <router-link class="btn btn-outline-dark rounded-pill" to="login">Log In</router-link>
-                </span>
-              </div>
-      </div><!-- end of nav menu container-->
-    </nav>
+          </div><!-- end of nav menu-->
+              
+        </div><!-- end of nav menu container-->
+      </nav>
     </div>
-  </div>
+    
+
+      <div class="col-lg-3 ">
+        <router-link to="/" class="">
+        <img src="../img/HoppyTrailsLogo.png" alt="logo" class="img-responsive" height="50px">
+        </router-link>
+      </div>
+
+      <div class=" col-lg-4 d-grid gap-2 d-md-flex justify-content-md-end align-center">
+        <router-link class="nav-link" to="/logout"  v-if="loggedIn">Sign-Out
+        <img src="https://avatars.dicebear.com/api/bottts/:seed.svg" width="54px" height="54px" alt="avatar" class="border border-dark border-3 rounded-circle p-1" />
+        </router-link>
+        <span class="signInUp" v-else>
+        <router-link class="btn text-white bg-HunterGreen rounded-pill me-md-2" to="register" >Sign Up</router-link>
+        <router-link class="btn btn-outline-dark rounded-pill" to="login">Log In</router-link>
+        </span>
+      </div>
+
+
+
+  </div><!-- end of root div "row" -->
 </template>
 
 <script>

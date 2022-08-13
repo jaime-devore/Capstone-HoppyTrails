@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <div class="bgpic">
-        <h1 class="about">Test Test Test</h1>
+        <h1 class="about">Hoppy Trails To You!</h1>
       </div>
   </div>
 </template>
