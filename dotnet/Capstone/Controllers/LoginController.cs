@@ -68,5 +68,14 @@ namespace Capstone.Controllers
 
             return result;
         }
+
+        [HttpGet("/users/reviews/{reviewID}")]
+        public ActionResult<User> GetUserFromReviewID(int reviewID)
+        {
+            User user = userDao.GetUserFromReview(reviewID);
+
+            return Ok(user);
+        }
+
     }
 }
