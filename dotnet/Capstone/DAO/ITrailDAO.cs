@@ -8,10 +8,10 @@ namespace Capstone.DAO
 {
     public interface ITrailDAO
     {
-        public Trail GetAllTrails();
+        public List<Trail> GetAllTrails();
         public Trail GetTrailByTrailID(int trailID);
-        public Trail CreateNewTrail(Trail trail);
-        public Trail UpdateTrail(Trail trail);
+        //public Trail CreateNewTrail(Trail trail);
+        public void CreateTrailUserForCompletedTrails(int trailID, int userID);
 
     }
 }

@@ -2,6 +2,7 @@
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
+using System.Collections.Generic;
 
 namespace Capstone.Controllers
 {
@@ -80,7 +81,7 @@ namespace Capstone.Controllers
         [HttpGet("/users/trails/{userID}")]
         public ActionResult<List<Trail>> GetTrailsByUserId(int userID)
         {
-            return Ok(userDao.GetTrailsFromUser(userID))
+            return Ok(userDao.GetTrailsByUserID(userID));
         }
     }
 }

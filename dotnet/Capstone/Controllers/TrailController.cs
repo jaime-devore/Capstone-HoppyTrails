@@ -22,31 +22,20 @@ namespace Capstone.Controllers
         [HttpGet()]
         public ActionResult<List<Trail>> AllTrails()
         {
-            return Ok(reviewDao.GetAllTrails());
+            return Ok(trailDao.GetAllTrails());
         }
 
-        [HttpGet("/{trailID}")]
+        [HttpGet("{trailID}")]
         public ActionResult<List<Review>> TrailsByTrailID(int trailID)
         {
-            return Ok(reviewDao.GetTrailsByTrailID(trailID));
+            return Ok(trailDao.GetTrailByTrailID(trailID));
         }
 
-        [HttpPut()]
-        public IActionResult TrailPut(Trail trailParam)
-        {
-            IActionResult result;
+        //[HttpPost()]
+        //public IActionResult InsertIntoTrailUserTable(int trailID, int userID)
+        //{
 
-            Trail trail = trailDao.updateTrail(trailParam.isCompleted);
-            if (trail != null)
-            {
-                result = Created(trail.Name, null); //values aren't read on client
-            }
-            else
-            {
-                result = BadRequest(new { message = "An error occurred and trail was not updated." });
-            }
+        //}
 
-            return result;
-        }
     }
 }

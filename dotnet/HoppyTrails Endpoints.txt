@@ -5,6 +5,7 @@ SQL INT IDENTITY starting Number
 	tagID: 2000
 	reviewID: 3000
 	beerID: 4000
+	trail: 6000
 	userID: 1
 
 Login Controller
@@ -12,6 +13,9 @@ Base: "login"
 
 	Get the User who wrote the Review
 	Endpoint: "/users/reviews/{reviewID}"
+
+	Get Trails by User
+	Endpoint: "/users/trails/{userID}"
 
 Brewery Controller
 Base: "brewery"
@@ -24,6 +28,9 @@ Base: "brewery"
 
 	Get all Beers at a Brewery
 	Endpoint: "brewery/beers/{breweryID}"
+
+	Get all Breweries on a Trail
+	Endpoint: "brewery/trails/{trail}"
 
 Tag Controller
 Base: "tag"
@@ -38,7 +45,7 @@ Base: "tag"
 	Endpoint: "tag/{tagID}/breweries"
 
 Review Controller
-Endpoint: "review"
+Base: "review"
 
 	Get single review
 	Endpoint: "review/{reviewID}"
@@ -51,3 +58,14 @@ Endpoint: "review"
 
 	Get all reviews by a user
 	Endpoint: "review/users/{userID}"
+
+Trail Controller
+Base: "trail"
+
+	Get single trail
+	Endpoint: "trail/{trailID}"
+
+	Get all trails
+	Endpoint: "trail"
+	
+	

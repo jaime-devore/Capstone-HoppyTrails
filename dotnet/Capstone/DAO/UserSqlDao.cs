@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
+using System.Collections.Generic;
 
 namespace Capstone.DAO
 {
@@ -93,6 +94,29 @@ namespace Capstone.DAO
             return user;
         }
 
+        public List<Trail> GetTrailsByUserID(int userID)
+        {
+            List<Trail> allTrails = new List<Trail>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM trails JOIN trail_user ON trails.trail_id = trail_user.trail_id JOIN users ON trail_user.user_id = users.user_id WHERE users.user_id = @USERID", conn);
+                cmd.Parameters.AddWithValue("@USERID", userID);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Trail trail = CreateTrailFromReader(reader);
+                    allTrails.Add(trail);
+                }
+            }
+
+            return allTrails;
+        }
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
@@ -106,5 +130,17 @@ namespace Capstone.DAO
 
             return u;
         }
+
+        private Trail CreateTrailFromReader(SqlDataReader reader)
+        {
+            Trail trail = new Trail();
+
+            trail.TrailID = Convert.ToInt32(reader["trail_id"]);
+            trail.TrailName = Convert.ToString(reader["type"]);
+
+            return trail;
+        }
+
+
     }
 }

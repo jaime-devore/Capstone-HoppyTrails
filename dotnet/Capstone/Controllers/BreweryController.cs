@@ -38,8 +38,8 @@ namespace Capstone.Controllers
             return Ok(breweryDao.GetBeersByBreweryID(breweryID));
         }
         
-        [HttpGet("{trailID}")]
-        public ActionResult<List<Brewery>> BreweriesByTrailId(int trailID)
+        [HttpGet("trails/{trailID}")]
+        public ActionResult<List<Brewery>> BreweriesByTrailID(int trailID)
         {
             return Ok(breweryDao.GetBreweriesByTrailID(trailID));
         }
