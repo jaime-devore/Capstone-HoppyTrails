@@ -84,6 +84,19 @@ CREATE TABLE user_review (
 	CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
 	CONSTRAINT review_id_fk FOREIGN KEY (review_id) REFERENCES review (review_id)
 )
+CREATE TABLE trails (
+	trail_id int IDENTITY (6000, 1),
+	type varchar (20)
+	CONSTRAINT PK_trail PRIMARY KEY (trail_id)
+)
+CREATE TABLE brewery_trails(
+	brewery_trails_id int IDENTITY (1,1),
+	trail_id int,
+	brewery_id int
+	CONSTRAINT Brewery_trail_pk PRIMARY KEY (brewery_trails_id),
+	CONSTRAINT trail_fk FOREIGN KEY (trail_id) REFERENCES trails (trail_id),
+	CONSTRAINT FK_brewery_from_trails FOREIGN KEY (brewery_id) REFERENCES brewery (id)
+)
 
 
 
@@ -124,10 +137,21 @@ INSERT INTO brewery (name, address, city, state, zip, website, phone, about, ima
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Southern Tier Brewing Co', '811 Prospect Ave E', 'Cleveland', 'Ohio', '44115-1111', 'https://taprooms.stbcbeer.com/southern-tier-brewery-cleveland-5b6c1b355dcb', '440-484-4045', 'The Southern Tier Brewing Company taproom in Cleveland is a state-of-the-art brewery and taproom, located in downtown Cleveland, OH. The Prospect Avenue venue, our second satellite taproom, is a short walk from Rocket Mortgage FieldHouse and Progressive Field, where we’re pouring fresh Southern Tier beers, serving a full, chef-created, beer-inspired food menu, and offering a selection of Southern Tier favorites to-go (in cans, bottles, and growler/crowler fills).', 'https://media.wkyc.com/assets/WKYC/images/6b7bee50-0c79-4d13-966f-7d2976b912a3/6b7bee50-0c79-4d13-966f-7d2976b912a3_1920x1080.jpg', 'https://utfb-images.untappd.com/zbaGFCj5NFUDW36i1dgXL4QK?auto=compress')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Terrestrial Brewing Company', '7524 Father Frascati Dr', 'Cleveland', 'Ohio', '44102-2087', 'https://terrestrialbrewing.com/', '216-465-9999', 'The brewery is located in the Battery Park neighborhood of Cleveland, Ohio. The tap list has two, mainstay beers, Canopy Crusher IPA and Public Pilsner, while the rest of the taps constantly rotate with new and exciting brews. The Taproom offers a casual vibe and two large patios with epic views of Lake Erie. The Taproom is also 100% dog-friendly and has an adjacent dog park next to us for the dogs to play and meet some friends.', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2017/08/Terrestrial.Interior.jpg?fit=800%2C533&ssl=1', 'https://www.porchdrinking.com/wp-content/uploads/2017/09/terrestrial-bc-logo2-680x325.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Cleveland Brewery', '777 E 185th St', 'Cleveland', 'Ohio', '44119-2170', 'https://theclevelandbrewery.com/', '216-534-6992', 'When a space opened up in our neighborhood, and the name was approved, the stars aligned for The Cleveland Brewery to start in October 2014. We initially sold to local restaurants for funding towards our tasting room which opened in 2015. Since then, John has brewed over 50 recipes and keeps the creativity coming. The tasty beer and our Cleveland spirit is why you fall in love with our spot.', 'https://res.cloudinary.com/bandwango/image/upload/c_crop,h_3057,w_4078,x_447,y_0/w_500,f_auto,q_auto/v1/partners/447/venue/38796/i9yey6j9t0irhcsgyksy.png', 'https://www.thisiscleveland.com/thisiscleveland/media/partnerdirectory/13646_30478.jpg?w=1200&h=630&mode=crop')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Jolly Scholar', '11111 Euclid Ave', 'Cleveland', 'Ohio', '44106-1715', 'https://theclevelandbrewery.com/', '216-534-6992', 'When a space opened up in our neighborhood, and the name was approved, the stars aligned for The Cleveland Brewery to start in October 2014. We initially sold to local restaurants for funding towards our tasting room which opened in 2015. Since then, John has brewed over 50 recipes and keeps the creativity coming. The tasty beer and our Cleveland spirit is why you fall in love with our spot.', 'https://observer.case.edu/wp-content/uploads/2016/02/JollyScholar_11-7_amh181_1MBJPEG_0003-900x600.jpg', 'https://www.thejollyscholar.com/wp-content/uploads/2018/07/Jolly-Scholar-Logo.png')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Jolly Scholar', '11111 Euclid Ave', 'Cleveland', 'Ohio', '44106-1715', 'https://theclevelandbrewery.com/', '216-534-6992', 'Located on the campus of Case Western Reserve University, The Jolly Scholar is a unique Cleveland Brewery serving quality food and artisanal craft beer.', 'https://observer.case.edu/wp-content/uploads/2016/02/JollyScholar_11-7_amh181_1MBJPEG_0003-900x600.jpg', 'https://www.thejollyscholar.com/wp-content/uploads/2018/07/Jolly-Scholar-Logo.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Working Class Brewery', '17448 Lorain Ave', 'Cleveland', 'Ohio', '44111-4028', 'http://www.workingclassbrewery.com', '216-417-5112', 'Working Class Brewery is a working class guy following a passion and dream to create great fresh local craft beer for hard working people.Located in the Kamm’s Corners area at 17448  Lorain Avenue, Cleveland, Ohio. Working Class Brewery has its own tap room where retail customers may come to view the operation of the brewery, purchase beer by the glass, beer to go, snacks, and retail items such as T-shirts, hats and glassware with our logo printed on them.', 'https://media-cdn.tripadvisor.com/media/photo-s/14/c1/72/5a/inside.jpg', 'https://pbs.twimg.com/profile_images/1130869525094764544/HMeZ9Dr9_400x400.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Immigrant Son Brewing', '18120 Sloane Ave', 'Lakewood', 'Ohio', '44107', 'immigrantsonbrewing.com', '216-600-4483', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead.', 'https://clevelandmagazine.azureedge.net/sitefinity/images/default-source/archive/immigrant-son-brewery-interior.jpg?sfvrsn=6e7ceb8c_1', 'https://media-exp1.licdn.com/dms/image/C4D0BAQHzAYxbiJbYzA/company-logo_200_200/0/1633837847647?e=2147483647&v=beta&t=F3OPZNNfVwxlhE6w69sXX57LaInYQ8dvFhFpUmE6JYg')
 
+
+INSERT INTO trails (type) VALUES ('Pet Friendly')
+INSERT INTO trails (type) VALUES ('Family Friendly')
+INSERT INTO trails (type) VALUES ('Budget')
+INSERT INTO trails (type) VALUES ('Patio')
+
+INSERT INTO brewery_trails(trail_id, brewery_id) VALUES
+(6000,1009), (6000,1010), (6000,1011), (6000,1013),
+(6001,1000), (6001,1012), (6001,1014), (6001,1016),
+(6002,1003), (6002,1007), (6002,1011), (6002,1023),
+(6003,1008), (6003,1015), (6003,1022), (6003,1024)
 
 --these are tags the describe breweries
 INSERT INTO tag (type) VALUES ('Pet Friendly') --2000
