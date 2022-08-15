@@ -8,7 +8,7 @@
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  bg-success text-white ">
-             <h5 class="card-title">Family Friendly</h5>
+             <h5 class="card-title"><router-link :to="{ name: 'traildetails', params: { trailID: 101 } }"> Family Friendly</router-link></h5>
            </div>
            <div class="card-body">
              <ul class="list-group list-group-flush">
@@ -58,7 +58,7 @@
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  bg-success text-white ">
-              <h5 class="card-title">Pet Friendly</h5>
+              <h5 class="card-title"><router-link :to="{ name: 'traildetails', params: { trailID: 102 } }">Pet Friendly</router-link></h5>
              </div>
            <div class="card-body">
              <ul class="list-group list-group-flush">
@@ -110,7 +110,7 @@
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  bg-success text-white ">
-             <h5 class="card-title">Patios</h5>
+             <h5 class="card-title"><router-link :to="{ name: 'traildetails', params: { trailID: 103 } }">Patios</router-link></h5>
            </div>
            <div class="card-body">
              <ul class="list-group list-group-flush">
@@ -159,7 +159,7 @@
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  bg-success text-white ">
-             <h5 class="card-title">Budget</h5>
+             <h5 class="card-title"><router-link :to="{ name: 'traildetails', params: { trailID: 104 } }">Budget</router-link></h5>
            </div>
            <div class="card-body">
              <ul class="list-group list-group-flush">
