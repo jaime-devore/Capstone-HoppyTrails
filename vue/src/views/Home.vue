@@ -1,27 +1,34 @@
 <template>
   <div class="home">
-      <div class="bgpic"></div>
+      <div class="bgpic">
+        <img class="main-logo" src="../img/hoppytrailsmainbigger.png" alt="">
+      </div>
       <div class="aboutimg"></div>
       <div class="description">
-        <h1>About us</h1>
+        <img class="aboutus" src="../img/About Us.png" alt="">
         <h4 class="words">Having a thriving local beer scene is key to any growing city. By drinking locally brewed beer you're keeping money within your community and supporting jobs within your town. That is why we have created a way to enjoy them based on what makes them so great.</h4>
       </div>
       <div class="breweries">
-        <h1>Breweries</h1>
+        <img class="breweries-logo-img" src="../img/BreweriesWithHop.png" alt="">
         <h4>See a full list of breweries</h4>
         <div class="button-div">
         <button class="button">
-      <span>Explore</span>
+          <router-link to="/allbreweries">
+      <span class= "link-button">Explore</span>
+          </router-link>
       </button>
       </div>
       </div>
       <div class="trails">
-        <h1>Trails</h1>
+        <img class="trails-logo-img" src="../img/trails.png" alt="">
         <h4>See trails we think you will like</h4>
 
       <div class="button-div">
+       
         <button class="button">
-      <span>Explore</span>
+          <router-link to="/trails">
+      <span class="link-button">Explore</span>
+          </router-link>
       </button>
       </div>
       </div>
@@ -46,7 +53,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 .home{
   padding: 7px;
     display: grid;
@@ -81,20 +89,29 @@ export default {
 
 
 .bgpic{
-  background-image: url('../img/AleSmith-Tasting-Room.jpg');
+  background-image: url('../img/ammon-20180716-old_brewery-1024.jpg');
   height: 100vh;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
 }
+.main-logo{
+  height: 450px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 230px;
+  margin-bottom: auto;
+}
 .aboutimg{
   display: flex;
-  background-image: url('../img/ammon-20180716-old_brewery-1024.jpg');
+  background-image: url('../img/AleSmith-Tasting-Room.jpg');
   border-radius: 1%;
   height: 100%;
   background-size: cover;
   border: 25px solid white;
 }
+
 .description{
   height: 60vh;
  display: flex;
@@ -106,12 +123,26 @@ export default {
   width: 100%; 
   text-align: center;
   justify-content: space-evenly;
-  border-radius: 1%;
-  outline: 5px solid white;
+  border-radius: 2%;
+  outline: 10px solid white;
   outline-style: inset;
   outline-offset: -30px;
-  
 
+}
+.aboutus{
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.breweries-logo-img{
+  width: 275px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.trails-logo-img{
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .words{
 padding: 40px
@@ -126,11 +157,11 @@ padding: 40px
   position: relative;
   width: 100%; 
   text-align: center; 
-  outline: 5px solid #2a453d;
+  outline: 10px solid #2a453d;
   outline-style: inset;
   outline-offset: -30px;
   justify-content: space-evenly;
-  border-radius: 1%;
+  border-radius: 2%;
 }
 .trails{
     height: 60vh;
@@ -142,11 +173,11 @@ padding: 40px
   position: relative;
   width: 100%; 
   text-align: center; 
-  outline: 5px solid white; 
+  outline: 10px solid white; 
   outline-style: inset;
   outline-offset: -30px;
   justify-content: space-evenly;
-  border-radius: 1%;
+  border-radius: 2%;
 }
 .footer{
 text-align: center;
@@ -195,6 +226,9 @@ padding-top: 10px;
 .button-div{
   display: flex;
   justify-content: space-around;
+}
+.link-button{
+  color: #2a453d
 }
 
 </style>
