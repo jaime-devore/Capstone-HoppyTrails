@@ -44,7 +44,7 @@ CREATE TABLE review(
 	review_id int IDENTITY (3000, 1) NOT NULL,
 	brewery_id int,
 	rating int NOT NULL,
-	content varchar (500) NOT NULL
+	content varchar (600) NOT NULL
 	CONSTRAINT PK_review PRIMARY KEY (review_id),
 	CONSTRAINT FK_brewery FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
@@ -84,6 +84,27 @@ CREATE TABLE user_review (
 	CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
 	CONSTRAINT review_id_fk FOREIGN KEY (review_id) REFERENCES review (review_id)
 )
+CREATE TABLE trails (
+	trail_id int IDENTITY (6000, 1),
+	type varchar (20)
+	CONSTRAINT PK_trail PRIMARY KEY (trail_id)
+)
+CREATE TABLE brewery_trails(
+	brewery_trails_id int IDENTITY (1,1),
+	trail_id int,
+	brewery_id int
+	CONSTRAINT Brewery_trail_pk PRIMARY KEY (brewery_trails_id),
+	CONSTRAINT trail_fk FOREIGN KEY (trail_id) REFERENCES trails (trail_id),
+	CONSTRAINT FK_brewery_from_trails FOREIGN KEY (brewery_id) REFERENCES brewery (id)
+)
+CREATE TABLE trail_user (
+	trail_user_id int IDENTITY (1,1),
+	trail_id int,
+	user_id int
+	CONSTRAINT trail_user_pk PRIMARY KEY (trail_user_id),
+	CONSTRAINT FK_trail FOREIGN KEY (trail_id) REFERENCES trails (trail_id),
+	CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
+)
 
 
 
@@ -95,6 +116,22 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('CraigChris
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('TotallyNotJohnSavage', 'Wl0xIJ2XOmCDzWzHtu2GpXSzpdo=', 'jJDKREJGV0I=', 'user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('AdaLoveLace', 'MN5SpCeEJJN1R3/kQ47BFESviGU=', 'VilbnnPymZo=', 'user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('DiMoFoSho5', 'oKtcRWR59ojq1wirzR2wtmljS5I=', 'AOdc8222+RI=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('SergioDeLuca ', ' vMldpsR96MaBMij273wef8Wg/gY=', '7BxDpq9HENw=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('IvanPetrov', 'zf/t91aMLKihWhekx9v670m9AeE=', 'Vsz0sLWUrWQ=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Gunner', 'Vurys4CTbhLa4P7jsJDFHJ2gFv8=', 'tl1D+LBGrEs=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('GideonGates', 'MD+1tmVG1rg//arCyUGBBuK4C+4=', 'egBZIPbs5kA=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('DerekVogel', 'vbognPoDCh/ErqZvMFzd0pGRoPU=', 'VoASSJYILLQ=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('LiamW', 'WMwCKx3IBslY187xhFgQonZZIYo=', '1Mfnw1Fa1zU=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('KNash', ' rTDDXNPv3GaS3b4TmfircrNtsus=', 'VeGuTNOp/JE=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('TBurke', 'Pdx3SpSzfl25hgPzVEiWfo/svvg=', 'OZYmi5fuVRc=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('MiaLW', 'B6gEXbDUsUrRLQYqjn5ewz8v2P8=', 'L+KG7ize+Wg=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('MarioK', 'aihJug9Sj1UvMbSBdJa8bnT24Ug=', 'Ys06GgT1QLc=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('LiamOnTheWing', 'CAgGzECmygunIwBjYeAkLbviETU=', 'pzV2LXUzV6M=', 'user');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Walshed', ' OEhRiEbeSh51MUASw4Dqa2LHTUo=', 's/IozE71yBs=', 'user');
+
+
+
+
 
 --   INSERT INTO brewery (name, address, city, state, zip, website, phone, about,) VALUES ('', '', '', '', '', '', '', '')
 
@@ -124,10 +161,27 @@ INSERT INTO brewery (name, address, city, state, zip, website, phone, about, ima
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Southern Tier Brewing Co', '811 Prospect Ave E', 'Cleveland', 'Ohio', '44115-1111', 'https://taprooms.stbcbeer.com/southern-tier-brewery-cleveland-5b6c1b355dcb', '440-484-4045', 'The Southern Tier Brewing Company taproom in Cleveland is a state-of-the-art brewery and taproom, located in downtown Cleveland, OH. The Prospect Avenue venue, our second satellite taproom, is a short walk from Rocket Mortgage FieldHouse and Progressive Field, where we’re pouring fresh Southern Tier beers, serving a full, chef-created, beer-inspired food menu, and offering a selection of Southern Tier favorites to-go (in cans, bottles, and growler/crowler fills).', 'https://media.wkyc.com/assets/WKYC/images/6b7bee50-0c79-4d13-966f-7d2976b912a3/6b7bee50-0c79-4d13-966f-7d2976b912a3_1920x1080.jpg', 'https://utfb-images.untappd.com/zbaGFCj5NFUDW36i1dgXL4QK?auto=compress')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Terrestrial Brewing Company', '7524 Father Frascati Dr', 'Cleveland', 'Ohio', '44102-2087', 'https://terrestrialbrewing.com/', '216-465-9999', 'The brewery is located in the Battery Park neighborhood of Cleveland, Ohio. The tap list has two, mainstay beers, Canopy Crusher IPA and Public Pilsner, while the rest of the taps constantly rotate with new and exciting brews. The Taproom offers a casual vibe and two large patios with epic views of Lake Erie. The Taproom is also 100% dog-friendly and has an adjacent dog park next to us for the dogs to play and meet some friends.', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2017/08/Terrestrial.Interior.jpg?fit=800%2C533&ssl=1', 'https://www.porchdrinking.com/wp-content/uploads/2017/09/terrestrial-bc-logo2-680x325.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Cleveland Brewery', '777 E 185th St', 'Cleveland', 'Ohio', '44119-2170', 'https://theclevelandbrewery.com/', '216-534-6992', 'When a space opened up in our neighborhood, and the name was approved, the stars aligned for The Cleveland Brewery to start in October 2014. We initially sold to local restaurants for funding towards our tasting room which opened in 2015. Since then, John has brewed over 50 recipes and keeps the creativity coming. The tasty beer and our Cleveland spirit is why you fall in love with our spot.', 'https://res.cloudinary.com/bandwango/image/upload/c_crop,h_3057,w_4078,x_447,y_0/w_500,f_auto,q_auto/v1/partners/447/venue/38796/i9yey6j9t0irhcsgyksy.png', 'https://www.thisiscleveland.com/thisiscleveland/media/partnerdirectory/13646_30478.jpg?w=1200&h=630&mode=crop')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Jolly Scholar', '11111 Euclid Ave', 'Cleveland', 'Ohio', '44106-1715', 'https://theclevelandbrewery.com/', '216-534-6992', 'When a space opened up in our neighborhood, and the name was approved, the stars aligned for The Cleveland Brewery to start in October 2014. We initially sold to local restaurants for funding towards our tasting room which opened in 2015. Since then, John has brewed over 50 recipes and keeps the creativity coming. The tasty beer and our Cleveland spirit is why you fall in love with our spot.', 'https://observer.case.edu/wp-content/uploads/2016/02/JollyScholar_11-7_amh181_1MBJPEG_0003-900x600.jpg', 'https://www.thejollyscholar.com/wp-content/uploads/2018/07/Jolly-Scholar-Logo.png')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Jolly Scholar', '11111 Euclid Ave', 'Cleveland', 'Ohio', '44106-1715', 'https://theclevelandbrewery.com/', '216-534-6992', 'Located on the campus of Case Western Reserve University, The Jolly Scholar is a unique Cleveland Brewery serving quality food and artisanal craft beer.', 'https://observer.case.edu/wp-content/uploads/2016/02/JollyScholar_11-7_amh181_1MBJPEG_0003-900x600.jpg', 'https://www.thejollyscholar.com/wp-content/uploads/2018/07/Jolly-Scholar-Logo.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Working Class Brewery', '17448 Lorain Ave', 'Cleveland', 'Ohio', '44111-4028', 'http://www.workingclassbrewery.com', '216-417-5112', 'Working Class Brewery is a working class guy following a passion and dream to create great fresh local craft beer for hard working people.Located in the Kamm’s Corners area at 17448  Lorain Avenue, Cleveland, Ohio. Working Class Brewery has its own tap room where retail customers may come to view the operation of the brewery, purchase beer by the glass, beer to go, snacks, and retail items such as T-shirts, hats and glassware with our logo printed on them.', 'https://media-cdn.tripadvisor.com/media/photo-s/14/c1/72/5a/inside.jpg', 'https://pbs.twimg.com/profile_images/1130869525094764544/HMeZ9Dr9_400x400.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Immigrant Son Brewing', '18120 Sloane Ave', 'Lakewood', 'Ohio', '44107', 'immigrantsonbrewing.com', '216-600-4483', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead.', 'https://clevelandmagazine.azureedge.net/sitefinity/images/default-source/archive/immigrant-son-brewery-interior.jpg?sfvrsn=6e7ceb8c_1', 'https://media-exp1.licdn.com/dms/image/C4D0BAQHzAYxbiJbYzA/company-logo_200_200/0/1633837847647?e=2147483647&v=beta&t=F3OPZNNfVwxlhE6w69sXX57LaInYQ8dvFhFpUmE6JYg')
 
+
+INSERT INTO trails (type) VALUES ('Pet Friendly')
+INSERT INTO trails (type) VALUES ('Family Friendly')
+INSERT INTO trails (type) VALUES ('Budget')
+INSERT INTO trails (type) VALUES ('Patio')
+
+INSERT INTO brewery_trails(trail_id, brewery_id) VALUES
+(6000,1009), (6000,1010), (6000,1011), (6000,1013),
+(6001,1000), (6001,1012), (6001,1014), (6001,1016),
+(6002,1003), (6002,1007), (6002,1011), (6002,1023),
+(6003,1008), (6003,1015), (6003,1022), (6003,1024)
+
+INSERT INTO trail_user (trail_id, user_id) VALUES
+(6000, 3), (6000, 7), (6000, 4),
+(6001, 3), (6001, 4), (6001, 5), 
+(6002, 5), (6002, 6), (6002, 3), (6002, 7),
+(6003, 5), (6003, 6), (6003, 7)
 
 --these are tags the describe breweries
 INSERT INTO tag (type) VALUES ('Pet Friendly') --2000
@@ -147,7 +201,67 @@ INSERT INTO review (brewery_id, rating, content) VALUES
 	(1015, 9, 'Great food and drink. Cool industrial vibe inside with an amazing skylight. Has parking next door'),
 	(1020, 8, ' Family-friendly and dog-friendly with great beers that are NOT just a long list of IPAs and a fantastic patio!'),
 	(1019, 10, 'Amazing pizza and a great beer selection. Huge outdoor area with picnic tables - great spot for big groups!'),
-	(1013, 10, 'MY CAPS BUTTON IS BROKEN BUT I LOVED THIS PLACE')
+	(1013, 10, 'MY CAPS BUTTON IS BROKEN BUT I LOVED THIS PLACE'),
+	(1000, 10, 'This brewery is an absolute hidden gem  the bartender was very nice and helpful. The atmosphere was calm, cozy, and welcoming. The beers were great! I do wish they had food but after all, theyre a brewery not a restaurant  Id highly recommend to anyone! Definitely will be back!'),
+	(1000, 8, 'No food except some large soft pretzels and dip. Nice eclectic delicious selection of craft brews. The sampler comes with four for $11. Plenty of quiet ish space to study or enjoy time with friends!'),
+	(1001, 5, 'Meh. Ive had good and bad experiences here. Stay away from trivia night. Your food will be overcooked and the ticket times are over an hour. Not pricey. Food is so, so. Service is so, so. The menu changes periodically so what you see today may disappear by next season. Patio is nice'),
+	(1001, 2, 'If you have never had Nashville Hot Chicken, you should not sell Nashville Hot Chicken. Why not just say,"Spicy Fried Chicken sandwich with Pickles and Coleslaw"? The sandwich I ordered was not right, it had like Franks Red Hot on it, please dont lie on menus, people will expect what you write.'),
+	(1002, 9, 'The staff is so friendly and the beer selection was amazing. They also have mead, which I got to try for the first time. We loved it so much we actually decided to book the place for our wedding!'),
+	(1002, 10, 'Large selection of beer and a great food menu. The chicken hoagie and cheese burger are unreal. The staff is friendly and personable. Highly recommend!'),
+	(1003, 10, 'Great low-key brewery. Super accommodating, full of entertainment for all ages. IMO Best Baby-Friendly spot in the city.  Carry food in. Big Jenga, cards, pinball, pac man. Single person bathrooms.  Lots of space, usually not busy. Perfect local hangout.'),
+	(1003, 10, 'I cant say enough good things about this place. Just far enough off the beaten path to feel like an instant local. The bartender was so welcoming and had some pretty fantastic stories about how this place has come to be. For avid hop-stoppers, this is one of our favorites!'),
+	(1003, 7, 'Cool atmosphere with a lot of things to do. There are plenty of table games and areas to hangout within the bar. I wasnt a big fan of the beer I ordered Bitter Chief. The place is always packed when I drive by so they must be doing something right'),
+	(1004, 10, 'Beer was great. Food was fantastic and Jake, Brittany, and Zak are awesome bartenders. We went there everyday we were in Cleveland. We also took some beer home to Virginia with us. Highly recommend.'),
+	(1004, 8, 'I only went in for a quick drink with a friend, but it was great. Friendly staff, nice ambiance.'),
+	(1004, 10, 'Weve been to Butcher and the Brewer several times, and never had a bad experience. The staff is awesome...They have a great beer selection, and the food is amazing! I highly recomme'),
+	(1005, 10, 'The view was great to have during a meal. Kids pizza: average, kids max n cheese great. The Bruschetta pizza I would have skipped & had the mac n cheese instead. We also had the L.E.O Omelette which was enjoyable.'),
+	(1005, 5, 'Great Date Night at collisionbrew - shishito peppers with fried pork belly, queso fundito with chorizo and some blackened Shrimp tacos.   Everything was on point.   Love this view and great food.'),
+	(1006, 6, ' just didnt feel the love here at all.  Bartenders seemed distracted although it wasnt that busy at all.  Food and Beer was OK!  Im thinking they were going to be off in a few hours so they could spend time with family for the Independence Day Holiday.  In any event prolly wouldnt return!'),
+	(1006, 10, 'The power went out while we were there. The staff was super friendly and accommodating. The food and beer was delicious! The view from the patio was nice. I would absolutely recommend this place. I want to go back!'),
+	(1007, 10, 'First time at forest city brewery after having some mead around the corner. Such a cute hidden brewery. We tried the pierogis and the pretzel and a few beers and everything was delicious! Cant wait to come back when they have a live band or event going on on their huge stage!'),
+	(1007, 10, 'We visited from out of town. Great food, great atmosphere. Would go again next time in tow'),
+	(1007, 9, 'Excellent beer and great atmosphere! This is the place to hear live music in Cleveland. And now they have a new chef and food and its delicious. Cant say enough good things about this westside gem.'),
+	(1007, 9, 'Ive always appreciated this place and their beer selections...i appreciate them even more because of how seriously theyre taking the safety of their team and customers.'),
+	(1008, 10, 'Loved this brewery!  The food, beer and service were perfect.  Looking forward to returning to this brewery.'),
+	(1008, 7, 'We have been here 15 times at least since it is close to us. The food can be absolutely amazing, but I would not recommend the chicken. The beer selection is okay, but they will typically have only 7-8 beers on tap. The service is always amazing and the music and atmosphere is great'),
+	(1009, 8, 'We sat at the downstairs bar that resembles a man cave.  The service is great, and they have a nice variety of drafts. I have not tried their menu, but maybe next time.'),
+	(1009, 10, 'Came in for a late night dinner , service was speedy and drinks where good. Would recommend if in the area'),
+	(1010, 10, 'Was in from out of town and had happened upon Hansa after stopping elsewhere a few blocks over. Good service and a great beer selection. The potato pancakes were fantastic!'),
+	(1010, 9, 'If you want good food, great beer and good service go to Hansa. We really enjoy the owner who makes you feel like your at his home. Support local.'),
+	(1011, 8, 'The Hofbrauhaus is a German restaurant that has an amazing atmosphere with a terrific feeling of livelihood that can be felt by all attendees. The food was good but did not blow my mind. However, I loved the drinks and the amount of fun I had with friends here.'),
+	(1011, 10, 'Ive been here twice and would love to say yes again if have a chance to. Very delicious food and a lot of fun atmosphere.'),
+	(1011, 3, 'We took our families for a midday dinner. Our server was fantastic until she wasnt. We spent over 700 dollars and left almost 400 in tips. They apparently needed our table and requested we leave. I have never been asked to leave a location that we reserved and paid for ever in my life.'),
+	(1012, 9, 'Service was great! Beer was fine. Particularly enjoyed the shandy. Sweet and refreshing! The smash burger and the chicken sandwich were perfect mid afternoon snack portions. Really hit the spot!'),
+	(1012, 7, 'Decided to stop in as it was recommended by some locals. We sat at the bar and saw their signs for decent beer selection. However,  several of the ones we wanted to try were tapped.'),
+	(1013, 9, 'Ohh where oh where has the jalapeño ale gone - ohh where ohh where can it be??? Their beers are great - but the currently missing Jalapeño ale is Sorely missed.'),
+	(1013, 10, 'Delicious pizza and beer! Love the atmosphere and the service was great. 2 seats at the bar made for a great start to a Saturday date night.'),
+	(1014, 9, 'Although the Thursday night trivia is Last Call (hard questions, not as fun as organic or list based trivia), the Brussels sprouts are the best Ive ever had! Theyre super greasy, crispy, and sweet with the maple glaze. Large beer selection. Friendly servers'),
+	(1014, 10, 'Get the dang philly chicken Mac bites. Sweet lord my hung over self needed these. The Mac and cheese tastes gourmet, high quality bite. Beers I tried were good too. Not sure why reviews are low - I loved it! Great experience. Fantastic patio. Friendly service.'),
+	(1015, 10, 'My husband and I loved this place! Local brewery. Food was amazing. I had the veggie sandwich.  Amazing. Husband had the chicken sandwich. It was also amazing. Beer was fantastic. Service was awesome. We will be back'),
+	(1015, 8, 'Nachos were good and beer was very good. Stopped by here on a little brewery tour through Cleveland!!'),
+	(1016, 10, 'Great atmosphere and even better beer. Love their collection of sours as well as IPAs. Hard to go wrong with any choice.'),
+	(1016, 10, 'If you love experimental brews, this is the place for you. They have a ton of options, youll struggle to put a dent in the list. We got to try soo many fun beers and they were all delicious!'),
+	(1017, 10, 'The best hamburgers and onion rings ever. Service is great. And patio is fantastic.  I am so glad they are close to me'),
+	(1017, 9, 'Great brews and even better food ! Will definitely return and recommend to everyone ! Our server was phenomenal ! Its rare to find that level of service !'),
+	(1018, 10, 'outstanding patio bar with plenty of seating. smoked tofu as a protein option. bartender george brings the energy and always makes it a fun experience. tofu mac and cheese is delicious. great fries. tofu tacos also.'),
+	(1018, 8, 'Good beer. Really yummy salad. Service was great and quick, even on a busy night. Will definitely go back.'),
+	(1019, 8, 'Good service. Nice ambiance. Easy street parking. Well rounded draft menu. Hidden hangout spot around the corner with picnic tables and beach volleyball area.'),
+	(1019, 2, 'I waited 1hour and 15 minutes for mid pizza that looked like it was dropped the pizza tasted like it was made in the microwave and the room was cold BAD TIMES'),
+	(1019, 10, 'Amazing.  Great atmosphere great unique menu.  The Mac and cheese was amazing. The saucy (meat)balls were soooo good and their pizza is to die for. Cant wait to try more on the menu'),
+	(1020, 2, 'Turned into a daycare with all these crotch goblins running around. What happened to 21 and over? Their beer has also gone down hill.'),
+	(1020, 8, 'Outdoor patio is great! Brought the kids along and had a blast. Good kids menu, beer is average but will be back!'),
+	(1021, 8, 'First time visiting. Tried a pizza that was recommended by the server and it was just okay. Also tried some hard seltzers that were very good. Server was great and let me sample before purchasing. 5 and 14 ounce pours.'),
+	(1021, 10, 'Great location right downtown and excellent selection. What I appreciate about this brewery is that they offer a lot of selections from other breweries around the country. They also have a large selection of their own beers brewed on the premises.'),
+	(1022, 10, 'Great beer and even better food! Everything I tried there was delicious and thoughtfully prepared. A lot of times brewery food is mediocre but in the case of Terrestrial- this is where they really shine'),
+	(1022, 8, 'Moderate number of pretty delicious brews to choose from. My flight of four was about $14 for four half pours. No food available yet which is a big bummer.'),
+	(1023, 10, 'A great atmosphere with employees who really know their stuff! A must visit in Cleveland for IPA lovers'),
+	(1023, 9, 'Great local brewery with a cozy atmosphere.  The selection isnt the biggest, but the beers are unique.'),
+	(1024, 10, 'Amazing bar comfort food and freshly brewed beer thatll take you straight back to the good old college days'),
+	(1024, 5, 'I waited 15 minutes after I ordered to get my lemonade and 45 minutes for a whiskey sour. The fries were terrible, the fish sandwich was average, but the chili was very good.'),
+	(1025, 9, 'I had the Wing walker which I Loved, and My husband Loved the Chocolate Stout. Great atmosphere! The Bartender Faith was really helpful and knowledgeable about the Beers! We will definitely go back.'),
+	(1025, 10, 'All 5 stars are for the peanut butter stout. It is amazing. Ive regularly gotten growler fills to get through quarantine. Not the cheapest growler fills in town, but that stout is worth it!'),
+	(1026, 10, 'Really excellent experience. Great food the smoked Pork chop is incredible, longish and giant pierogi also winners! Ipa was fresh and very competent and tasty.'),
+	(1026, 6, 'Stopped here with a group and the atmosphere was nice but the food was mediocre at best. The beer selection was great but nothing hit my fancy. Service was great. May try again in a non group setting.')
 
 	
 	--assigning reviews to useres
@@ -161,8 +275,66 @@ INSERT INTO review (brewery_id, rating, content) VALUES
 	INSERT INTO user_review (user_id, review_id) VALUES (7, 3007);
 	INSERT INTO user_review (user_id, review_id) VALUES (7, 3008);
 	INSERT INTO user_review (user_id, review_id) VALUES (7, 3009);
-
-
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3010);
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3011);
+	INSERT INTO user_review (user_id, review_id) VALUES (3, 3012);
+	INSERT INTO user_review (user_id, review_id) VALUES (4, 3013);
+	INSERT INTO user_review (user_id, review_id) VALUES (5, 3014);
+	INSERT INTO user_review (user_id, review_id) VALUES (6, 3015);
+	INSERT INTO user_review (user_id, review_id) VALUES (7, 3016);
+	INSERT INTO user_review (user_id, review_id) VALUES (8, 3017);
+	INSERT INTO user_review (user_id, review_id) VALUES (9, 3018);
+	INSERT INTO user_review (user_id, review_id) VALUES (10, 3019);
+	INSERT INTO user_review (user_id, review_id) VALUES (11, 3020);
+	INSERT INTO user_review (user_id, review_id) VALUES (12, 3021);
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3022);
+	INSERT INTO user_review (user_id, review_id) VALUES (14, 3023);
+	INSERT INTO user_review (user_id, review_id) VALUES (15, 3024);
+	INSERT INTO user_review (user_id, review_id) VALUES (16, 3025);
+	INSERT INTO user_review (user_id, review_id) VALUES (17, 3026);
+	INSERT INTO user_review (user_id, review_id) VALUES (18, 3027);
+	INSERT INTO user_review (user_id, review_id) VALUES (19, 3028);
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3029);
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3030);
+	INSERT INTO user_review (user_id, review_id) VALUES (3, 3031);
+	INSERT INTO user_review (user_id, review_id) VALUES (4, 3032);
+	INSERT INTO user_review (user_id, review_id) VALUES (5, 3033);
+	INSERT INTO user_review (user_id, review_id) VALUES (6, 3034);
+	INSERT INTO user_review (user_id, review_id) VALUES (7, 3035);
+	INSERT INTO user_review (user_id, review_id) VALUES (8, 3036);
+	INSERT INTO user_review (user_id, review_id) VALUES (9, 3037);
+	INSERT INTO user_review (user_id, review_id) VALUES (10, 3038);
+	INSERT INTO user_review (user_id, review_id) VALUES (11, 3039);
+	INSERT INTO user_review (user_id, review_id) VALUES (12, 3040);
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3041);
+	INSERT INTO user_review (user_id, review_id) VALUES (14, 3042);
+	INSERT INTO user_review (user_id, review_id) VALUES (15, 3043);
+	INSERT INTO user_review (user_id, review_id) VALUES (16, 3044);
+	INSERT INTO user_review (user_id, review_id) VALUES (17, 3045);
+	INSERT INTO user_review (user_id, review_id) VALUES (18, 3046);
+	INSERT INTO user_review (user_id, review_id) VALUES (19, 3047);
+	INSERT INTO user_review (user_id, review_id) VALUES (3, 3048);
+	INSERT INTO user_review (user_id, review_id) VALUES (4, 3049);
+	INSERT INTO user_review (user_id, review_id) VALUES (5, 3050);
+	INSERT INTO user_review (user_id, review_id) VALUES (6, 3051);
+	INSERT INTO user_review (user_id, review_id) VALUES (7, 3052);
+	INSERT INTO user_review (user_id, review_id) VALUES (8, 3053);
+	INSERT INTO user_review (user_id, review_id) VALUES (9, 3054);
+	INSERT INTO user_review (user_id, review_id) VALUES (10, 3055);
+	INSERT INTO user_review (user_id, review_id) VALUES (11, 3056);
+	INSERT INTO user_review (user_id, review_id) VALUES (12, 3057);
+	INSERT INTO user_review (user_id, review_id) VALUES (13, 3058);
+	INSERT INTO user_review (user_id, review_id) VALUES (14, 3059);
+	INSERT INTO user_review (user_id, review_id) VALUES (15, 3060);
+	INSERT INTO user_review (user_id, review_id) VALUES (16, 3061);
+	INSERT INTO user_review (user_id, review_id) VALUES (17, 3062);
+	INSERT INTO user_review (user_id, review_id) VALUES (18, 3063);
+	INSERT INTO user_review (user_id, review_id) VALUES (19, 3064);
+	INSERT INTO user_review (user_id, review_id) VALUES (3, 3065);
+	INSERT INTO user_review (user_id, review_id) VALUES (4, 3066);
+	INSERT INTO user_review (user_id, review_id) VALUES (5, 3067);
+	INSERT INTO user_review (user_id, review_id) VALUES (6, 3068);
+	INSERT INTO user_review (user_id, review_id) VALUES (7, 3069);
 
 --assigning tags to brweries
 INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
@@ -380,6 +552,7 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	select * from beer_list
 	select name, id from brewery
 	select * from beer_brewery
-
+	select * from trails
+	select * from trail_user
 	*/
 	
