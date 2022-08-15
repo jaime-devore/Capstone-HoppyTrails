@@ -77,5 +77,10 @@ namespace Capstone.Controllers
             return Ok(user);
         }
 
+        [HttpGet("/users/trails/{userID}")]
+        public ActionResult<List<Trail>> GetTrailsByUserId(int userID)
+        {
+            return Ok(userDao.GetTrailsFromUser(userID))
+        }
     }
 }
