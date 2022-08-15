@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div id="info-block">
+  <div class="container-fluid">
+    <div>
         <h1>{{brewery.name}}</h1>
             <img class="img-thumbnail" v-bind:src="brewery.image" /> 
             <div id="quick-info">
@@ -55,18 +55,7 @@ export default {
 }
 </script>
 
-<style>
-#info-block > h1, #info-block > h4 {
-    margin: 10px
-}
-
-#info-block > h4 {
-    text-decoration: underline;
-}
-
-#info-block > h1 {
-    text-align: center;
-}
+<style scoped>
 
 #quick-info {
     padding-top: 15px;

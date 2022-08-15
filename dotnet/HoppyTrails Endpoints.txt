@@ -7,6 +7,12 @@ SQL INT IDENTITY starting Number
 	beerID: 4000
 	userID: 1
 
+Login Controller
+Base: "login"
+
+	Get the User who wrote the Review
+	Endpoint: "/users/reviews/{reviewID}"
+
 Brewery Controller
 Base: "brewery"
 
