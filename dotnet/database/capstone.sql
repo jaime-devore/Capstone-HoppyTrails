@@ -97,6 +97,14 @@ CREATE TABLE brewery_trails(
 	CONSTRAINT trail_fk FOREIGN KEY (trail_id) REFERENCES trails (trail_id),
 	CONSTRAINT FK_brewery_from_trails FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
+CREATE TABLE trail_user (
+	trail_user_id int IDENTITY (1,1),
+	trail_id int,
+	user_id int
+	CONSTRAINT trail_user_pk PRIMARY KEY (trail_user_id),
+	CONSTRAINT FK_trail FOREIGN KEY (trail_id) REFERENCES trails (trail_id),
+	CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
+)
 
 
 
@@ -152,6 +160,12 @@ INSERT INTO brewery_trails(trail_id, brewery_id) VALUES
 (6001,1000), (6001,1012), (6001,1014), (6001,1016),
 (6002,1003), (6002,1007), (6002,1011), (6002,1023),
 (6003,1008), (6003,1015), (6003,1022), (6003,1024)
+
+INSERT INTO trail_user (trail_id, user_id) VALUES
+(6000, 3), (6000, 7), (6000, 4),
+(6001, 3), (6001, 4), (6001, 5), 
+(6002, 5), (6002, 6), (6002, 3), (6002, 7),
+(6003, 5), (6003, 6), (6003, 7)
 
 --these are tags the describe breweries
 INSERT INTO tag (type) VALUES ('Pet Friendly') --2000
@@ -404,6 +418,7 @@ INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	select * from beer_list
 	select name, id from brewery
 	select * from beer_brewery
-
+	select * from trails
+	select * from trail_user
 	*/
 	
