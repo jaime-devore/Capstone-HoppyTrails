@@ -13,7 +13,9 @@
         <h4>See a full list of breweries</h4>
         <div class="button-div">
         <button class="button">
-      <span>Explore</span>
+          <router-link to="/allbreweries">
+      <span class= "link-button">Explore</span>
+          </router-link>
       </button>
       </div>
       </div>
@@ -22,8 +24,11 @@
         <h4>See trails we think you will like</h4>
 
       <div class="button-div">
+       
         <button class="button">
-      <span>Explore</span>
+          <router-link to="/trails">
+      <span class="link-button">Explore</span>
+          </router-link>
       </button>
       </div>
       </div>
@@ -47,7 +52,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 .home{
   padding: 7px;
     display: grid;
@@ -219,6 +225,9 @@ padding-top: 10px;
 .button-div{
   display: flex;
   justify-content: space-around;
+}
+.link-button{
+  color: #2a453d
 }
 
 </style>
