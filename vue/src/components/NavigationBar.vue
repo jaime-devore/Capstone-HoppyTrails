@@ -1,7 +1,7 @@
 <!--Created Navigation Component: Jaime -->
 <template>
   <div class="row">
-    <div id="nav-container"  class="col-lg-5">
+    <div id="nav-container"  class="col-md-7 d-flex justify-content-between">
       <nav class="navbar navbar-expand-lg  navbar-light" >
         <div class="container-fluid flex-fill">
 
@@ -13,14 +13,14 @@
                   <li class="nav-item">
                     <router-link to="/" class="nav-link"  href="#">Home</router-link>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item text-nowrap">
                     <!-- <a class="nav-link" href="#">See All Breweries</a> -->
                     <router-link to="/allbreweries" class="nav-link" >See All Breweries</router-link>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item text-nowrap">
                     <router-link to="/trails" class="nav-link">See All Trails</router-link>
                   </li>
-              <li class="nav-item">
+              <li class="nav-item text-nowrap">
                     <a class="nav-link" href="#">Find A Brewery Near You</a>
                   </li>
 
@@ -30,17 +30,18 @@
               
         </div><!-- end of nav menu container-->
       </nav>
-    </div>
-    
-
-      <div class="col-lg-3 ">
+            <div class=" ">
         <router-link to="/" class="">
         <img src="../img/HoppyTrailsLogo.png" alt="logo" class="img-responsive" height="50px">
         </router-link>
       </div>
+    </div>
+    
 
-      <div class=" col-lg-4 d-grid gap-2 d-md-flex justify-content-md-end align-center">
-        <router-link class="nav-link" to="/logout"  v-if="loggedIn">Sign-Out
+
+
+      <div class=" col-md-5 d-grid gap-2 d-md-flex justify-content-md-end align-center pe-5 pt-2">
+        <router-link class="nav-link" to="/logout"  v-if="loggedIn">{{$store.state.user.username}}
         <img src="https://avatars.dicebear.com/api/bottts/:seed.svg" width="54px" height="54px" alt="avatar" class="border border-dark border-3 rounded-circle p-1" />
         </router-link>
         <span class="signInUp" v-else>
@@ -60,6 +61,7 @@ export default {
     data(){
         return{
             awesome: true,
+            
         }
     },
     computed: {
@@ -69,6 +71,9 @@ export default {
             return false;
           }
           return true;
+        },
+        userName(){
+          return this.$store.state.user.username;
         }
     },
 

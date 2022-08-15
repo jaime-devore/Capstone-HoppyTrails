@@ -32,13 +32,17 @@
                                     <span class="fw-bold px-2" >  City:</span> 
                                         <span class="text-small" >{{brewery.city}}</span>
                                   </div>
+                                  <div class="d-flex">
+                                    <span class="fw-bold px-2" >  Star Rating:</span> 
+                                        <span class="text-small" >{{brewery.rating}}</span>
+                                  </div>
                                   
                               </div>
                           </div>
                       </div><!-- end of BS card -->
 
             
-          </div>
+          </div><!-- end of FRONT -->
           <div class="flip-card-back">
             
 
@@ -46,13 +50,21 @@
                           <div class="card border border-secondary w-100 p-2 h-100" >
                               <div class="card-header ">
                                   <h5 class="card-title"> 
-                                    <router-link v-bind:to="{name: 'brewerydetail', params: {id: brewery.breweryId}}" class="link" >
                                     {{brewery.name}}
-                                    </router-link>
                                   </h5>
                               </div>
                               <div class="card-body brewery-card-body">
-                                  <h4 class="fw-bold" > ABOUT</h4>
+                                  <h4 class="fw-bold" > ABOUT </h4>
+                                  <router-link 
+                                      v-bind:to="{name: 'brewerydetail', params: {id: brewery.breweryId}}" 
+                                      class="h-link" >
+                                  <small class="">
+                                      
+                                      <i class="bi bi-info-circle"></i>
+                                      See Details
+                                    
+                                      </small>
+                                      </router-link>
                                   <p class="card-text mh-25 ">{{brewery.about}}</p>
                                   
                               </div>
@@ -156,6 +168,9 @@ export default {
  background-color: #2a453d;
 }
 
+.h-link{
+  cursor: pointer;
+}
 
 .brewery-card-body{
   padding: 8px;

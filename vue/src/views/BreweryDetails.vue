@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <div>
         <h1>{{brewery.name}}</h1>
             <img class="img-thumbnail" v-bind:src="brewery.image" /> 
@@ -52,6 +52,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
