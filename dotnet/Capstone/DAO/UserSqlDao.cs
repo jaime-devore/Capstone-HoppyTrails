@@ -117,6 +117,22 @@ namespace Capstone.DAO
             return allTrails;
         }
 
+        public Trail MarkTrailCompleted(Trail trail)
+        {
+            int trailID = 0;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE trails SET is_completed = @ISCOMPLETED WHERE trails.trail_id = @TRAILID", conn);
+                cmd.Parameters.AddWithValue("@ISCOMPLETED", trail.Is_Completed);
+                cmd.Parameters.AddWithValue("@TRAILID", trail.TrailID);
+            }
+
+            return null;
+        }
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()

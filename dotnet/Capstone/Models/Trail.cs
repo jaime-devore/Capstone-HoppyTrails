@@ -9,6 +9,6 @@ namespace Capstone.Models
     {
         public int TrailID { get; set; }
         public string TrailName { get; set; }
-        //public bool Is_Completed { get; set; }
+        public bool Is_Completed { get; set; }
     }
 }

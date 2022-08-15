@@ -12,5 +12,7 @@ namespace Capstone.DAO
         public User GetUserFromReview(int reviewID);
 
         public List<Trail> GetTrailsByUserID(int userID);
+
+        public Trail MarkTrailCompleted(int trailID);
     }
 }
