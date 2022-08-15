@@ -1,13 +1,15 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <div>
-        <h1>{{brewery.name}}</h1>
-            <img class="img-thumbnail" v-bind:src="brewery.image" /> 
-            <div id="quick-info">
+        <div id="info-block">
+            <h1>{{brewery.name}}</h1>
+            <img class="img-thumbnail" v-bind:src="brewery.image" />
+        </div> 
+        <div id="quick-info">
             <p><i class="bi bi-telephone-fill"></i><span class="fw-bold" >  PHONE: </span>{{brewery.phoneNumber}}</p>
             <p><i class="bi bi-laptop"></i><span class="fw-bold" > WEBSITE: </span>{{brewery.webSite}}</p>
             <p><i class="bi bi-building"></i><span class="fw-bold" > ADDRESS:</span> {{brewery.address}}</p>
-            </div>
+        </div>
         <h4>ABOUT</h4>
             <p id="about-section">{{brewery.about}}</p>
         <h4>FEATURED BEERS</h4>
@@ -57,6 +59,7 @@ export default {
 
 <style scoped>
 
+
 #quick-info {
     padding-top: 15px;
     display: block;
@@ -78,11 +81,16 @@ export default {
     text-decoration: underline;
 }
 
+#info-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #info-block > img {
-    display: block;
-    width: 50%;
+    width: 60rem;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 20px
+    padding-bottom: 20px;
 }
 </style>
