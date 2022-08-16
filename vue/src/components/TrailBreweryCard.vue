@@ -16,7 +16,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 #brewery-name{
   background-color: saddlebrown;
   border-color: gray;

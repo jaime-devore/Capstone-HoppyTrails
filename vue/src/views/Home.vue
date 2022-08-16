@@ -39,8 +39,8 @@
 </template>
 
 <script>
-window.navigator.geolocation
-  .getCurrentPosition(console.log, console.log);
+// window.navigator.geolocation
+//   .getCurrentPosition(console.log, console.log);
 export default {
   
   name: "home",
