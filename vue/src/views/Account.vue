@@ -55,8 +55,8 @@
                     <img v-bind:src="'https://avatars.dicebear.com/api/bottts/'+$store.state.user.username+'.svg'"
                         width="54px" height="54px" alt="avatar" 
                         class="border border-dark border-3 rounded-circle p-1 align-center me-4"     
-                    />PLACEHOLDER
-                    {{review.brewery.name}}
+                    />
+                    {{review.breweryName}}
                 </h5>
             </div>
             <div class="card-body">
@@ -87,7 +87,7 @@
 
 <script>
 import ReviewAPI from "../services/ReviewService"
-import BreweryAPI from "../services/BreweryService"
+// import BreweryAPI from "../services/BreweryService"
 import TrailsAPI from "../services/TrailService"
 
 export default {
@@ -123,17 +123,21 @@ export default {
         ReviewAPI.getAllReviewsByUserId(this.$store.state.user.userId)
         .then((response) => {
             this.allReviews = response.data;
-        })
-        .then(()=>{
-            for(const review of this.allReviews){
-                // console.log(review.breweryId);
-                 BreweryAPI.getBreweryById(review.breweryId)
-                    .then((response) => {
-                        review.brewery = response.data;
-                        // console.log(review.brewery.name);
-                    });
-                }
-        })     
+        }),
+        // .then(()=>{
+        //     for(const review of this.allReviews){
+        //         // console.log(review.breweryId);
+        //          BreweryAPI.getBreweryById(review.breweryId)
+        //             .then((response) => {
+        //                 review.brewery = response.data;
+        //                 // console.log(review.brewery.name);
+        //             });
+        //         }
+        // }),
+        TrailsAPI.getTrailsByUser(this.$store.state.user.userId)
+            .then((response) => {
+                this.userTrails = response.data;
+            })       
 
     }
 

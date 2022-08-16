@@ -81,7 +81,7 @@ namespace Capstone.DAO
 
                 while (reader.Read())
                 {
-                    Review review = CreateReviewFromReader(reader);
+                    Review review = CreateReviewFromReaderWithBrewery(reader);
                     allReviews.Add(review);
                 }
             }
@@ -143,6 +143,18 @@ namespace Capstone.DAO
             review.ReviewId = Convert.ToInt32(reader["review_id"]);
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
             review.Rating = Convert.ToDecimal(reader["rating"]);       
+            review.Content = Convert.ToString(reader["content"]);
+
+            return review;
+        }
+
+        private Review CreateReviewFromReaderWithBrewery(SqlDataReader reader)
+        {
+            Review review = new Review();
+
+            review.ReviewId = Convert.ToInt32(reader["review_id"]);
+            review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
+            review.Rating = Convert.ToDecimal(reader["rating"]);
             review.Content = Convert.ToString(reader["content"]);
             review.BreweryName = Convert.ToString(reader["name"]);
 
