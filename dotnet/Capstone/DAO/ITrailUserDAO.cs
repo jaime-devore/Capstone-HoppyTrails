@@ -6,11 +6,9 @@ using Capstone.Models;
 
 namespace Capstone.DAO
 {
-    public interface ITrailDAO
+    public interface ITrailUserDAO
     {
-        public List<Trail> GetAllTrails();
-        public Trail GetTrailByTrailID(int trailID);
-
+        public TrailUser CreateTrailUser(TrailUser trailUser);
 
     }
 }

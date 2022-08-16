@@ -11,8 +11,6 @@ namespace Capstone.DAO
         //I want the username associated with a Review
         public User GetUserFromReview(int reviewID);
 
-        public List<Trail> GetTrailsByUserID(int userID);
 
-        public Trail MarkTrailCompleted(int trailID);
     }
 }

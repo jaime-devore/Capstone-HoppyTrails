@@ -81,7 +81,7 @@ namespace Capstone.DAO
 
             return allTrails;
         }
-        //public Trail CreateNewTrail(Trail trail);
+
         public void CreateTrailUserForCompletedTrails(int trailID, int userID)
         {
 
@@ -94,6 +94,8 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@USERID", userID);
             }
         }
+
+
 
         private Trail CreateTrailFromReader(SqlDataReader reader)
         {

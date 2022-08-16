@@ -13,12 +13,15 @@ namespace Capstone.Controllers
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDao userDao;
+        //private readonly ITrailDAO trailDAO;
 
         public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDao _userDao)
         {
             tokenGenerator = _tokenGenerator;
             passwordHasher = _passwordHasher;
             userDao = _userDao;
+            //we might need the parameter for this assignment added back in
+            //trailDAO = _trailDAO;
         }
 
         [HttpPost]
@@ -78,10 +81,6 @@ namespace Capstone.Controllers
             return Ok(user);
         }
 
-        [HttpGet("/users/trails/{userID}")]
-        public ActionResult<List<Trail>> GetTrailsByUserId(int userID)
-        {
-            return Ok(userDao.GetTrailsByUserID(userID));
-        }
+
     }
 }

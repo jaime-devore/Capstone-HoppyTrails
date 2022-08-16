@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class Trail
+    public class TrailUser
     {
-        public int TrailID { get; set; }
-        public string TrailName { get; set; }
+        public int TrailUserID { get; set; }
 
+        public int TrailID { get; set; }
+
+        public int UserID { get; set; }
     }
 }

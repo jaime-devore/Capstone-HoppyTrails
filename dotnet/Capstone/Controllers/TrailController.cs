@@ -31,11 +31,9 @@ namespace Capstone.Controllers
             return Ok(trailDao.GetTrailByTrailID(trailID));
         }
 
-        //[HttpPost()]
-        //public IActionResult InsertIntoTrailUserTable(int trailID, int userID)
-        //{
 
-        //}
+
+
 
     }
 }

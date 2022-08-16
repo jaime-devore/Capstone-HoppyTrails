@@ -10,10 +10,12 @@ namespace Capstone.DAO
     public class UserSqlDao : IUserDao
     {
         private readonly string connectionString;
+        private ITrailDAO trailDAO;
 
         public UserSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+            
         }
 
         public User GetUser(string username)
@@ -94,44 +96,6 @@ namespace Capstone.DAO
             return user;
         }
 
-        public List<Trail> GetTrailsByUserID(int userID)
-        {
-            List<Trail> allTrails = new List<Trail>();
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("SELECT * FROM trails JOIN trail_user ON trails.trail_id = trail_user.trail_id JOIN users ON trail_user.user_id = users.user_id WHERE users.user_id = @USERID", conn);
-                cmd.Parameters.AddWithValue("@USERID", userID);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Trail trail = CreateTrailFromReader(reader);
-                    allTrails.Add(trail);
-                }
-            }
-
-            return allTrails;
-        }
-
-        public Trail MarkTrailCompleted(Trail trail)
-        {
-            int trailID = 0;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("UPDATE trails SET is_completed = @ISCOMPLETED WHERE trails.trail_id = @TRAILID", conn);
-                cmd.Parameters.AddWithValue("@ISCOMPLETED", trail.Is_Completed);
-                cmd.Parameters.AddWithValue("@TRAILID", trail.TrailID);
-            }
-
-            return null;
-        }
 
         private User GetUserFromReader(SqlDataReader reader)
         {
@@ -147,15 +111,7 @@ namespace Capstone.DAO
             return u;
         }
 
-        private Trail CreateTrailFromReader(SqlDataReader reader)
-        {
-            Trail trail = new Trail();
-
-            trail.TrailID = Convert.ToInt32(reader["trail_id"]);
-            trail.TrailName = Convert.ToString(reader["type"]);
-
-            return trail;
-        }
+        
 
 
     }
