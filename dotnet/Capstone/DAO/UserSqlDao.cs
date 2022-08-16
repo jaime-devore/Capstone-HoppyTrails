@@ -10,7 +10,7 @@ namespace Capstone.DAO
     public class UserSqlDao : IUserDao
     {
         private readonly string connectionString;
-        private ITrailDAO trailDAO;
+        
 
         public UserSqlDao(string dbConnectionString)
         {
