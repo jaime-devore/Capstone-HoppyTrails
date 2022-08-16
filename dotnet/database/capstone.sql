@@ -87,6 +87,7 @@ CREATE TABLE user_review ( --useres that have made reviews
 )
 CREATE TABLE trails (
 	trail_id int IDENTITY (6000, 1),
+	is_completed bit DEFAULT 0,
 	type varchar (20)
 	CONSTRAINT PK_trail PRIMARY KEY (trail_id)
 )
