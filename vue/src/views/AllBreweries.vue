@@ -1,6 +1,6 @@
 <template>
   <div class="view-root p-1">
-    <h1 class="text-center">All Breweries</h1>
+    <!-- <h1 class="text-center">All Breweries</h1> -->
     
   <div class="row justify-content-center">
 
