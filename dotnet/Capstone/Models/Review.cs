@@ -18,6 +18,6 @@ namespace Capstone.Models
         public decimal Rating { get; set; }
 
         public string Content { get; set; }
-        public string BreweryName { get; set; }
+        public string BreweryName { get; set; } = "";
 }
 }
