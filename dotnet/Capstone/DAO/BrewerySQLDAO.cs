@@ -132,6 +132,7 @@ namespace Capstone.DAO
             brewery.City = Convert.ToString(reader["city"]);
             brewery.State = Convert.ToString(reader["state"]);
             brewery.ZipCode = Convert.ToString(reader["zip"]);
+            brewery.Logo = Convert.ToString(reader["logo"]);
 
             return brewery;
         }
