@@ -22,7 +22,7 @@
            <div class="card-header  hoppytrails-bg text-white ">
               <h5 class="card-title">Pet Friendly</h5>
              </div>
-             <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6002 } }">
+             <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6000 } }">
            <div class="card-body">
              <img src="../route-img/pet-route.png" id="pet-route-img"/>
            </div>
@@ -49,7 +49,7 @@
            <div class="card-header  hoppytrails-bg text-white ">
              <h5 class="card-title">Budget</h5>
            </div>
-           <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6004 } }">
+           <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6002 } }">
            <div class="card-body">
              <img src="../route-img/budget-route.png" id="budget-route-img"/>
            </div>
