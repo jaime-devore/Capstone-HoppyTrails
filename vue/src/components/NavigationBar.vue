@@ -32,7 +32,7 @@
       </nav>
             <div class=" ">
         <router-link to="/" class="">
-        <img src="../img/HoppyTrailsLogo.png" alt="logo" class="img-responsive" height="50px">
+        <img src="../img/MainLogoFlat.png" alt="logo" class="img-responsive" height="50px">
         </router-link>
       </div>
     </div>
