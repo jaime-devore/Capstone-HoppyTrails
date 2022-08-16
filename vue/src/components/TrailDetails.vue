@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* random styling 
 #trail-name{
   background-color: red;
