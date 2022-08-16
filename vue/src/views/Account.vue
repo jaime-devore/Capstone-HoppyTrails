@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <div class="row w-50 mx-auto">
-            <h3 class="legend1 rounded-top">Account Details</h3>
+            <h3 class="legend1 rounded-top mx-auto">
+                <img class="image" src="../img/Hop-Only-White.png"  width="42px" />
+                Account Details
+            </h3>
             <fieldset class="ht-fieldset border  border-dark rounded">
                 
                 <div class="mb-3">
@@ -13,7 +16,7 @@
                 <input type="text" class="form-control visually-hidden" 
                     id="formGroupExampleInput" v-bind:value="$store.state.user.username">
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                 <label for="formGroupExampleInput2" class="form-label">
                     <i class="bi bi-envelope fs-4"></i>
                     Email Address
@@ -21,11 +24,18 @@
                 <span class="ms-3">{{$store.state.user.role}}</span>
                 <input type="text" class="form-control  visually-hidden" 
                     id="formGroupExampleInput2" v-bind:value="$store.state.user.role">
-                </div>
+                </div> -->
                 <div class="py-1">
                     <i class="bi bi-sign-turn-right fs-4"></i>
                     <span class="fw-bold px-2" >Trails Completed: </span>
-                    <span class="text-small" >x, y, z</span>
+                    <!-- <span class="text-small" >x, y, z</span> -->
+                </div>
+                <div class="py-1 d-flex justify-content-evenly">
+                    <img class="" src="../img/stamp.png" width="100px"/>
+                    <img class="opacity-25" src="../img/stamp.png" width="100px"/>
+                    <img class="opacity-25" src="../img/stamp.png" width="100px"/>
+                    <img class="opacity-25" src="../img/stamp.png" width="100px"/>
+
                 </div>
             </fieldset>
 
@@ -46,12 +56,13 @@
                         width="54px" height="54px" alt="avatar" 
                         class="border border-dark border-3 rounded-circle p-1 align-center me-4"     
                     />PLACEHOLDER
-                    {{review.brewery}}
+                    {{review.brewery.name}}
                 </h5>
             </div>
             <div class="card-body">
                 
-                <h6 class="card-subtitle mb-2 ">
+                <h6 class="card-subtitle mb-2 d-flex justify-content-between ">
+                    <span class="text-muted">{{new Date(Date.now()).toDateString()}}</span>
                     <span class="text-warning text-end" v-html="starrating(review.rating-1)" >
                         
                     </span>
@@ -77,6 +88,7 @@
 <script>
 import ReviewAPI from "../services/ReviewService"
 import BreweryAPI from "../services/BreweryService"
+import TrailsAPI from "../services/TrailService"
 
 export default {
     name: "account",
@@ -95,6 +107,7 @@ export default {
                 '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>',
                 '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>',                
             ],
+            userTrails:[],
         }
     },
     computed:{
@@ -120,7 +133,7 @@ export default {
                         // console.log(review.brewery.name);
                     });
                 }
-        })        
+        })     
 
     }
 
@@ -140,5 +153,6 @@ font-size: 1.5em;
 padding: 5px 0 5px 16px;
 width: 100%;
 margin-bottom: 0;
+font-family: 'Leckerli One', cursive;
 }
 </style>
