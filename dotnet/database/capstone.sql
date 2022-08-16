@@ -40,7 +40,7 @@ CREATE TABLE brewery (
 	zip varchar (10)
 	CONSTRAINT PK_brewery PRIMARY KEY (id)
 )
-CREATE TABLE review(
+CREATE TABLE review( --reviews to a brewery from signed in users
 	review_id int IDENTITY (3000, 1) NOT NULL,
 	brewery_id int,
 	date DATE,
@@ -49,12 +49,12 @@ CREATE TABLE review(
 	CONSTRAINT PK_review PRIMARY KEY (review_id),
 	CONSTRAINT FK_brewery FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
-CREATE TABLE tag (
+CREATE TABLE tag ( --tags are essentially descriptors for breweries. made to allow a filter when searching for breweries. currently not used.
 	tag_id int IDENTITY (2000,1) NOT NULL,
 	type varchar (20) NOT NULL,
 	CONSTRAINT PK_tag PRIMARY KEY (tag_id)
 )
-CREATE TABLE beer_list(
+CREATE TABLE beer_list( --added 4 notable beers from every brewery
 	beer_id int IDENTITY (5000,1),
 	beer_name varchar (200),
 	type varchar (30),
@@ -69,7 +69,7 @@ CREATE TABLE beer_brewery(
 	CONSTRAINT beer_fk FOREIGN KEY (beer_id) REFERENCES beer_list (beer_id),
 	CONSTRAINT brewery_id_fk FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
-CREATE TABLE brewery_tag (
+CREATE TABLE brewery_tag ( --assigning breweries to tags
 	brewery_tag_id int IDENTITY (1,1),
 	tag_id int,
 	brewery_id int,
@@ -77,7 +77,7 @@ CREATE TABLE brewery_tag (
 	CONSTRAINT tag_fk FOREIGN KEY (tag_id) REFERENCES tag (tag_id),
 	CONSTRAINT Brewery_fk FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
-CREATE TABLE user_review (
+CREATE TABLE user_review ( --useres that have made reviews
 	user_review_id int Identity (1,1),
 	user_id int,
 	review_id int,
@@ -90,7 +90,7 @@ CREATE TABLE trails (
 	type varchar (20)
 	CONSTRAINT PK_trail PRIMARY KEY (trail_id)
 )
-CREATE TABLE brewery_trails(
+CREATE TABLE brewery_trails( --combines breweries to trails
 	brewery_trails_id int IDENTITY (1,1),
 	trail_id int,
 	brewery_id int
@@ -98,7 +98,7 @@ CREATE TABLE brewery_trails(
 	CONSTRAINT trail_fk FOREIGN KEY (trail_id) REFERENCES trails (trail_id),
 	CONSTRAINT FK_brewery_from_trails FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
-CREATE TABLE trail_user (
+CREATE TABLE trail_user ( --users that have completed trails
 	trail_user_id int IDENTITY (1,1),
 	trail_id int,
 	user_id int
@@ -109,7 +109,7 @@ CREATE TABLE trail_user (
 
 
 
---populate default data
+--populates user data for demonstration. mainly to show reviews 
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('JoeyLitten','axZvUV/AMhRxhtl9Sc5Krg8/HII=','5a+ULxS8xUw=','user');
@@ -140,8 +140,8 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Walshed', 
 --brewery info. MVT 'Most Valuable Table'.
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Bookhouse Brewing, LLC.', '1526 W 25th St', 'Cleveland', 'Ohio', '44113-3104', 'http://www.bookhouse.beer', '414-426-4555', 'Innovative and approachable beers and ciders served in a cozy, historic taproom. The location originally housed the Jacob and Magdalena Baehr Brewery, founded in 1873. The owners of Bookhouse are in the process of restoring it to its original glory, and the original brick, wallpaper, and tin are visible throughout. Plants, warm lighting, and bookshelf-lined walls create an inviting atmosphere. The menu is always changing and has something for everyone, so stop in and check out the menu!', 'https://images.squarespace-cdn.com/content/v1/59e7b07a8dd04156df25edaf/1584376002697-CZR8WVKWUZ4H94ZLP3NA/_CRU8860.jpg?format=2500w', 'https://static1.squarespace.com/static/59e7b07a8dd04156df25edaf/t/5acd01cd03ce649b2aaa25b4/1651072155783/')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Boss Dog Brewing', '2179 Lee Rd', 'Cleveland', 'Ohio', '44118-2907', 'http://www.bossdogbrewing.com', '216-321-2337', 'A casual brewpub that serves up a variety of delicious fare. While Boss Dog may be a small outfit, they certainly bring a lot to the table. Featuring both a brunch and dinner food menu, as well as an extensive draft list, you are sure to find something you’ll enjoy. They even have a doggie menu for your furry friends! All of Boss Dog’s ingredients are locally sourced, and they offer full tours of their brewing facility, so if food transparency is your jam, this is the place to go.', 'https://scontent.tbdine.com/merchants/boss-dog-brewing/image/11ed5aa5-9244-4b21-bb9e-97b6105412b5.jpg', 'https://bossdogbrewing.com/wp-content/uploads/2017/12/logo.png')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('BottleHouse Brewery', '13368 Madison Ave', 'Lakewood', 'Ohio', '44107-4840', 'http://www.thebottlehousebrewingcompany.com', '216-214-2120', 'A community-oriented brewery and mead hall. BottleHouse’s full-service food menu, board games, live music and more create an environment that’s more than a place to drink. If the drinks are what you’re here for, though, fret not– BottleHouse has won multiple national awards for its ciders and beers, and their meads are a local favorite. For a truly special experience, try their 5 course dinner, each course paired with a curated mead based drink.', 'https://images.squarespace-cdn.com/content/v1/5b809579da02bc5c8fb70073/1535161103511-9P9NU80F6GGCJ0HBGSJ4/Lakewood+taproom.jpg', 'https://images.squarespace-cdn.com/content/v1/5b809579da02bc5c8fb70073/1595173543447-0YMH1K9LZMI9VRX5MGVQ/new+sign.png')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Brick and Barrel', '1844 Columbus Rd', 'Cleveland', 'Ohio', '44113-2412', 'http://www.brickandbarrelbrewing.com', '503-927-0629', 'Brick and Barrel Brewing is committed to creating a beer experience that is unique in the Cleveland area. By design, they’re a small place where you can chat with the head brewer while tasting their brews and touring the facility. Of course, you can also just sit in the tap room and taste whats boiling only a few yards away. B&B also hosts frequent live events– from music, to tastings, to comedy and more. ', 'https://753547.smushcdn.com/1534094/wp-content/uploads/sites/11/2019/06/CityBrewTours_June19-386-1-1024x667.jpg?lossy=0&strip=1&webp=1', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2015/12/OCBA_BrickAndBarrel_Resized.jpg?fit=440%2C330&ssl=1')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('BottleHouse Brewery', '13368 Madison Ave', 'Lakewood', 'Ohio', '44107-4840', 'https://www.bottlehouse.co/', '216-926-0025,', 'A community-oriented brewery and mead hall. BottleHouse’s full-service food menu, board games, live music and more create an environment that’s more than a place to drink. If the drinks are what you’re here for, though, fret not– BottleHouse has won multiple national awards for its ciders and beers, and their meads are a local favorite. For a truly special experience, try their 5 course dinner, each course paired with a curated mead based drink.', 'https://images.squarespace-cdn.com/content/v1/5b809579da02bc5c8fb70073/1535161103511-9P9NU80F6GGCJ0HBGSJ4/Lakewood+taproom.jpg', 'https://images.squarespace-cdn.com/content/v1/5b809579da02bc5c8fb70073/1595173543447-0YMH1K9LZMI9VRX5MGVQ/new+sign.png')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Brick and Barrel', '1844 Columbus Rd', 'Cleveland', 'Ohio', '44113-2412', 'http://www.brickandbarrelbrewing.com', '216-331-3308', 'Brick and Barrel Brewing is committed to creating a beer experience that is unique in the Cleveland area. By design, they’re a small place where you can chat with the head brewer while tasting their brews and touring the facility. Of course, you can also just sit in the tap room and taste whats boiling only a few yards away. B&B also hosts frequent live events– from music, to tastings, to comedy and more. ', 'https://753547.smushcdn.com/1534094/wp-content/uploads/sites/11/2019/06/CityBrewTours_June19-386-1-1024x667.jpg?lossy=0&strip=1&webp=1', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2015/12/OCBA_BrickAndBarrel_Resized.jpg?fit=440%2C330&ssl=1')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Butcher and The Brewer', '2043 E 4th St', 'Cleveland', 'Ohio', '44115-1023', 'http://www.butcherandthebrewer.com/', '216-331-0805', 'Butcher and the Brewer encourages interaction and a sense of community through public house seating, progressive dining, and shared plates. The culinary team, which includes an in-house butcher, has created a farmhouse-inspired menu drawing on local ingredients, ethnic flavors, and artisan products. Their brewmaster uses a strong background in science, a formal education in classic brewing techniques, and their custom on-site brewery to brew a range of traditional and innovative beers.', 'https://oldewoodltd.com/uploads/butcher-and-brewer-image.jpg', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2015/12/OCBA_ButcherBrewer_Resized.jpg?fit=440%2C330&ssl=1')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Collision Bend Brewing Co', '1250 Old River Rd', 'Cleveland', 'Ohio', '44113-1243', 'http://www.collisionbendbrewery.com', '216-273-7879', 'Collision Bend Brewing Company, named for the narrow and crooked passages along the Cuyahoga River navigated by large commercial ships, is home to crafted artisanal beers and a menu inspired by Cleveland’s melting pot, offering a unique dining experience. Featuring a wood-burning pizza oven, three bars, outdoor seating with amazing riverfront views and a brewer’s room, Collision Bend is an excellent option for a party or family dinner. You can even dock your boat right alongside the patio!', 'https://media2.clevescene.com/clevescene/imager/u/blog/16490665/colision-brewery-collisionbrew-nstagram.jpg', 'https://www.collisionbendbrewery.com/wp-content/uploads/2017/04/collision-bend-logo-b.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Fat Heads Brewery & Saloon', '24581 Lorain Rd', 'North Olmsted', 'Ohio', '44070-2170', 'http://www.fatheadscleveland.com', '440-801-1001', 'Serves fresh, award winning beer, smokehouse wings, freshly made headwiches, burgers and stone oven pizza.', 'https://media-cdn.tripadvisor.com/media/photo-s/06/d1/c5/fe/fat-heads-brewery-saloon.jpg', 'https://i0.wp.com/thefullpint.com/wp-content/uploads/2016/12/Fatheads-Logo.jpg')
@@ -151,9 +151,9 @@ INSERT INTO brewery (name, address, city, state, zip, website, phone, about, ima
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Hansa Brewery', '2717 Lorain Ave', 'Cleveland', 'Ohio', '44113-3414', 'http://www.hansabrewery.com', '216-631-6585', 'We welcome you with open arms and cold beer to Clevelands newest, authentic Eastern European restaurant and brewery. PROST!', 'https://pbs.twimg.com/media/Ee8Fgt6XkAAhSyC?format=jpg&name=large', 'https://pbs.twimg.com/profile_images/794547798729433089/8h1UuBta_400x400.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Hofbrauhaus Cleveland', '1550 Chester Ave', 'Cleveland', 'Ohio', '44114-3615', 'http://www.hofbrauhauscleveland.com', '216-621-2337', 'Welcome to Hofbräuhaus Cleveland, modeled after the legendary 400+ year-old Hofbräuhaus in Munich, Germany! Guests are now able to enjoy many of the traditions from Germany that have made Hofbräuhaus famous.', 'http://www.gulflive.com/resizer/kU4vmqpAvLH5TKHUUaHWUg1C1Q4=/arc-anglerfish-arc2-prod-advancelocal/public/YVYESMDDANHEHBHZQFP5GDFB5A.JPG', 'https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/w0wqolwq6ojybuda7vyr')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Market Garden Brewery', '1947 W 25th St', 'Cleveland', 'Ohio', '44113-3418', 'http://www.marketgardenbrewery.com', '216-621-4000', 'Market Garden Brewery was founded in 2011 by four friends with a passion for quality, craft beer. Our motto “Beer for People” reflects our mission to bring better beer to all. No pretense, no gimmicks, no hype - just great beer for the world!', 'https://images.squarespace-cdn.com/content/v1/60085e67e344bd2f8788bf07/1622226902405-2WL4EWS76I179GWP3RE9/2021-MGB-Nano-BierM_GW74584.jpg?format=2500w', 'https://d1ynl4hb5mx7r8.cloudfront.net/wp-content/uploads/2019/11/07082338/65592534.mgb-logo-guardianoval-1-b.jpeg')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Masthead Brewing Co', '1261 Superior Ave E', 'Cleveland', 'Ohio', '44114-3204', 'http://www.mastheadbrewingco.com', '419-260-4770', 'Masthead Brewing Company is located in the historic Bryant Building at 1261 Superior Avenue in downtown Cleveland. Our building was originally built in 1921 as an automotive dealership and is now listed on the National Register of Historic Places. The taproom features 300 seats, a 100’ long bar, and an additional 50 seat dog friendly patio with a view of downtown Cleveland.', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/b0/c6/68/masthead-brewing-from.jpg', 'https://utfb-images.untappd.com/DsSCeYBBoReiFu5zAgmiomt9?auto=compress')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Masthead Brewing Co', '1261 Superior Ave E', 'Cleveland', 'Ohio', '44114-3204', 'http://www.mastheadbrewingco.com', '216-206-6176', 'Masthead Brewing Company is located in the historic Bryant Building at 1261 Superior Avenue in downtown Cleveland. Our building was originally built in 1921 as an automotive dealership and is now listed on the National Register of Historic Places. The taproom features 300 seats, a 100’ long bar, and an additional 50 seat dog friendly patio with a view of downtown Cleveland.', 'https://media-cdn.tripadvisor.com/media/photo-s/0f/b0/c6/68/masthead-brewing-from.jpg', 'https://utfb-images.untappd.com/DsSCeYBBoReiFu5zAgmiomt9?auto=compress')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Nano Brew Cleveland', '1859 W 25th St', 'Cleveland', 'Ohio', '44113', 'http://www.nanobrewcleveland.com', '216-862-6631', 'Nano Brew Cle is a friendly, bicycle-themed brewpub located in the historic Ohio City neighborhood of Cleveland, Ohio. Designed to celebrate American fare and all American craft beer, we feature 24 beers on draft and a menu of crave-worthy eats that can be enjoyed both at the inside bar and our lively, two-story patio.', 'https://media-cdn.tripadvisor.com/media/photo-s/1c/e2/f2/1b/nano-brew-serves-as-market.jpg', 'https://images.squarespace-cdn.com/content/v1/6008765d46d4c56a53f90675/0a4cd46e-7d36-4efb-8e4b-a7d892c60754/Nano+Circle.+.PNG')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Noble Beast Brewing Co.', '1470 Lakeside Ave E', 'Cleveland', 'Ohio', '44114-1137', 'http://noblebeastbeer.com', '717-585-9216', 'Hi. Were a small and family-owned business run by regular people. Shaun brews a mix of traditional and experimental beers, manages social media, and fixes the plumbing. His wife JoLyn runs operations, HR, and accounting and keeps everything by the book. Chef James creates a farm fresh and seasonal menu with an intensely creative eye that punches well above regular "brewery" food. They couldnt do it without a fantastic staff highlighted by GM Bill, Sous Chef Brittany, and Brewer Erik.', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2017/09/NB_Header_2.jpg?fit=800%2C533&ssl=1', 'https://brewcruizer.com/custom/domain_1/image_files/sitemgr_photo_23307.jpg')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Noble Beast Brewing Co.', '1470 Lakeside Ave E', 'Cleveland', 'Ohio', '44114-1137', 'http://noblebeastbeer.com', '216-417-8588', 'Hi. Were a small and family-owned business run by regular people. Shaun brews a mix of traditional and experimental beers, manages social media, and fixes the plumbing. His wife JoLyn runs operations, HR, and accounting and keeps everything by the book. Chef James creates a farm fresh and seasonal menu with an intensely creative eye that punches well above regular "brewery" food. They couldnt do it without a fantastic staff highlighted by GM Bill, Sous Chef Brittany, and Brewer Erik.', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2017/09/NB_Header_2.jpg?fit=800%2C533&ssl=1', 'https://brewcruizer.com/custom/domain_1/image_files/sitemgr_photo_23307.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Platform Beer Co', '4125 Lorain Ave', 'Cleveland', 'Ohio', '44113-3718', 'http://platformbeer.co', '216-202-1386', 'Platform was founded in 2014 on the premise that collaboration should be at the cornerstone of everything that we do. Whether it be with pro brewers, the home brewing world or a variety of other industries beer is special and should be shared. From humble beginnings brewing on a 3 bbl brewhouse in Cleveland Platform has expanded to a second tasting room in Columbus a production facility in Cleveland a Cincinnati tasting room named LOCOBA and a sour beer facility in Cleveland named Phunkenship.', 'https://ohiomagazine.azureedge.net/sitefinity/images/default-source/articles/2015/2---february-2015/platform-brew_d3_3107.jpg?sfvrsn=479ad138_2', 'https://images.squarespace-cdn.com/content/v1/58e90d0e20099ea6eba14db3/1491668501108-2M8R0ONNAKV7E5DMYNG4/platform-logo.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Rivals Sports Grille', '6710 Smith Rd', 'Middleburg Heights', 'Ohio', '44130-2656', 'https://www.rivals-cleveland.com', '216-267-0005', 'For years, Rivals has been a popular spot in the neighborhood for family and friends to enjoy each others company over food and drinks in the comfortable Rivals atmosphere. With a rich history in the Middleburg Heights community, Rivals is a home away from home for many. While Rivals is a part of the past, it is also a part of the future, looking to grow this home away from home for more to enjoy.', 'https://www.cleveland.com/resizer/gqwwyTxGXg0wxpILr1bCqC18wnk=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.cleveland.com/home/cleve-media/width2048/img/ent_impact_home/photo/24255898-standard.jpg', 'https://pbs.twimg.com/profile_images/1059514380931330048/2uBo5Arw_400x400.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Rocky River Brewing Co', '21290 Center Ridge Rd', 'Rocky River', 'Ohio', '44116-3204', 'http://www.rockyriverbrewco.com', '440-895-2739', 'For more than 20 years, Rocky River Brewing Companys laid-back, family-friendly atmosphere and extensive melt-in-your-mouth menu selections and tantalizing handcrafted brews has been delighting families and friends. The food the beer our friendly and courteous staff, and our patrons all make visiting R.R.B.C. a fantastic and memorable experience. We welcome you to visit the “Brew Co.” with your family and friends to enjoy the the pleasant atmosphere, friendly people, fresh food and great beers.', 'https://images.squarespace-cdn.com/content/v1/56c8e02b2eeb81462d149d14/1485830567676-37FG3FIFLEITKURK6O0R/Rocky_River_Inside_2.JPG?format=2500w', 'https://d2pxm94gkd1wuq.cloudfront.net/BreweryLogos/Standard/8332030.rocky-river-logo-db.jpg')
@@ -162,22 +162,27 @@ INSERT INTO brewery (name, address, city, state, zip, website, phone, about, ima
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Southern Tier Brewing Co', '811 Prospect Ave E', 'Cleveland', 'Ohio', '44115-1111', 'https://taprooms.stbcbeer.com/southern-tier-brewery-cleveland-5b6c1b355dcb', '440-484-4045', 'The Southern Tier Brewing Company taproom in Cleveland is a state-of-the-art brewery and taproom, located in downtown Cleveland, OH. The Prospect Avenue venue, our second satellite taproom, is a short walk from Rocket Mortgage FieldHouse and Progressive Field, where we’re pouring fresh Southern Tier beers, serving a full, chef-created, beer-inspired food menu, and offering a selection of Southern Tier favorites to-go (in cans, bottles, and growler/crowler fills).', 'https://media.wkyc.com/assets/WKYC/images/6b7bee50-0c79-4d13-966f-7d2976b912a3/6b7bee50-0c79-4d13-966f-7d2976b912a3_1920x1080.jpg', 'https://utfb-images.untappd.com/zbaGFCj5NFUDW36i1dgXL4QK?auto=compress')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Terrestrial Brewing Company', '7524 Father Frascati Dr', 'Cleveland', 'Ohio', '44102-2087', 'https://terrestrialbrewing.com/', '216-465-9999', 'The brewery is located in the Battery Park neighborhood of Cleveland, Ohio. The tap list has two, mainstay beers, Canopy Crusher IPA and Public Pilsner, while the rest of the taps constantly rotate with new and exciting brews. The Taproom offers a casual vibe and two large patios with epic views of Lake Erie. The Taproom is also 100% dog-friendly and has an adjacent dog park next to us for the dogs to play and meet some friends.', 'https://i0.wp.com/ohiocraftbeer.org/wp-content/uploads/2017/08/Terrestrial.Interior.jpg?fit=800%2C533&ssl=1', 'https://www.porchdrinking.com/wp-content/uploads/2017/09/terrestrial-bc-logo2-680x325.jpg')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Cleveland Brewery', '777 E 185th St', 'Cleveland', 'Ohio', '44119-2170', 'https://theclevelandbrewery.com/', '216-534-6992', 'When a space opened up in our neighborhood, and the name was approved, the stars aligned for The Cleveland Brewery to start in October 2014. We initially sold to local restaurants for funding towards our tasting room which opened in 2015. Since then, John has brewed over 50 recipes and keeps the creativity coming. The tasty beer and our Cleveland spirit is why you fall in love with our spot.', 'https://res.cloudinary.com/bandwango/image/upload/c_crop,h_3057,w_4078,x_447,y_0/w_500,f_auto,q_auto/v1/partners/447/venue/38796/i9yey6j9t0irhcsgyksy.png', 'https://www.thisiscleveland.com/thisiscleveland/media/partnerdirectory/13646_30478.jpg?w=1200&h=630&mode=crop')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Jolly Scholar', '11111 Euclid Ave', 'Cleveland', 'Ohio', '44106-1715', 'https://theclevelandbrewery.com/', '216-534-6992', 'Located on the campus of Case Western Reserve University, The Jolly Scholar is a unique Cleveland Brewery serving quality food and artisanal craft beer.', 'https://observer.case.edu/wp-content/uploads/2016/02/JollyScholar_11-7_amh181_1MBJPEG_0003-900x600.jpg', 'https://www.thejollyscholar.com/wp-content/uploads/2018/07/Jolly-Scholar-Logo.png')
-INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Working Class Brewery', '17448 Lorain Ave', 'Cleveland', 'Ohio', '44111-4028', 'http://www.workingclassbrewery.com', '216-417-5112', 'Working Class Brewery is a working class guy following a passion and dream to create great fresh local craft beer for hard working people.Located in the Kamm’s Corners area at 17448  Lorain Avenue, Cleveland, Ohio. Working Class Brewery has its own tap room where retail customers may come to view the operation of the brewery, purchase beer by the glass, beer to go, snacks, and retail items such as T-shirts, hats and glassware with our logo printed on them.', 'https://media-cdn.tripadvisor.com/media/photo-s/14/c1/72/5a/inside.jpg', 'https://pbs.twimg.com/profile_images/1130869525094764544/HMeZ9Dr9_400x400.png')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('The Jolly Scholar', '11111 Euclid Ave', 'Cleveland', 'Ohio', '44106-1715', 'https://www.thejollyscholar.com/', '216-368-0090', 'Located on the campus of Case Western Reserve University, The Jolly Scholar is a unique Cleveland Brewery serving quality food and artisanal craft beer.', 'https://observer.case.edu/wp-content/uploads/2016/02/JollyScholar_11-7_amh181_1MBJPEG_0003-900x600.jpg', 'https://www.thejollyscholar.com/wp-content/uploads/2018/07/Jolly-Scholar-Logo.png')
+INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Working Class Brewery', '17448 Lorain Ave', 'Cleveland', 'Ohio', '44111-4028', 'http://www.workingclassbrewery.com', '216-417-8082', 'Working Class Brewery is a working class guy following a passion and dream to create great fresh local craft beer for hard working people.Located in the Kamm’s Corners area at 17448  Lorain Avenue, Cleveland, Ohio. Working Class Brewery has its own tap room where retail customers may come to view the operation of the brewery, purchase beer by the glass, beer to go, snacks, and retail items such as T-shirts, hats and glassware with our logo printed on them.', 'https://media-cdn.tripadvisor.com/media/photo-s/14/c1/72/5a/inside.jpg', 'https://pbs.twimg.com/profile_images/1130869525094764544/HMeZ9Dr9_400x400.png')
 INSERT INTO brewery (name, address, city, state, zip, website, phone, about, image, logo) VALUES ('Immigrant Son Brewing', '18120 Sloane Ave', 'Lakewood', 'Ohio', '44107', 'immigrantsonbrewing.com', '216-600-4483', 'Immigrant Son is not just about a place, a thing, or a single person, it is an ongoing tale about ALL of us as one coming to the table to break bread, share the best of ourselves and what we’ve learned along the way while toasting to the road ahead.', 'https://clevelandmagazine.azureedge.net/sitefinity/images/default-source/archive/immigrant-son-brewery-interior.jpg?sfvrsn=6e7ceb8c_1', 'https://media-exp1.licdn.com/dms/image/C4D0BAQHzAYxbiJbYzA/company-logo_200_200/0/1633837847647?e=2147483647&v=beta&t=F3OPZNNfVwxlhE6w69sXX57LaInYQ8dvFhFpUmE6JYg')
 
 
+--trails!
 INSERT INTO trails (type) VALUES ('Pet Friendly')
 INSERT INTO trails (type) VALUES ('Family Friendly')
 INSERT INTO trails (type) VALUES ('Budget')
 INSERT INTO trails (type) VALUES ('Patio')
 
+
+--adding breweries to each trail
 INSERT INTO brewery_trails(trail_id, brewery_id) VALUES
 (6000,1009), (6000,1010), (6000,1011), (6000,1013),
 (6001,1000), (6001,1012), (6001,1014), (6001,1016),
 (6002,1003), (6002,1007), (6002,1011), (6002,1023),
 (6003,1008), (6003,1015), (6003,1022), (6003,1024)
 
+
+--adding useres that have completed trails
 INSERT INTO trail_user (trail_id, user_id) VALUES
 (6000, 3), (6000, 7), (6000, 4), (6000, 13), (6000,11), (6000,9), (6000,8), (6000,19), (6000,15),
 (6001, 3), (6001, 4), (6001, 5), (6001, 18), (6001, 15), (6001, 14), (6001, 10), (6001, 17),
@@ -339,57 +344,27 @@ INSERT INTO review (brewery_id, rating, date, content) VALUES
 
 --assigning tags to brweries
 INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
-	(2000, 1001),
-	(2001, 1001),
-	(2003, 1001),
-	(2000, 1002),
-	(2001, 1002),
-	(2003, 1002),
-	(2001, 1003),
-	(2002, 1003),
-	(2000, 1004),
-	(2001, 1004),
-	(2003, 1004),
-	(2001, 1005),
-	(2003, 1005),
-	(2000, 1006),
-	(2001, 1006),
-	(2002, 1006),
-	(2003, 1006),
-	(2000, 1007),
-	(2001, 1007),
-	(2002, 1007),
-	(2003, 1007),
-	(2000, 1008),
-	(2001, 1008),
-	(2003, 1008),
-	(2002, 1008),
-	(2000, 1009),
-	(2003, 1009),
-	(2000, 1010),
-	(2002, 1010),
-	(2000, 1011),
-	(2001, 1011),
-	(2003, 1011),
-	(2002, 1011),
+	(2000, 1001), (2001, 1001), (2003, 1001),
+	(2000, 1002),(2001, 1002), (2003, 1002),
+	(2001, 1003), (2002, 1003),
+	(2000, 1004), (2001, 1004), (2003, 1004),
+	(2001, 1005), (2003, 1005),
+	(2000, 1006), (2001, 1006), (2002, 1006), (2003, 1006),
+	(2000, 1007), (2001, 1007), (2002, 1007), (2003, 1007),
+	(2000, 1008), (2001, 1008), (2003, 1008), (2002, 1008),
+	(2000, 1009), (2003, 1009),
+	(2000, 1010), (2002, 1010),
+	(2000, 1011), (2001, 1011), (2003, 1011), (2002, 1011),
 	(2001, 1012),
-	(2000, 1013),
-	(2003, 1013),
-	(2001, 1014),
-	(2003, 1014),
+	(2000, 1013), (2003, 1013),
+	(2001, 1014), (2003, 1014),
 	(2003, 1015),
-	(2000, 1016),
-	(2001, 1016),
-	(2003, 1016),
-	(2003, 1017),
-	(2002, 1017),
-	(2001, 1018),
-	(2003, 1018),
+	(2000, 1016), (2001, 1016), (2003, 1016),
+	(2003, 1017), (2002, 1017),
+	(2001, 1018), (2003, 1018),
 	(2002, 1019),
-	(2001, 1020),
-	(2003, 1020),
-	(2000, 1021),
-	(2003, 1021),
+	(2001, 1020), (2003, 1020),
+	(2000, 1021), (2003, 1021),
 	(2001, 1022),
 	(2002, 1023),
 	(2003, 1024),
