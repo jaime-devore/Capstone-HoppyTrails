@@ -31,10 +31,11 @@
                     <!-- <span class="text-small" >x, y, z</span> -->
                 </div>
                 <div class="py-1 d-flex justify-content-evenly">
-                    <img class="" src="../img/stamp.png" width="100px"/>
-                    <img class="opacity-25" src="../img/stamp.png" width="100px"/>
-                    <img class="opacity-25" src="../img/stamp.png" width="100px"/>
-                    <img class="opacity-25" src="../img/stamp.png" width="100px"/>
+                    <div class="" v-for="picName in userTrails" v-bind:key="picName.id">
+                        <img class="" width="100px" v-bind:src="require(`@/img/${picName.trailID}.png`)"  />
+                    
+                    </div>
+                    
 
                 </div>
             </fieldset>
@@ -46,10 +47,10 @@
         </div><!--end of inner container-->
 
         <div class="row">
-    <div class="col-sm" v-for="review in allReviews" v-bind:key="review.id">
+    <div class="col-lg-4 mb-2" v-for="review in allReviews" v-bind:key="review.id">
 
 
-        <div class="card" >
+        <div class="card">
             <div class="card-header">
                 <h5 class="">
                     <img v-bind:src="'https://avatars.dicebear.com/api/bottts/'+$store.state.user.username+'.svg'"
@@ -62,7 +63,7 @@
             <div class="card-body">
                 
                 <h6 class="card-subtitle mb-2 d-flex justify-content-between ">
-                    <span class="text-muted">{{new Date(Date.now()).toDateString()}}</span>
+                    <span class="text-muted">{{new Date(review.date).toDateString()}}</span>
                     <span class="text-warning text-end" v-html="starrating(review.rating-1)" >
                         
                     </span>
@@ -108,6 +109,14 @@ export default {
                 '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>',                
             ],
             userTrails:[],
+            trailPics:{
+                    6000: '../img/6000.png',
+                    6001: '../img/6001.png',
+                    6002:  '../img/6002.png',
+                    6003:  '../img/6003.png'
+                 }
+                
+            
         }
     },
     computed:{
@@ -116,6 +125,9 @@ export default {
     methods:{
         starrating(index){
             return this.stars[index];
+        },
+        getTrailImage(trailid){
+            return this.trailPics[trailid];
         }
         
     },
@@ -124,16 +136,7 @@ export default {
         .then((response) => {
             this.allReviews = response.data;
         }),
-        // .then(()=>{
-        //     for(const review of this.allReviews){
-        //         // console.log(review.breweryId);
-        //          BreweryAPI.getBreweryById(review.breweryId)
-        //             .then((response) => {
-        //                 review.brewery = response.data;
-        //                 // console.log(review.brewery.name);
-        //             });
-        //         }
-        // }),
+        
         TrailsAPI.getTrailsByUser(this.$store.state.user.userId)
             .then((response) => {
                 this.userTrails = response.data;

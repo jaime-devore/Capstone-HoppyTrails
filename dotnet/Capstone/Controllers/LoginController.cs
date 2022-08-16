@@ -85,9 +85,9 @@ namespace Capstone.Controllers
         [HttpGet("/users/trails/{userID}")]
         public ActionResult<List<Trail>> GetTrailsByUserID(int userID)
         {
-            List<Trail> allTtrails = trailDao.GetTrailsByUserID(userID);
+            List<Trail> allTrails = trailDao.GetTrailsByUserID(userID);
 
-            return Ok(allTtrails);
+            return Ok(allTrails);
         }
 
 

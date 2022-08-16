@@ -3,12 +3,12 @@
 <div class="trails">
 <link href='https://fonts.googleapis.com/css?family=Leckerli One' rel='stylesheet'>
 <div class="container-fluid bgpic">
-   <div id="cards-div" class="container-fluid">
-     <div class="row pt-5">
-       <div class="col-sm-6">
+   <div id="cards-div" class="container">
+     <div class="row pt-2">
+       <div class="col-lg-6 mt-4">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-             <h5 class="card-title">Family Friendly</h5>
+             <h5 class="card-title text-nowrap w-100">Family Friendly</h5>
            </div>
            <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 101 } }">
            <div class="card-body">
@@ -17,10 +17,10 @@
            </router-link>
          </div>
        </div>
-       <div class="col-sm-6">
+       <div class="col-lg-6 mt-4">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-              <h5 class="card-title">Pet Friendly</h5>
+              <h5 class="card-title text-nowrap">Pet Friendly</h5>
              </div>
              <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 102 } }">
            <div class="card-body">
@@ -31,11 +31,11 @@
        </div>
      </div>
 
-     <div class="row pt-5">
-       <div class="col-sm-6">
+     <div class="row pt-2">
+       <div class="col-lg-6 mt-4">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-             <h5 class="card-title">Patios</h5>
+             <h5 class="card-title text-nowrap">Patios</h5>
            </div>
            <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 103 } }">
            <div class="card-body">
@@ -44,10 +44,10 @@
            </router-link>
          </div>
        </div>
-       <div class="col-sm-6">
+       <div class="col-lg-6 mt-4">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-             <h5 class="card-title">Budget</h5>
+             <h5 class="card-title text-nowrap">Budget</h5>
            </div>
            <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 104 } }">
            <div class="card-body">
@@ -85,7 +85,12 @@ export default {
 <style scoped>
 .card-body > img{
   width: 100%;
-  size: 150%
+  size: 150%;
+  opacity: 0.8;
+}
+.card-body > img:hover{
+  /* border: 1px inset #2a453d; */
+  opacity: 1;
 }
 
 #title-div{
