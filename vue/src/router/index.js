@@ -8,7 +8,8 @@ import AllBreweries from '../views/AllBreweries'
 import store from '../store/index'
 import Trails from '../views/Trails.vue'
 import BreweryDetail from '../views/BreweryDetails'
-
+import TrailDetails from '../views/TrailDetails'
+import Account from '../views/Account'
 
 
 Vue.use(Router)
@@ -79,7 +80,19 @@ const router = new Router({
         requiresAuth: false
       }
     },
-
+    {
+      path: "/trails/:trailID",
+      name: 'traildetails',
+      component: TrailDetails
+    },
+    {
+      path: "/account",
+      name: 'account',
+      component: Account,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 

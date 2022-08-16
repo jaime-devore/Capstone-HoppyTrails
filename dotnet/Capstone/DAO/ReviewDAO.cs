@@ -74,15 +74,14 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM review JOIN user_review ON review.review_id = user_review.review_id " + 
-                    "JOIN users ON user_review.user_id = users.user_id WHERE users.user_id = @USERID", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM review JOIN user_review ON review.review_id = user_review.review_id JOIN users ON user_review.user_id = users.user_id JOIN brewery ON review.brewery_id = brewery.id WHERE users.user_id = @USERID", conn);
                 cmd.Parameters.AddWithValue("@USERID", userID);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Review review = CreateReviewFromReader(reader);
+                    Review review = CreateReviewFromReaderWithBrewery(reader);
                     allReviews.Add(review);
                 }
             }
@@ -148,6 +147,19 @@ namespace Capstone.DAO
             review.Rating = Convert.ToDecimal(reader["rating"]);       
             review.Content = Convert.ToString(reader["content"]);
             review.Date = Convert.ToDateTime(reader["date"]);
+
+            return review;
+        }
+
+        private Review CreateReviewFromReaderWithBrewery(SqlDataReader reader)
+        {
+            Review review = new Review();
+
+            review.ReviewId = Convert.ToInt32(reader["review_id"]);
+            review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
+            review.Rating = Convert.ToDecimal(reader["rating"]);
+            review.Content = Convert.ToString(reader["content"]);
+            review.BreweryName = Convert.ToString(reader["name"]);
 
             return review;
         }

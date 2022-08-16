@@ -39,8 +39,8 @@
 </template>
 
 <script>
-window.navigator.geolocation
-  .getCurrentPosition(console.log, console.log);
+// window.navigator.geolocation
+//   .getCurrentPosition(console.log, console.log);
 export default {
   
   name: "home",
@@ -100,7 +100,7 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 230px;
+  margin-top: 25vh;
   margin-bottom: auto;
 }
 .aboutimg{
