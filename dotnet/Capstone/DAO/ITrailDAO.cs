@@ -11,6 +11,6 @@ namespace Capstone.DAO
         public List<Trail> GetAllTrails();
         public Trail GetTrailByTrailID(int trailID);
 
-
+        public List<Trail> GetTrailsByUserID(int userID);
     }
 }
