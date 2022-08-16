@@ -10,5 +10,7 @@ namespace Capstone.DAO
     {
         public TrailUser CreateTrailUser(TrailUser trailUser);
 
+        public TrailUser GetTrailUser(int id);
+
     }
 }

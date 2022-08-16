@@ -4,6 +4,7 @@ using Capstone.Models;
 using Capstone.Security;
 using System.Collections.Generic;
 
+
 namespace Capstone.Controllers
 {
     [Route("[controller]")]
@@ -13,15 +14,15 @@ namespace Capstone.Controllers
         private readonly ITokenGenerator tokenGenerator;
         private readonly IPasswordHasher passwordHasher;
         private readonly IUserDao userDao;
-        //private readonly ITrailDAO trailDAO;
+        private readonly ITrailDAO trailDao;
 
-        public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDao _userDao)
+
+        public LoginController(ITokenGenerator _tokenGenerator, IPasswordHasher _passwordHasher, IUserDao _userDao, ITrailDAO _trailDAO)
         {
             tokenGenerator = _tokenGenerator;
             passwordHasher = _passwordHasher;
             userDao = _userDao;
-            //we might need the parameter for this assignment added back in
-            //trailDAO = _trailDAO;
+            trailDao = _trailDAO;
         }
 
         [HttpPost]
@@ -79,6 +80,14 @@ namespace Capstone.Controllers
             User user = userDao.GetUserFromReview(reviewID);
 
             return Ok(user);
+        }
+
+        [HttpGet("/users/trails/{userID}")]
+        public ActionResult<List<Trail>> GetTrailsByUserID(int userID)
+        {
+            List<Trail> allTtrails = trailDao.GetTrailsByUserID(userID);
+
+            return Ok(allTtrails);
         }
 
 
