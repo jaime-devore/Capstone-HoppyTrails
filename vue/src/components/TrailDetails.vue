@@ -25,9 +25,13 @@ export default {
   methods:{
     //none of this will be necessary once we switch to pulling the trails from the store within traildetails.vue
     //the trails exist in the store so we need to go get the one with the matching trailID being passed in, except I just hard-coded in 101 for testing
+    CurrentTrail(){
+      
+
+    },
     setCurrentTrailFromStore()
     {
-      var currentTrail = this.$store.state.trails.find((t) => {return t.id == 101});
+      let currentTrail = this.$store.state.trails.find((t) => {return t.id});
       return currentTrail;
     }
   },
