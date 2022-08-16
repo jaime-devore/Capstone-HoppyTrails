@@ -3,16 +3,19 @@ using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
+using System.Collections.Generic;
 
 namespace Capstone.DAO
 {
     public class UserSqlDao : IUserDao
     {
         private readonly string connectionString;
+        private ITrailDAO trailDAO;
 
         public UserSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+            
         }
 
         public User GetUser(string username)
@@ -93,6 +96,7 @@ namespace Capstone.DAO
             return user;
         }
 
+
         private User GetUserFromReader(SqlDataReader reader)
         {
             User u = new User()
@@ -106,5 +110,9 @@ namespace Capstone.DAO
 
             return u;
         }
+
+        
+
+
     }
 }
