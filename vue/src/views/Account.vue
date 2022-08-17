@@ -26,19 +26,19 @@
                     <div class="" v-for="picName in userTrails" v-bind:key="picName.id">
                         <img class="" width="150px" 
                         v-if='picName.trailID == 6000'
-                        src="../img/6000.png"  />
+                        src="../img/6000new.png"  />
 
                         <img class="" width="150px" 
                         v-if='picName.trailID == 6001'
-                        src="../img/6001.png"  />
+                        src="../img/6001new.png"  />
 
                         <img class="" width="150px" 
                         v-if='picName.trailID == 6002'
-                        src="../img/6002.png"  />
+                        src="../img/6002new.png"  />
 
                         <img class="" width="150px" 
                         v-if='picName.trailID == 6003'
-                        src="../img/6003.png"  />
+                        src="../img/6003new.png"  />
                         
                   
                     </div>
