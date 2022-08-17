@@ -35,6 +35,7 @@ export default {
         review:{
   
             BreweryId: this.$route.params.id,
+            UserId: this.$store.state.user.userId,
             Rating: undefined,
             Content: ''
         }
@@ -48,7 +49,8 @@ export default {
             ReviewId: 0,
             BreweryId: Number(this.$route.params.id),
             Rating: Number(this.review.Rating),
-            Content: this.review.Content
+            Content: this.review.Content,
+            UserId: Number(this.$store.state.user.userId)
            
             }
             ReviewAPI.postNewReview(newReview).catch((response) => {

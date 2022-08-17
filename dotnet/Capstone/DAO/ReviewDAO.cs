@@ -142,7 +142,7 @@ namespace Capstone.DAO
 
             review.ReviewId = Convert.ToInt32(reader["review_id"]);
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
-            review.Rating = Convert.ToDecimal(reader["rating"]);       
+            review.Rating = Convert.ToInt32(reader["rating"]);       
             review.Content = Convert.ToString(reader["content"]);
             
             review.UserID = Convert.ToInt32(reader["user_id"]);
@@ -160,7 +160,7 @@ namespace Capstone.DAO
 
             review.ReviewId = Convert.ToInt32(reader["review_id"]);
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
-            review.Rating = Convert.ToDecimal(reader["rating"]);
+            review.Rating = Convert.ToInt32(reader["rating"]);
             review.Content = Convert.ToString(reader["content"]);
             review.Date = Convert.ToDateTime(reader["date"]);
             review.BreweryName = Convert.ToString(reader["name"]);
