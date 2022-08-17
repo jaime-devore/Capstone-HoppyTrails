@@ -21,32 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
 
-    maps: [
-        {
-          name: 'Pet Friendly',
-          id: 6000,
-          image: require('@/img/petfriendly.png')
-        },
-
-        {
-          name: 'Family Friendly',
-          id: 6001,
-          image: require('@/img/familyfriendly.png')
-        },
-
-        {
-          name: 'Patios',
-          id: 6002,
-          image: require('@/img/patio.png')
-        },
-
-        {
-          name: 'Budget',
-          id: 6003,
-          image: require('@/img/budgetroute.png')
-        }
-        
-      ]
+    
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
