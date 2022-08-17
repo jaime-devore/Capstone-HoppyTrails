@@ -59,7 +59,7 @@
     ||*********   LOGIN   ********************************||
     ||****************************************************||
 -->
-<div class="form-signin w-50 mx-auto mt-5 border border-dark rounded" id="formContainer">
+<div class="form-signin w-50 mx-auto mt-5 border border-dark rounded " id="formContainer">
   <form id="loginForm" @submit.prevent="login">
     <h1 class="h3 mb-3 fw-normal mx-auto text-center">Please sign in</h1>
 
@@ -74,7 +74,7 @@
         />
       <label for="floatingInput">Username</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating mt-2">
       <input 
           type="password" 
           class="form-control" 
@@ -92,7 +92,9 @@
     <div class="d-flex justify-center" >
       <button class=" btn btn-success login-btn mx-auto" type="submit">Sign in</button>
     </div>
-    <div class="mt-2 ps-2" id="messages"></div>
+    <div class="mt-2 ps-2 border border-danger rounded text-danger mx-auto text-center w-75" id="messages" v-show="invalidCredentials">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+      {{errorMsg}}</div>
     <p class="mt-5 mb-3 text-muted"></p>
   </form>
 </div>
@@ -112,7 +114,8 @@ export default {
         username: "",
         password: ""
       },
-      invalidCredentials: false
+      invalidCredentials: false,
+      errorMsg: "",
     };
   },
   methods: {
@@ -128,9 +131,10 @@ export default {
         })
         .catch(error => {
           const response = error.response;
-
+            
           if (response.status === 401) {
             this.invalidCredentials = true;
+            this.errorMsg = 'Username or Password Incorrect';
           }
         });
     }
@@ -140,5 +144,8 @@ export default {
 <style scoped>
 .login-btn{
   background-color: #2a453d !important;
+}
+.field:invalid {
+    border-color:#f00;
 }
 </style>
