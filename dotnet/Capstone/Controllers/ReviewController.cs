@@ -14,9 +14,11 @@ namespace Capstone.Controllers
     {
         private readonly IReviewDAO reviewDao;
 
+
         public ReviewController(IReviewDAO _reviewDao)
         {
             reviewDao = _reviewDao;
+          
         }
 
         [HttpGet()]
@@ -48,6 +50,7 @@ namespace Capstone.Controllers
         [HttpPost()]
         public ActionResult<Review> CreateNewReview(Review review)
         {
+            
             Review newReview = reviewDao.CreateReview(review);
 
             return Created($"{newReview.ReviewId}", newReview);

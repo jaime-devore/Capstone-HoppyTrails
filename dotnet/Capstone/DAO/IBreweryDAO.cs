@@ -17,5 +17,7 @@ namespace Capstone.DAO
         //Method to get Beers by Brewery Id
         List<Beer> GetBeersByBreweryID(int breweryID);
 
+        List<Brewery> GetBreweriesByTrailID(int trailID);
+
     }
 }

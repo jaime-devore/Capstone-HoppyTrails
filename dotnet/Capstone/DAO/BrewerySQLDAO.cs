@@ -93,6 +93,30 @@ namespace Capstone.DAO
             return beers;
         }
 
+        public List<Brewery> GetBreweriesByTrailID(int trailID)
+        {
+            List<Brewery> allBreweries = new List<Brewery>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM brewery JOIN brewery_trails ON brewery.id = brewery_trails.brewery_id JOIN trails ON brewery_trails.trail_id = trails.trail_id WHERE trails.trail_id = @TRAILID", conn);
+                cmd.Parameters.AddWithValue("@TRAILID", trailID);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while(reader.Read())
+                {
+                    Brewery brewery = CreateBreweryFromReader(reader);
+
+                    allBreweries.Add(brewery);
+                }
+            }
+
+            return allBreweries;
+        }
+
         //I need a method that creates a Brewery from the data returned by the SQL Data Reader
         private Brewery CreateBreweryFromReader(SqlDataReader reader)
         {
@@ -108,6 +132,7 @@ namespace Capstone.DAO
             brewery.City = Convert.ToString(reader["city"]);
             brewery.State = Convert.ToString(reader["state"]);
             brewery.ZipCode = Convert.ToString(reader["zip"]);
+            brewery.Logo = Convert.ToString(reader["logo"]);
 
             return brewery;
         }

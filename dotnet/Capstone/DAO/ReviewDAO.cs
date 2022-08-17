@@ -74,14 +74,14 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM review JOIN user_review ON review.review_id = user_review.review_id JOIN users ON user_review.user_id = users.user_id WHERE users.user_id = @USERID", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM review JOIN users ON review.user_id = users.user_id JOIN brewery ON review.brewery_id = brewery.id WHERE users.user_id = @USERID", conn);
                 cmd.Parameters.AddWithValue("@USERID", userID);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Review review = CreateReviewFromReader(reader);
+                    Review review = CreateReviewFromReaderWithBrewery(reader);
                     allReviews.Add(review);
                 }
             }
@@ -122,7 +122,8 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO review (brewery_id, rating, content) OUTPUT INSERTED.review_id VALUES (@BREWERYID, @RATING, @CONTENT)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO review (user_id, brewery_id, date, rating, content) OUTPUT INSERTED.review_id VALUES (@USERID, @BREWERYID, GETDATE(), @RATING, @CONTENT)", conn);
+                    cmd.Parameters.AddWithValue("@USERID", review.UserID);
                     cmd.Parameters.AddWithValue("@BREWERYID", review.BreweryId);
                     cmd.Parameters.AddWithValue("@RATING", review.Rating);
                     cmd.Parameters.AddWithValue("@CONTENT", review.Content);
@@ -135,15 +136,36 @@ namespace Capstone.DAO
             return newReview;
         }
 
-
         private Review CreateReviewFromReader(SqlDataReader reader)
         {
             Review review = new Review();
 
             review.ReviewId = Convert.ToInt32(reader["review_id"]);
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
-            review.Rating = Convert.ToDecimal(reader["rating"]);       
+            review.Rating = Convert.ToInt32(reader["rating"]);       
             review.Content = Convert.ToString(reader["content"]);
+            
+            review.UserID = Convert.ToInt32(reader["user_id"]);
+
+            if (reader["date"] != DBNull.Value)
+            {
+                review.Date = Convert.ToDateTime(reader["date"]);
+            }
+            return review;
+        }
+
+        private Review CreateReviewFromReaderWithBrewery(SqlDataReader reader)
+        {
+            Review review = new Review();
+
+            review.ReviewId = Convert.ToInt32(reader["review_id"]);
+            review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
+            review.Rating = Convert.ToInt32(reader["rating"]);
+            review.Content = Convert.ToString(reader["content"]);
+            review.Date = Convert.ToDateTime(reader["date"]);
+            review.BreweryName = Convert.ToString(reader["name"]);
+            review.UserID = Convert.ToInt32(reader["user_id"]);
+
 
             return review;
         }

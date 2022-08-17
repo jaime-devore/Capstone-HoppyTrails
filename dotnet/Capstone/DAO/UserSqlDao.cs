@@ -3,16 +3,19 @@ using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
+using System.Collections.Generic;
 
 namespace Capstone.DAO
 {
     public class UserSqlDao : IUserDao
     {
         private readonly string connectionString;
+        
 
         public UserSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+            
         }
 
         public User GetUser(string username)
@@ -79,7 +82,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM users JOIN user_review ON users.user_id = user_review.user_id JOIN review ON user_review.review_id = review.review_id WHERE review.review_id = @REVIEWID", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM users JOIN review ON users.user_id = review.user_id WHERE review.review_id = @REVIEWID", conn);
                 cmd.Parameters.AddWithValue("@REVIEWID", reviewID);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -92,6 +95,7 @@ namespace Capstone.DAO
 
             return user;
         }
+
 
         private User GetUserFromReader(SqlDataReader reader)
         {
@@ -106,5 +110,9 @@ namespace Capstone.DAO
 
             return u;
         }
+
+        
+
+
     }
 }

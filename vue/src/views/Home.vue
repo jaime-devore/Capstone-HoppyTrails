@@ -39,8 +39,8 @@
 </template>
 
 <script>
-window.navigator.geolocation
-  .getCurrentPosition(console.log, console.log);
+// window.navigator.geolocation
+//   .getCurrentPosition(console.log, console.log);
 export default {
   
   name: "home",
@@ -88,6 +88,22 @@ export default {
 }
 
 
+@media screen and (max-width: 768px){
+  .home{
+    padding: 7px;
+    display:grid;
+    grid-template-columns: 1fr;
+    height: 100fr;
+    grid-template-areas:
+    "pic"
+    "about"
+    "sub-pic"
+    "breweries"
+    "trails"
+    "footer";
+  }
+}
+
 .bgpic{
   background-image: url('../img/ammon-20180716-old_brewery-1024.jpg');
   height: 100vh;
@@ -100,7 +116,7 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 230px;
+  margin-top: 25vh;
   margin-bottom: auto;
 }
 .aboutimg{

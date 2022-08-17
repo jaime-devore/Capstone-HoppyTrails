@@ -1,107 +1,32 @@
 
 <template>
 <div class="trails">
-    
+<link href='https://fonts.googleapis.com/css?family=Leckerli One' rel='stylesheet'>
 <div class="container-fluid bgpic">
    <div id="cards-div" class="container-fluid">
      <div class="row pt-5">
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-             <h5 class="card-title"><router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 101 } }"> Family Friendly</router-link></h5>
+             <h5 class="card-title">Family Friendly</h5>
            </div>
+           <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6001 } }">
            <div class="card-body">
-             <ul class="list-group list-group-flush">
-               <li class="list-group-item">
-                 Bookhouse Brewing LLC,
-                 <span class="mx-auto">1526 W 25th St </span>
-                 <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span>
-               </li>
-               <li class="list-group-item">Nano Brew Cleveland,
-                 <span class="mx-auto">1859 W 25th St </span>
-                 <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-               <li class="list-group-item">Market Garden Brewery,
-                 <span class="mx-auto">1947 W 25th St </span>
-                 <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-               <li class="list-group-item">Platform Beer Co,
-                 <span class="mx-auto">4125 Lorain Ave </span>
-                 <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             </ul>
-<!--             <a href="#" class="btn btn-success">Go somewhere</a>-->
+              <img src="../route-img/fam-route.png" id="fam-route-img"/>
            </div>
+           </router-link>
          </div>
        </div>
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-              <h5 class="card-title"><router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 102 } }">Pet Friendly</router-link></h5>
+              <h5 class="card-title">Pet Friendly</h5>
              </div>
+             <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6000 } }">
            <div class="card-body">
-             <ul class="list-group list-group-flush">
-             <li class="list-group-item">
-               Hansa Brewery,
-               <span class="mx-auto">2717 Lorain Ave </span>
-               <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span>
-             </li>
-             <li class="list-group-item">Great Lakes Brewing Co,
-               <span class="mx-auto">2516 Market Ave </span>
-               <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             <li class="list-group-item">Masthead Brewing Co,
-               <span class="mx-auto">1261 Superior Ave </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             <li class="list-group-item">Hofbrauhaus Cleveland,
-               <span class="mx-auto">1550 Chester Ave </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             </ul>
+             <img src="../route-img/pet-route.png" id="pet-route-img"/>
            </div>
+           </router-link>
          </div>
        </div>
      </div>
@@ -110,99 +35,25 @@
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-             <h5 class="card-title"><router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 103 } }">Patios</router-link></h5>
+             <h5 class="card-title">Patios</h5>
            </div>
+           <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6003 } }">
            <div class="card-body">
-             <ul class="list-group list-group-flush">
-             <li class="list-group-item">
-               The Jolly Scholar,
-               <span class="mx-auto">11111 Euclid Ave </span>
-               <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-half"></i>
-                 <i class="bi bi-star"></i>
-                   </span>
-             </li>
-             <li class="list-group-item">Goldhorn Brewery,
-               <span class="mx-auto">1361 E 55th St </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             <li class="list-group-item">Noble Beast Brewing Co,
-               <span class="mx-auto">1470 Lakeside Ave </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             <li class="list-group-item">Terrestrial Brewing Company,
-               <span class="mx-auto">7524 Father Frascati Dr </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             </ul>
+             <img src="../route-img/patio-route.png" id="patio-route-img"/>
            </div>
+           </router-link>
          </div>
        </div>
        <div class="col-sm-6">
          <div class="card border border-secondary">
            <div class="card-header  hoppytrails-bg text-white ">
-             <h5 class="card-title"><router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 104 } }">Budget</router-link></h5>
+             <h5 class="card-title">Budget</h5>
            </div>
+           <router-link class="ht-link" :to="{ name: 'traildetails', params: { trailID: 6002 } }">
            <div class="card-body">
-             <ul class="list-group list-group-flush">
-             <li class="list-group-item">
-               The Cleveland Brewery,
-               <span class="mx-auto">777 E 185th St </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                   </span>
-             </li>
-             <li class="list-group-item">Hofbrauhaus Cleveland,
-               <span class="mx-auto">1550 Chester Ave </span>
-               <span class="text-warning text-end" >
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             <li class="list-group-item">Forest City Brewery,
-               <span class="mx-auto">2135 Columbus Rd </span>
-               <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             <li class="list-group-item">Brick and Barrel,
-               <span class="mx-auto">1844 Columbus Rd </span>
-               <span class="text-warning text-end">
-                 <i class="bi bi-star-fill"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                 <i class="bi bi-star"></i>
-                   </span></li>
-             </ul>
+             <img src="../route-img/budget-route.png" id="budget-route-img"/>
            </div>
+           </router-link>
          </div>
        </div>
      </div>
@@ -232,6 +83,11 @@ export default {
 };
 </script>
 <style scoped>
+.card-body > img{
+  width: 100%;
+  size: 150%
+}
+
 #title-div{
   left: 25%;
   top: 30%;
@@ -246,8 +102,13 @@ export default {
 .hoppytrails-bg{
   background-color: #2a453d;
 }
-.ht-link{
-  color: white !important; 
+.card-title{
+  display:flex;
+  color: white !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 300%;
+  font-family: 'Leckerli One';
 }
 
 </style>

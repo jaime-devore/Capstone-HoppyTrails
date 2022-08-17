@@ -15,8 +15,10 @@ namespace Capstone.Models
         public int BreweryId { get; set; }
 
         [Required(ErrorMessage = "Rating is required.")]
-        public decimal Rating { get; set; }
-
+        public int Rating { get; set; }
         public string Content { get; set; }
+        public string BreweryName { get; set; }
+        public DateTime Date { get; set; }
+        public int UserID { get; set; }
     }
 }
