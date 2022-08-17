@@ -1,5 +1,6 @@
 <template>
   <div id = "full-review-field">
+      
       <h4 id="review-header"> Leave them a review!</h4>
       <form>
         <label for="rating" id="starlabel">Star Rating:</label><br/>
@@ -44,7 +45,9 @@ export default {
 
     methods: {
         
+        
         submitReview(){
+            
             let newReview = {
             ReviewId: 0,
             BreweryId: Number(this.$route.params.id),
@@ -53,9 +56,12 @@ export default {
             UserId: Number(this.$store.state.user.userId)
            
             }
+
             ReviewAPI.postNewReview(newReview).catch((response) => {
                 console.log(response);
             })
+
+            this.$router.push(`/brewerydetail/${this.$route.params.id}`);
         }
 
     }
