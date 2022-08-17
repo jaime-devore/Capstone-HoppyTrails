@@ -12,5 +12,9 @@ getBreweryById(id){
 
 getBeersByBreweryId(id){
     return axios.get(`brewery/beers/${id}`)
+},
+
+getBreweriesByTrailId(id){
+    return axios.get(`brewery/trails/${id}`)
 }
 }
