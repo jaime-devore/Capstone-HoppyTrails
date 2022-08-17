@@ -25,7 +25,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM trail_user WHERE trail_user_id = @TRAILUSERID", conn);
-                cmd.Parameters.AddWithValue("@TRAILUSER", trailUserID);
+                cmd.Parameters.AddWithValue("@TRAILUSERID", trailUserID);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -46,7 +46,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO trail_user (trail_id, user_id) OUTPUT INSERTED.trail_user_id VALUES (trail_id = @TRAILID, user_id = @USERID", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO trail_user (trail_id, user_id) OUTPUT INSERTED.trail_user_id VALUES (@TRAILID, @USERID)", conn);
                 cmd.Parameters.AddWithValue("@TRAILID", trailUser.TrailID);
                 cmd.Parameters.AddWithValue("@USERID", trailUser.UserID);
 
