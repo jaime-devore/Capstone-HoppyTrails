@@ -146,8 +146,10 @@ namespace Capstone.DAO
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
             review.Rating = Convert.ToDecimal(reader["rating"]);       
             review.Content = Convert.ToString(reader["content"]);
-            review.Date = Convert.ToDateTime(reader["date"]);
-
+            if (reader["date"] != DBNull.Value)
+            {
+                review.Date = Convert.ToDateTime(reader["date"]);
+            }
             return review;
         }
 
