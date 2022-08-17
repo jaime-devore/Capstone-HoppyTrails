@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row w-50 mx-auto">
+        <div class="row w-75 mx-auto">
             <h3 class="legend1 rounded-top mx-auto">
                 <img class="image" src="../img/Hop-Only-White.png"  width="42px" />
                 Account Details
@@ -16,15 +16,7 @@
                 <input type="text" class="form-control visually-hidden" 
                     id="formGroupExampleInput" v-bind:value="$store.state.user.username">
                 </div>
-                <!-- <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">
-                    <i class="bi bi-envelope fs-4"></i>
-                    Email Address
-                </label>
-                <span class="ms-3">{{$store.state.user.role}}</span>
-                <input type="text" class="form-control  visually-hidden" 
-                    id="formGroupExampleInput2" v-bind:value="$store.state.user.role">
-                </div> -->
+                
                 <div class="py-1">
                     <i class="bi bi-sign-turn-right fs-4"></i>
                     <span class="fw-bold px-2" >Trails Completed: </span>
@@ -32,8 +24,23 @@
                 </div>
                 <div class="py-1 d-flex justify-content-evenly">
                     <div class="" v-for="picName in userTrails" v-bind:key="picName.id">
-                        <img class="" width="100px" v-bind:src="require(`@/img/${picName.trailID}.png`)"  />
-                    
+                        <img class="" width="150px" 
+                        v-if='picName.trailID == 6000'
+                        src="../img/6000.png"  />
+
+                        <img class="" width="150px" 
+                        v-if='picName.trailID == 6001'
+                        src="../img/6001.png"  />
+
+                        <img class="" width="150px" 
+                        v-if='picName.trailID == 6002'
+                        src="../img/6002.png"  />
+
+                        <img class="" width="150px" 
+                        v-if='picName.trailID == 6003'
+                        src="../img/6003.png"  />
+                        
+                  
                     </div>
                     
 
@@ -110,10 +117,10 @@ export default {
             ],
             userTrails:[],
             trailPics:{
-                    6000: '../img/6000.png',
-                    6001: '../img/6001.png',
-                    6002:  '../img/6002.png',
-                    6003:  '../img/6003.png'
+                    6000: '@/img/6000.png',
+                    6001: '@/img/6001.png',
+                    6002:  '@/img/6002.png',
+                    6003:  '@/img/6003.png'
                  }
                 
             

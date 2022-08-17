@@ -2,8 +2,27 @@
   <div>
   <link href='https://fonts.googleapis.com/css?family=Leckerli One' rel='stylesheet'>
    <span id="title"><h1>{{trail.trailName}}</h1></span>
-   <div id="map">placeholder for map</div>
-   <span id="button-span"><button><p>I've Done This One!</p></button></span>
+   <div id="map">
+      <img class="" width="600px"  height="250px"
+              v-if="trail.trailName == 'Family Friendly'"
+              src="../img/FamilyFriendly.png"  />
+
+
+      <img class="" width="600px"  height="250px"
+              v-if="trail.trailName == 'Pet Friendly'"
+              src="../img/PetFriendly.png"  />
+              
+              <img class="" width="600px"  height="250px"
+              v-if="trail.trailName == 'Patio'"
+              src="../img/Patio.png"  />
+
+              <img class="" width="600px"  height="250px"
+              v-if="trail.trailName == 'Budget'"
+              src="../img/BudgetRoute.png"  />
+
+
+   </div>
+   <span id="button-span"><button v-bind:class="{ done: trailCompleted }" v-on:click="postCompleted()"><p>I've Done This One!</p></button></span>
    <div id="brewery-cards">
     <div id="card-a" class="card">
       <div id="header"><img src="../img/pin-A.png" id="pin"><h3>{{breweries[0].name}}</h3></div>
@@ -35,9 +54,28 @@ export default {
   
   data() {
     return {
-      trail: {trailName: undefined},
-      breweries: undefined
+      trail: {},
+      trailCompleted: false,
+      comp: {
+        trailID: undefined,
+        userID: undefined,
+      },
+      breweries: []
     }
+  },
+  methods:{
+      postCompleted(){
+              this.comp.trailID = this.$route.params.trailID;
+              this.comp.userID = this.$store.state.user.userId;
+
+
+            TrailAPI.createCompletedTrail(this.comp).then((response) =>{
+                if(response.status == 201){
+                  this.trailCompleted = true;
+                }
+
+            })
+      }
   },
 
   created() {
@@ -55,6 +93,10 @@ export default {
 </script>
 
 <style scoped>
+
+.done{
+  visibility: hidden;
+}
 
 #title{
   display: flex;
