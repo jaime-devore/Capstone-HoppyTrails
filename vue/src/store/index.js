@@ -43,7 +43,7 @@ export default new Vuex.Store({
         {
           name: 'Budget',
           id: 6003,
-          image: require('@/img/budget.png')
+          image: require('@/img/budgetroute.png')
         }
         
       ]
