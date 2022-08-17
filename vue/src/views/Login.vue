@@ -1,57 +1,5 @@
 <template>
-  <!-- <div id="login" class="container mx-auto">
-
-    <div class="card border-dark mb-3 mt-5 mx-auto w-50" >
-      <div class="card-header"><h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1></div>
-        <div class="card-body text-dark">
-
-        <form class="form-signin" @submit.prevent="login">
-          
-          <div
-            class="alert alert-danger"
-            role="alert"
-            v-if="invalidCredentials"
-          >Invalid username and password!</div>
-          <div
-            class="alert alert-success"
-            role="alert"
-            v-if="this.$route.query.registration"
-          >Thank you for registering, please sign in.</div>
-          <label for="username" class="sr-only">Username</label>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Username"
-            v-model="user.username"
-            required
-            autofocus
-          />
-          <label for="password" class="sr-only">Password</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Password"
-            v-model="user.password"
-            required
-          />
-
-          <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword3">
-            </div>
-          </div>
-          
-          <button type="submit">Sign in</button>
-          <router-link :to="{ name: 'register' }">Need an account?</router-link>
-        </form>
-
-        
-      </div>  
-    </div>  
-  </div> -->
+ 
       <div class="row">
 
 <!-- 
@@ -92,9 +40,7 @@
     <div class="d-flex justify-center" >
       <button class=" btn btn-success login-btn mx-auto" type="submit">Sign in</button>
     </div>
-    <div class="mt-2 ps-2 border border-danger rounded text-danger mx-auto text-center w-75" id="messages" v-show="invalidCredentials">
-      <i class="bi bi-exclamation-triangle-fill me-2"></i>
-      {{errorMsg}}</div>
+    
     <p class="mt-5 mb-3 text-muted"></p>
   </form>
 </div>

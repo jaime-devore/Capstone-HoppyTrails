@@ -2,7 +2,12 @@
   <div>
   <link href='https://fonts.googleapis.com/css?family=Leckerli One' rel='stylesheet'>
    <span id="title"><h1>{{trail.trailName}}</h1></span>
-   <div id="map">placeholder for map</div>
+   <div id="map">
+    
+        
+
+
+   </div>
    <span id="button-span"><button><p>I've Done This One!</p></button></span>
    <div id="brewery-cards">
     <div id="card-a" class="card">
