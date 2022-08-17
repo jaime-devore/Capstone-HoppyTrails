@@ -122,7 +122,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO review (brewery_id, rating, content) OUTPUT INSERTED.review_id VALUES (@BREWERYID, @RATING, @CONTENT)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO review (brewery_id, rating, content, date) OUTPUT INSERTED.review_id VALUES (@BREWERYID, @RATING, @CONTENT, GETDATE())", conn);
                     cmd.Parameters.AddWithValue("@BREWERYID", review.BreweryId);
                     cmd.Parameters.AddWithValue("@RATING", review.Rating);
                     cmd.Parameters.AddWithValue("@CONTENT", review.Content);
@@ -146,7 +146,7 @@ namespace Capstone.DAO
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
             review.Rating = Convert.ToDecimal(reader["rating"]);       
             review.Content = Convert.ToString(reader["content"]);
-            review.Date = Convert.ToDateTime(reader["date"]);
+            //review.Date = Convert.ToDateTime(reader["date"]);
 
             return review;
         }
@@ -159,8 +159,8 @@ namespace Capstone.DAO
             review.BreweryId = Convert.ToInt32(reader["brewery_id"]);
             review.Rating = Convert.ToDecimal(reader["rating"]);
             review.Content = Convert.ToString(reader["content"]);
-            review.Date = Convert.ToDateTime(reader["date"]);
-            review.BreweryName = Convert.ToString(reader["name"]);
+            //review.Date = Convert.ToDateTime(reader["date"]);
+            //review.BreweryName = Convert.ToString(reader["name"]);
 
             return review;
         }

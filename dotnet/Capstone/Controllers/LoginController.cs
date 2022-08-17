@@ -5,6 +5,7 @@ using Capstone.Security;
 using System.Collections.Generic;
 
 
+
 namespace Capstone.Controllers
 {
     [Route("[controller]")]
@@ -81,7 +82,8 @@ namespace Capstone.Controllers
 
             return Ok(user);
         }
-
+        
+        
         [HttpGet("/users/trails/{userID}")]
         public ActionResult<List<Trail>> GetTrailsByUserID(int userID)
         {
