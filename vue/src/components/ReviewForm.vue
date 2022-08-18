@@ -19,7 +19,7 @@
         <br/>
         <label for="review-body">Review:</label><br/>
         <input type="text" name="review-body" id="review-body" v-model="review.Content">
-        <button v-on:click.prevent="submitReview()">Submit!</button>
+        <button v-on:click.prevent="submitReview()">Submit!</button> <button v-on:click="cancelReview()">Cancel</button>
       </form>
   </div>
 </template>
@@ -44,6 +44,9 @@ export default {
     }, 
 
     methods: {
+        cancelReview(){
+            this.$router.push(`/brewerydetail/${this.$route.params.id}`);
+        },
         
         
         submitReview(){
@@ -57,11 +60,22 @@ export default {
            
             }
 
-            ReviewAPI.postNewReview(newReview).catch((response) => {
-                console.log(response);
+            ReviewAPI
+            .postNewReview(newReview)
+            .then(response=> {
+                if(response.status === 201){
+                    this.$router.push(`/brewerydetail/${this.$route.params.id}`);
+                }
+            })
+            .catch((error) => {
+                alert(
+                    "Review not created. Please sign in."
+                )
+                console.log(error);
+                this.$router.push({name: 'login'});
             })
 
-            this.$router.push(`/brewerydetail/${this.$route.params.id}`);
+            //this.$router.push(`/brewerydetail/${this.$route.params.id}`);
         }
 
     }
@@ -83,6 +97,7 @@ fieldset {
 }
 
 #review-body {
+    display: block;
     width: 95vw;
     height: 200px;
     border: 2px solid #2a453d;

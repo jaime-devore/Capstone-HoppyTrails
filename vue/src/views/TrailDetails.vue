@@ -56,6 +56,7 @@ export default {
     return {
       trail: {},
       trailCompleted: false,
+      completedTrails:[],
       comp: {
         trailID: undefined,
         userID: undefined,
@@ -64,6 +65,7 @@ export default {
     }
   },
   methods:{
+
       postCompleted(){
               this.comp.trailID = this.$route.params.trailID;
               this.comp.userID = this.$store.state.user.userId;
@@ -87,6 +89,8 @@ export default {
     TrailAPI.getTrailByTrailID(this.$route.params.trailID).then((response) => {
       this.trail = response.data;
     })
+
+    
 
   }
 }

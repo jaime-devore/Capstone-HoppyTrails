@@ -6,8 +6,10 @@ using Capstone.Models;
 using Capstone.DAO;
 
 
+
 namespace Capstone.Controllers
 {
+
     [Route("[controller]")]
     [ApiController]
     public class ReviewController : ControllerBase
@@ -18,7 +20,6 @@ namespace Capstone.Controllers
         public ReviewController(IReviewDAO _reviewDao)
         {
             reviewDao = _reviewDao;
-          
         }
 
         [HttpGet()]
@@ -46,6 +47,7 @@ namespace Capstone.Controllers
 
             return Ok(allReviews);
         }
+
 
         [HttpPost()]
         public ActionResult<Review> CreateNewReview(Review review)

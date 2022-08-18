@@ -32,9 +32,9 @@
         <div class="reviews">
             <div class="button-div">
         <button class="button" v-on:click="forceSignIn()">
-          <router-link v-bind:to="{name: 'reviewformdisplay', params: {id: brewery.breweryId}}">
+          <!--<router-link v-bind:to="{name: 'reviewformdisplay', params: {id: brewery.breweryId}}">-->
       <span class= "link-button">Leave A Review</span>
-          </router-link>
+          <!--</router-link>-->
       </button>
             </div>
             
@@ -65,10 +65,13 @@ export default {
   },
   methods:{
       forceSignIn(){
-          if(this.$store.state.user == {}){
-              this.$route.push(`/login`);
+          if(this.$store.state.token === ''){
+              alert(
+                  "You must log into your account to leave a review."
+              )
+              this.$router.push({name: 'login'});
           } else {
-              this.$route.push(`/brewerydetail/${this.$route.params.id}/reviewformdisplay`)
+              this.$router.push(`/brewerydetail/${this.$route.params.id}/reviewformdisplay`)
           }
       }
   },
