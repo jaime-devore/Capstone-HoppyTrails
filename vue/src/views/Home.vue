@@ -6,6 +6,7 @@
       <div class="aboutimg"></div>
       <div class="description">
         <img class="aboutus" src="../img/About Us.png" alt="">
+        <h3><i>Hoppy</i> trails, beer lover!</h3>
         <h4 class="words">Having a thriving local beer scene is key to any growing city. By drinking locally brewed beer you're keeping money within your community and supporting jobs within your town. That is why we have created a way to enjoy them based on what makes them so great.</h4>
       </div>
       <div class="breweries">
@@ -150,6 +151,8 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+
+
 .breweries-logo-img{
   width: 275px;
   margin-left: auto;
@@ -161,7 +164,8 @@ export default {
   margin-right: auto;
 }
 .words{
-padding: 40px
+padding: 40px;
+padding-top: 0px;
 }
 .breweries{
   height: 60vh;
