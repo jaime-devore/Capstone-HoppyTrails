@@ -88,8 +88,10 @@
             </div>
             <p class="mt-5 mb-3 text-muted"></p>
           </form>
+          <footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
         </div>
-
      </div>
 </template>
 
@@ -146,5 +148,9 @@ export default {
 <style scoped>
 .login-btn{
   background-color: #2a453d !important;
+}
+.footer{
+    text-align: center;
+padding-top: 10px;
 }
 </style>

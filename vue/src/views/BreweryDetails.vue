@@ -13,6 +13,8 @@
                 <p><i class="bi bi-telephone-fill"></i><span class="fw-bold" >  PHONE: </span>{{brewery.phoneNumber}}</p>
                 <p><i class="bi bi-laptop"></i><span class="fw-bold" > WEBSITE: </span>{{brewery.webSite}}</p>
                 <p><i class="bi bi-building"></i><span class="fw-bold" > ADDRESS:</span> {{brewery.address}}</p>
+                <p><i class="bi bi-building"></i><span class="fw-bold" > CITY:</span> {{brewery.city}}</p>
+                <p><i class="bi bi-building"></i><span class="fw-bold" > ZIP:</span> {{brewery.zipCode}}</p>
             </div>
         </div>
      
