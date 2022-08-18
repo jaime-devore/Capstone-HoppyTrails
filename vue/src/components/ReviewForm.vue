@@ -93,12 +93,17 @@ export default {
                 }
             })
             .catch((error) => {
+                if(newReview.UserId == null){
                 alert(
                     "Review not created. Please sign in."
                 )
                 console.log(error);
                 this.$router.push({name: 'login'});
-            })
+                }
+                else{
+                    alert("Review not created.")
+                }
+        })
 
             //this.$router.push(`/brewerydetail/${this.$route.params.id}`);
         }
