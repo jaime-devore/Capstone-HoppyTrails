@@ -1,38 +1,50 @@
 <template>
-  <div id = "full-review-field">
-      
-      <h4 id="review-header"> Leave them a review!</h4>
-      <form>
-        <label for="rating" id="starlabel">Star Rating:</label><br/>
-        <fieldset class="rate">
-            <input type="radio" id="rating10" name="rating" value="10" v-model="review.Rating" /><label for="rating10" title="5 stars"></label>
-            <input type="radio" id="rating9" name="rating" value="9" v-model="review.Rating" /><label class="half" for="rating9" title="4 1/2 stars"></label>
-            <input type="radio" id="rating8" name="rating" value="8" v-model="review.Rating" /><label for="rating8" title="4 stars"></label>
-            <input type="radio" id="rating7" name="rating" value="7" v-model="review.Rating" /><label class="half" for="rating7" title="3 1/2 stars"></label>
-            <input type="radio" id="rating6" name="rating" value="6" v-model="review.Rating" /><label for="rating6" title="3 stars"></label>
-            <input type="radio" id="rating5" name="rating" value="5" v-model="review.Rating" /><label class="half" for="rating5" title="2 1/2 stars"></label>
-            <input type="radio" id="rating4" name="rating" value="4" v-model="review.Rating" /><label for="rating4" title="2 stars"></label>
-            <input type="radio" id="rating3" name="rating" value="3" v-model="review.Rating" /><label class="half" for="rating3" title="code1 1/2 stars"></label>
-            <input type="radio" id="rating2" name="rating" value="2" v-model="review.Rating" /><label for="rating2" title="1 star"></label>
-            <input type="radio" id="rating1" name="rating" value="1" v-model="review.Rating" /><label class="half" for="rating1" title="1/2 star"></label>
-        </fieldset>
-        <br/>
-        <label for="review-body">Review:</label><br/>
-        <input type="text" name="review-body" id="review-body" v-model="review.Content">
-        <button v-on:click.prevent="submitReview()">Submit!</button> <button v-on:click="cancelReview()">Cancel</button>
-      </form>
-  </div>
+  <div id = "row">
+      <div class="w-50 mx-auto mt-5 border border-dark rounded " >
+        <h1 class="h3 mb-3 fw-normal mx-auto text-center"> Leave them a review!</h1>
+        <form class="p-4">
+            <label for="rating" id="starlabel">Star Rating:</label><br/>
+            <fieldset class="rate">
+                <input type="radio" id="rating10" name="rating" value="10" v-model="review.Rating" /><label for="rating10" title="5 stars"></label>
+                <input type="radio" id="rating9" name="rating" value="9" v-model="review.Rating" /><label class="half" for="rating9" title="4 1/2 stars"></label>
+                <input type="radio" id="rating8" name="rating" value="8" v-model="review.Rating" /><label for="rating8" title="4 stars"></label>
+                <input type="radio" id="rating7" name="rating" value="7" v-model="review.Rating" /><label class="half" for="rating7" title="3 1/2 stars"></label>
+                <input type="radio" id="rating6" name="rating" value="6" v-model="review.Rating" /><label for="rating6" title="3 stars"></label>
+                <input type="radio" id="rating5" name="rating" value="5" v-model="review.Rating" /><label class="half" for="rating5" title="2 1/2 stars"></label>
+                <input type="radio" id="rating4" name="rating" value="4" v-model="review.Rating" /><label for="rating4" title="2 stars"></label>
+                <input type="radio" id="rating3" name="rating" value="3" v-model="review.Rating" /><label class="half" for="rating3" title="code1 1/2 stars"></label>
+                <input type="radio" id="rating2" name="rating" value="2" v-model="review.Rating" /><label for="rating2" title="1 star"></label>
+                <input type="radio" id="rating1" name="rating" value="1" v-model="review.Rating" /><label class="half" for="rating1" title="1/2 star"></label>
+            </fieldset>
+            <div class="form-floating">
+                <label for="review-body">Review:</label>
+                <!-- <input type="text" name="review-body" id="review-body" v-model="review.Content"> -->
+                <textarea class="form-control" 
+                    id="reviewContentArea" 
+                    v-model="review.Content"
+                    rows="10">
+                </textarea>
+            </div>
+            <div class="container mt-3">
+                <button v-on:click.prevent="submitReview()" class="btn rounded-pill btn-outline-dark">Submit!</button> 
+                <button v-on:click="cancelReview()"  class="btn rounded-pill btn-outline-dark">Cancel</button>
+            </div>
+        </form>
+      </div><!-- form container -->
+  </div><!-- end of root row -->
 </template>
 
 <script>
 
 import ReviewAPI from '../services/ReviewService'
+import BreweryAPI from "../services/BreweryService"
 
 export default {
     name: "review-form",
 
     data(){
         return{
+        brewery: {},
         review:{
   
             BreweryId: this.$route.params.id,
@@ -42,6 +54,11 @@ export default {
         }
       }
     }, 
+    created(){
+            BreweryAPI.getBreweryById(this.$route.params.id).then((response) => {
+            this.brewery = response.data;
+        })
+    },
 
     methods: {
         cancelReview(){
@@ -83,6 +100,19 @@ export default {
 </script>
 
 <style>
+#reviewContentArea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+/* 
 
 form{
     margin-left: 10px;
@@ -113,7 +143,7 @@ fieldset {
     margin-left: 10px;
     margin-right: 10px;
 
-}
+} */
 /* Base setup */
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 

@@ -18,6 +18,7 @@
           id="floatingInput" 
           placeholder="Username" 
           v-model="user.username"
+          v-on:click="clearErrorMsg()"
           required
         />
       <label for="floatingInput">Username</label>
@@ -29,10 +30,16 @@
           id="floatingPassword" 
           placeholder="Password" 
           v-model="user.password"
+          v-on:click="clearErrorMsg()"
           required
       />
       <label for="floatingPassword">Password</label>
     </div>
+    <div class="container border border-danger text-danger " v-if="errorMsg">
+      <span class=""><i class="bi bi-exclamation-triangle-fill"></i></span>
+      <span class="text">Username or Password Incorrect</span>
+
+      </div>
 
     <div class="checkbox mb-3">
       <p class="text-center"><router-link :to="{ name: 'register' }">Need an account?</router-link></p>
@@ -44,11 +51,7 @@
     <p class="mt-5 mb-3 text-muted"></p>
   </form>
 </div>
-<div class="container border border-warning text-warning">
-<span class=""><i class="bi bi-exclamation-triangle-fill"></i></span>
-<span></span>
 
-</div>
 
 </div><!--end of LOGIN row-->
 </template>
@@ -66,10 +69,14 @@ export default {
         password: ""
       },
       invalidCredentials: false,
-      errorMsg: "",
+      errorMsg: false,
     };
   },
   methods: {
+    clearErrorMsg(){
+      this.errorMsg = false;
+    },
+    
     login() {
       authService
         .login(this.user)
@@ -85,7 +92,7 @@ export default {
             
           if (response.status === 401) {
             this.invalidCredentials = true;
-            this.errorMsg = 'Username or Password Incorrect';
+            this.errorMsg = true;
           }
         });
     }
