@@ -30,12 +30,18 @@
     
     
         <div class="reviews">
-            <div>
-                <review-form/>
+            <div class="button-div">
+        <button class="button" v-on:click="forceSignIn()">
+          <!--<router-link v-bind:to="{name: 'reviewformdisplay', params: {id: brewery.breweryId}}">-->
+      <span class= "link-button">Leave A Review</span>
+          <!--</router-link>-->
+      </button>
             </div>
+            
+
             <div id="reviews-section">
                 <h5> Reviews From Other Hoppers </h5>
-                <review-card/>
+                <review-card />
             </div>
         </div>
   
@@ -43,18 +49,30 @@
 </template>
 
 <script>
-import ReviewForm from '../components/ReviewForm.vue';
+
 import ReviewCard from '../components/ReviewCard.vue'
 import BreweryAPI from "../services/BreweryService"
 
 export default {
   name: "brewerydetail",
-  components: { ReviewForm, ReviewCard },
+  components: { ReviewCard },
 
   data(){
       return{
           brewery: {},
           beer: []
+      }
+  },
+  methods:{
+      forceSignIn(){
+          if(this.$store.state.token === ''){
+              alert(
+                  "You must log into your account to leave a review."
+              )
+              this.$router.push({name: 'login'});
+          } else {
+              this.$router.push(`/brewerydetail/${this.$route.params.id}/reviewformdisplay`)
+          }
       }
   },
 
@@ -171,5 +189,53 @@ export default {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: white;
+  border: none;
+  color: #2a453d;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border: 5px solid #2a453d;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.button-div{
+  display: flex;
+  justify-content: space-around;
+}
+.link-button{
+  color: #2a453d
 }
 </style>

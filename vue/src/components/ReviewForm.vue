@@ -1,5 +1,6 @@
 <template>
   <div id = "full-review-field">
+      
       <h4 id="review-header"> Leave them a review!</h4>
       <form>
         <label for="rating" id="starlabel">Star Rating:</label><br/>
@@ -18,7 +19,7 @@
         <br/>
         <label for="review-body">Review:</label><br/>
         <input type="text" name="review-body" id="review-body" v-model="review.Content">
-        <button v-on:click.prevent="submitReview()">Submit!</button>
+        <button v-on:click.prevent="submitReview()">Submit!</button> <button v-on:click="cancelReview()">Cancel</button>
       </form>
   </div>
 </template>
@@ -43,8 +44,13 @@ export default {
     }, 
 
     methods: {
+        cancelReview(){
+            this.$router.push(`/brewerydetail/${this.$route.params.id}`);
+        },
+        
         
         submitReview(){
+            
             let newReview = {
             ReviewId: 0,
             BreweryId: Number(this.$route.params.id),
@@ -53,9 +59,23 @@ export default {
             UserId: Number(this.$store.state.user.userId)
            
             }
-            ReviewAPI.postNewReview(newReview).catch((response) => {
-                console.log(response);
+
+            ReviewAPI
+            .postNewReview(newReview)
+            .then(response=> {
+                if(response.status === 201){
+                    this.$router.push(`/brewerydetail/${this.$route.params.id}`);
+                }
             })
+            .catch((error) => {
+                alert(
+                    "Review not created. Please sign in."
+                )
+                console.log(error);
+                this.$router.push({name: 'login'});
+            })
+
+            //this.$router.push(`/brewerydetail/${this.$route.params.id}`);
         }
 
     }
@@ -77,6 +97,7 @@ fieldset {
 }
 
 #review-body {
+    display: block;
     width: 95vw;
     height: 200px;
     border: 2px solid #2a453d;
@@ -128,11 +149,11 @@ fieldset {
 }
 /* Click + hover color */
 input:checked ~ label, /* color current and previous stars on checked */
-label:hover, label:hover ~ label { color: #73B100;  } /* color previous stars on hover */
+label:hover, label:hover ~ label { color: #fff407;  } /* color previous stars on hover */
 
 /* Hover highlights */
 input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
 input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
-label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #A6E72D;  } 
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #ffc107;  } 
 
 </style>

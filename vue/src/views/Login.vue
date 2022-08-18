@@ -44,6 +44,11 @@
     <p class="mt-5 mb-3 text-muted"></p>
   </form>
 </div>
+<div class="container border border-warning text-warning">
+<span class=""><i class="bi bi-exclamation-triangle-fill"></i></span>
+<span></span>
+
+</div>
 
 </div><!--end of LOGIN row-->
 </template>
