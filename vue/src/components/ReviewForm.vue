@@ -1,6 +1,14 @@
 <template>
   <div id = "row">
       <div class="w-50 mx-auto mt-5 border border-dark rounded " >
+        <div class="bg-HunterGreen">
+            
+            <h3 class="text-white p-3 text-center">
+                <img class="img-thumbnail" v-bind:src="brewery.logo" width="48px" />
+                
+                {{brewery.name}}
+            </h3>
+        </div>
         <h1 class="h3 mb-3 fw-normal mx-auto text-center"> Leave them a review!</h1>
         <form class="p-4">
             <label for="rating" id="starlabel">Star Rating:</label><br/>
@@ -26,7 +34,7 @@
                 </textarea>
             </div>
             <div class="container mt-3">
-                <button v-on:click.prevent="submitReview()" class="btn rounded-pill btn-outline-dark">Submit!</button> 
+                <button v-on:click.prevent="submitReview()" class=" me-3 btn rounded-pill btn-outline-dark">Submit!</button> 
                 <button v-on:click="cancelReview()"  class="btn rounded-pill btn-outline-dark">Cancel</button>
             </div>
         </form>
@@ -112,38 +120,10 @@ export default {
   resize: none;
 }
 
-/* 
 
-form{
-    margin-left: 10px;
+.bg-HunterGreen{
+ background-color: #2a453d;
 }
-
-label {
-    font-weight: bold;
-}
-
-fieldset {
-    margin-bottom: -10px;
-}
-
-#review-body {
-    display: block;
-    width: 95vw;
-    height: 200px;
-    border: 2px solid #2a453d;
-    border-radius: 25px;
-    margin-bottom: 20px;
-}
-
-#review-header {
-    display: block;
-    padding-top: 10px;
-    margin-top: 10px;
-    border-top: dashed 4px #2a453d;
-    margin-left: 10px;
-    margin-right: 10px;
-
-} */
 /* Base setup */
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -178,12 +158,12 @@ fieldset {
     padding-right: 0;
 }
 /* Click + hover color */
-input:checked ~ label, /* color current and previous stars on checked */
-label:hover, label:hover ~ label { color: #fff407;  } /* color previous stars on hover */
+.rate input:checked ~ label, /* color current and previous stars on checked */
+.rate label:hover, label:hover ~ label { color: #fff407;  } /* color previous stars on hover */
 
 /* Hover highlights */
-input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
-input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
-label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #ffc107;  } 
+.rate input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+.rate input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+.rate label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #ffc107;  } 
 
 </style>
