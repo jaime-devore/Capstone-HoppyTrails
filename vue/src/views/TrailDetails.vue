@@ -1,6 +1,30 @@
 <template>
   <div>
    <span id="title"><h1>{{trail.trailName}}</h1></span>
+
+<div class="container d-flex justify-content-center my-2">
+      <span class="me-2 " v-if="trailCompleted">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+          <circle class="path circle" fill="none" stroke="#2a453d" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+          <polyline class="path check" fill="none" stroke="#2a453d" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+        </svg>
+      </span>
+
+      <span id="button-span">
+        <button class="btn rounded-pill done" disabled v-if="trailCompleted">
+              I've Done This One!
+            </button>
+          <button class="text-white btn rounded-pill" 
+            v-else
+            v-on:click="postCompleted()">
+              Mark As Completed
+            </button>
+            
+        </span>
+   </div>
+
+
+
    <div id="map">
       <img class="" width="1500px"  height="auto"
               v-if="trail.trailName == 'Family Friendly'"
@@ -21,27 +45,7 @@
 
 
    </div>
-   <div class="container d-flex justify-content-center">
-      <span class="me-2 " v-if="trailCompleted">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-          <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-          <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
-        </svg>
-      </span>
-
-      <span id="button-span">
-        <button class="btn rounded-pill text-white done" disabled v-if="trailCompleted">
-              I've Done This One!
-            </button>
-          <button class="text-white btn rounded-pill" 
-            v-else
-            v-on:click="postCompleted()">
-              Mark As Completed
-            </button>
-            
-        </span>
-   </div>
-
+   
    <div id="brewery-cards">
     <div id="card-a" class="card">
       <div id="header"><img src="../img/pin-A.png" id="pin"><h3>{{breweries[0].name}}</h3></div>
@@ -139,6 +143,7 @@ export default {
 
 svg {
   width: 38px;
+  fill: #2a453d;
 }
 
 .path {
@@ -163,7 +168,9 @@ svg {
 .done{
   /* visibility: hidden; */
   background-color: darkgray !important;
-  color: white;
+  color: #2a453d;
+  opacity: 1
+  
 }
 
 #title{
