@@ -50,6 +50,9 @@
     
     <p class="mt-5 mb-3 text-muted"></p>
   </form>
+  <footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
 </div>
 
 
@@ -105,5 +108,9 @@ export default {
 }
 .field:invalid {
     border-color:#f00;
+}
+.footer{
+    text-align: center;
+padding-top: 10px;
 }
 </style>

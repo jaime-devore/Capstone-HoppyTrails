@@ -87,7 +87,9 @@
 
     </div>
 </div>
-
+<footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
     </div><!--end of root container-->
   
 </template>
@@ -167,5 +169,9 @@ padding: 5px 0 5px 16px;
 width: 100%;
 margin-bottom: 0;
 font-family: 'Leckerli One', cursive;
+}
+.footer{
+    text-align: center;
+padding-top: 10px;
 }
 </style>
