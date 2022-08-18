@@ -25,13 +25,26 @@
                 <input type="radio" id="rating1" name="rating" value="1" v-model="review.Rating" /><label class="half" for="rating1" title="1/2 star"></label>
             </fieldset>
             <div class="form-floating">
-                <label for="review-body">Review:</label>
-                <!-- <input type="text" name="review-body" id="review-body" v-model="review.Content"> -->
+                <!-- <label for="review-body">Review:</label>
+                
                 <textarea class="form-control" 
                     id="reviewContentArea" 
                     v-model="review.Content"
                     rows="10">
-                </textarea>
+                </textarea> -->
+
+            <div class="form-floating">
+                <textarea class="form-control"  
+                    v-model="review.Content"
+                placeholder="Leave a comment here" 
+                id="review-body" 
+                style="height: 100px"></textarea>
+                <label for="review-body">Comments</label>
+            </div>
+
+
+
+
             </div>
             <div class="container mt-3">
                 <button v-on:click.prevent="submitReview()" class=" me-3 btn rounded-pill btn-outline-dark">Submit!</button> 
@@ -108,7 +121,7 @@ export default {
 </script>
 
 <style>
-#reviewContentArea {
+#review-body {
   width: 100%;
   height: 150px;
   padding: 12px 20px;
