@@ -30,7 +30,7 @@
               
         </div><!-- end of nav menu container-->
       </nav>
-            <div class=" ">
+            <div class="mt-1">
         <router-link to="/" class="">
         <img src="../img/MainLogoGrayHop.png" alt="logo" class="img-responsive" height="50px">
         </router-link>
