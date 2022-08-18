@@ -99,7 +99,7 @@ export default {
             
             })}
             else{
-              alert("Please sign in.")
+              this.$router.push({name: 'login'});
             }
       }
   },
