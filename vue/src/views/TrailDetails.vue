@@ -165,13 +165,13 @@ svg {
 
 #title{
   display: flex;
-  font-family: 'Leckerli One';
+
   color: #2a453d;
   justify-content: center;
 }
 
 #title > h1{
-  background-color: rgb(224, 236, 224);
+
   padding: 8px;
   border-radius: 20px;
 }
@@ -238,14 +238,18 @@ svg {
 #header{
   display: flex;
   flex-direction: row;
-  background-color: rgb(224, 236, 224);
+  background-color: #2a453d;
   align-items: center;
   justify-content: center;
   padding: 15px;
   margin: 0px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   border-bottom: 4px solid #2a453d;
+}
+
+#header > h3 {
+  color: white
 }
 
 #pin{
