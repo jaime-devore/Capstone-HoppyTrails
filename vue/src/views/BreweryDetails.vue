@@ -17,11 +17,11 @@
         </div>
      
         <div class="about">
-            <h2>About</h2>
+            <h1>About</h1>
             <p id="about-section">{{brewery.about}}</p>
         </div>
         <div class="beer">
-            <h2>Featured Beers</h2>
+            <h1>Featured Beers</h1>
             <ul class="beer-list">
                 <li v-for="b in beer" v-bind:key="b.beerid"> <strong>{{b.name}}</strong> -- {{b.type}} -- {{b.abv}}% ABV </li>
             </ul>
@@ -92,7 +92,7 @@ export default {
 <style scoped>
 .brewery-details{
     
-    padding: 7px;
+    
     display: grid;
     grid-auto-columns: 1fr 1fr;
     height: 100fr;
@@ -100,7 +100,8 @@ export default {
     "picture picture"
     "info info"
     "beer about"
-    "reviews reviews";
+    "reviews reviews"
+    "footer footer";
     gap: 7px;
 }
 .picture{
@@ -110,6 +111,7 @@ export default {
 .info{
     grid-area: info;
 }
+
 .beer{
     grid-area: beer;
     height: 60vh;
@@ -147,19 +149,41 @@ export default {
 .reviews{
     grid-area: reviews;
 }
-.brewery-details h2{
-    font-family: 'Leckerli One';
-    
+.footer{
+    grid-area: footer;
+    text-align: center;
+padding-top: 10px;
 }
-
+@media screen and (max-width: 768px) {
+    .brewery-details{
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "picture"
+            "info"
+            "about"
+            "beer"
+            "reviews"
+            "footer";
+    }
+}
+    #info-block > h1{
+        font-size: 75px;
+    }
+.about h1{
+    font-family: 'Leckerli One';  
+}
+.beer h1{
+    font-family: 'Leckerli One'
+}
 .beer-list{
     list-style: none;
     font-size: x-large;
 }
 #quick-info {
-    padding-top: 15px;
+    
     display: block;
     text-align: center;
+    padding-bottom: 17px;
 }
 #quick-info > p {
     display: inline;
@@ -200,7 +224,7 @@ export default {
   text-align: center;
   font-size: 28px;
   padding: 20px;
-  width: 200px;
+  width: auto;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;

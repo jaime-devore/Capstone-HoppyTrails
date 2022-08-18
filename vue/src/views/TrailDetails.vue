@@ -2,22 +2,22 @@
   <div>
    <span id="title"><h1>{{trail.trailName}}</h1></span>
    <div id="map">
-      <img class="" width="600px"  height="250px"
+      <img class="" width="1500px"  height="auto"
               v-if="trail.trailName == 'Family Friendly'"
-              src="../img/familyfriendly.png"  />
+              src="../img/familyfriendlynew.png"  />
 
 
-      <img class="" width="600px"  height="250px"
+      <img class="" width="1300px"  height="auto"
               v-if="trail.trailName == 'Pet Friendly'"
-              src="../img/PetFriendly.png"  />
+              src="../img/PetFriendlynew.png"  />
               
-              <img class="" width="600px"  height="250px"
+              <img class="" width="1300px"  height="auto"
               v-if="trail.trailName == 'Patio'"
-              src="../img/Patio.png"  />
+              src="../img/Pationew.png"  />
 
-              <img class="" width="600px"  height="250px"
+              <img class="" width="1300px"  height="auto"
               v-if="trail.trailName == 'Budget'"
-              src="../img/budgetroute.png"  />
+              src="../img/budgetroutenew.png"  />
 
 
    </div>
@@ -60,6 +60,9 @@
       <div id="logo"><router-link v-bind:to="{name: 'brewerydetail', params: {id: breweries[3].breweryId}}"><img :src="breweries[3].logo" width="200px"></router-link></div>
     </div>
    </div>
+   <footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
   </div>
 </template>
 
@@ -264,7 +267,10 @@ svg {
   object-fit: cover;
   border-radius: 20px;
 }
-
+.footer{
+    text-align: center;
+padding-top: 10px;
+}
 
 
 @-webkit-keyframes dash {
