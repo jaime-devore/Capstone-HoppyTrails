@@ -90,14 +90,17 @@ export default {
       postCompleted(){
               this.comp.trailID = this.$route.params.trailID;
               this.comp.userID = this.$store.state.user.userId;
-
+            if(this.comp.userID != null){
 
             TrailAPI.createCompletedTrail(this.comp).then((response) =>{
                 if(response.status == 201){
                   this.trailCompleted = true;
                 }
-
-            })
+            
+            })}
+            else{
+              alert("Please sign in.")
+            }
       }
   },
 
