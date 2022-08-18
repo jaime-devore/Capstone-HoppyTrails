@@ -10,6 +10,7 @@ import Trails from '../views/Trails.vue'
 import BreweryDetail from '../views/BreweryDetails'
 import TrailDetails from '../views/TrailDetails'
 import Account from '../views/Account'
+import ReviewFormDisplay from '../views/ReviewFormDisplay'
 
 
 Vue.use(Router)
@@ -93,6 +94,11 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/brewerydetail/:id/reviewformdisplay",
+      name: "reviewformdisplay",
+      component: ReviewFormDisplay
+    }
   ]
 })
 
