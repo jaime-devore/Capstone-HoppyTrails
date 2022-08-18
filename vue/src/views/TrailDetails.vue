@@ -11,7 +11,7 @@
       </span>
 
       <span id="button-span">
-        <button class="btn rounded-pill text-white done" disabled v-if="trailCompleted">
+        <button class="btn rounded-pill done" disabled v-if="trailCompleted">
               I've Done This One!
             </button>
           <button class="text-white btn rounded-pill" 
@@ -165,7 +165,9 @@ svg {
 .done{
   /* visibility: hidden; */
   background-color: darkgray !important;
-  color: white;
+  color: #2a453d;
+  opacity: 1
+  
 }
 
 #title{
