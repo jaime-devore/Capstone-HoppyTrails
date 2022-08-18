@@ -9,11 +9,11 @@
 
       <img class="" width="600px"  height="250px"
               v-if="trail.trailName == 'Pet Friendly'"
-              src="../img/PetFriendly.png"  />
+              src="../img/petfriendly.png"  />
               
               <img class="" width="600px"  height="250px"
               v-if="trail.trailName == 'Patio'"
-              src="../img/Patio.png"  />
+              src="../img/patio.png"  />
 
               <img class="" width="600px"  height="250px"
               v-if="trail.trailName == 'Budget'"
