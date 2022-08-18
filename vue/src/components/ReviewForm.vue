@@ -128,11 +128,11 @@ fieldset {
 }
 /* Click + hover color */
 input:checked ~ label, /* color current and previous stars on checked */
-label:hover, label:hover ~ label { color: #73B100;  } /* color previous stars on hover */
+label:hover, label:hover ~ label { color: #fff407;  } /* color previous stars on hover */
 
 /* Hover highlights */
 input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
 input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
-label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #A6E72D;  } 
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #ffc107;  } 
 
 </style>
