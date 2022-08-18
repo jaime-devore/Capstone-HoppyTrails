@@ -83,8 +83,12 @@
   </div><!--- END of BS row --->
 
 
-    
+    <footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
   </div><!-- end of root div --->
+
+  
 </template>
 
 <script>
@@ -200,5 +204,9 @@ export default {
 
 .brewery-card-body{
   padding: 8px;
+}
+.footer{
+    text-align: center;
+padding-top: 10px;
 }
 </style>

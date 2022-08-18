@@ -62,7 +62,9 @@
 
 
 
-
+<footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
   </div>
 </template>
 
@@ -110,5 +112,8 @@ export default {
   font-size: 300%;
   font-family: 'Leckerli One';
 }
-
+.footer{
+    text-align: center;
+padding-top: 10px;
+}
 </style>

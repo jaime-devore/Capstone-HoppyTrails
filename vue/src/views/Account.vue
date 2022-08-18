@@ -1,23 +1,22 @@
 <template>
     <div class="container">
         <div class="row w-75 mx-auto">
-            <h3 class="legend1 rounded-top mx-auto">
+            <h3 class="legend1 rounded-top mx-auto fs-2">
                 <img class="image" src="../img/Hop-Only-White.png"  width="42px" />
                 Account Details
             </h3>
             <fieldset class="ht-fieldset border  border-dark rounded">
                 
                 <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">
-                    <i class="bi bi-person-circle fs-4"></i>
-                    UserName:
-                </label>
-                <span class="ms-3">{{$store.state.user.username}}</span>
-                <input type="text" class="form-control visually-hidden" 
-                    id="formGroupExampleInput" v-bind:value="$store.state.user.username">
+                    <span for="formGroupExampleInput" class="fw-bold fs-4">
+                        <i class="bi bi-person-circle fs-4"></i>
+                        UserName:
+                    </span>
+                    <span class="ms-3 fw-semibold fs-4">{{$store.state.user.username}}</span>
+                    
                 </div>
                 
-                <div class="py-1">
+                <div class="py-1 fs-4 text-center">
                     <i class="bi bi-sign-turn-right fs-4"></i>
                     <span class="fw-bold px-2" >Trails Completed: </span>
                     <!-- <span class="text-small" >x, y, z</span> -->
@@ -88,7 +87,9 @@
 
     </div>
 </div>
-
+<footer class="footer">
+        <p>© BrewHaHa LLC, 2022</p>
+      </footer>
     </div><!--end of root container-->
   
 </template>
@@ -168,5 +169,9 @@ padding: 5px 0 5px 16px;
 width: 100%;
 margin-bottom: 0;
 font-family: 'Leckerli One', cursive;
+}
+.footer{
+    text-align: center;
+padding-top: 10px;
 }
 </style>
