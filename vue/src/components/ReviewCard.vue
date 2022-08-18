@@ -1,11 +1,54 @@
 <template>
   <div>
-      <div v-for="r in review" v-bind:key="r.id" id="card">
+      <!-- <div v-for="r in review" v-bind:key="r.id" id="card">
         <div id="username-display">{{ usernameDisplay(r.reviewId) }}</div>
         <span v-for="n in getStars(r)" v-bind:key="n"><i class="bi bi-star-fill"></i></span>
         <span v-if="getHalfStars(r)"><i class="bi bi-star-half"></i></span>
         <div> {{ r.content }} </div>
-      </div>
+      </div> -->
+
+
+  <div class="row">
+    <div class="col-lg-4 mb-2" v-for="r in review" v-bind:key="r.id">
+
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="">
+                    <img v-bind:src="'https://avatars.dicebear.com/api/bottts/'+ usernameDisplay(r.reviewId) +'.svg'"
+                        width="54px" height="54px" alt="avatar" 
+                        class="border border-dark border-3 rounded-circle p-1 align-center me-4"     
+                    />
+                    {{ usernameDisplay(r.reviewId) }}
+                </h5>
+            </div>
+            <div class="card-body">
+                
+                <h6 class="card-subtitle mb-2 d-flex justify-content-between ">
+                    <span class="text-muted">{{new Date(r.date).toDateString()}}</span>
+                    <div id="star-container">
+                        <span v-for="n in getStars(r)" v-bind:key="n" class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                        </span>
+                        <span v-if="getHalfStars(r)" class="text-warning">
+                            <i class="bi bi-star-half"></i>
+                        </span>
+                    </div>
+                </h6>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p class="fs-6"><q>{{r.content}}</q></p>
+                    </blockquote>
+                    <!-- <figcaption class="blockquote-footer mt-3">
+                        {{ usernameDisplay(r.reviewId) }}
+                    </figcaption> -->
+                </figure>
+            </div>
+        </div>
+
+    </div>
+</div>
+
   </div>
 </template>
 
@@ -70,7 +113,7 @@ export default {
 
 <style>
 
-div #card {
+/* div #card {
   border-radius: 25px;
   border: 2px solid #2a453d;
   margin: 10px;
@@ -83,7 +126,7 @@ div #card {
 #username-display{
     font-weight: bold;
     text-decoration: underline;
-}
+} */
 
 </style>
 

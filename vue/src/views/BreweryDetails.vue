@@ -41,7 +41,7 @@
 
             <div id="reviews-section">
                 <h5> Reviews From Other Hoppers </h5>
-                <review-card/>
+                <review-card />
             </div>
         </div>
   
