@@ -12,5 +12,9 @@ getUser(reviewID){
 
 getAllReviewsByUserId(userID){
     return axios.get(`/review/users/${userID}`)
+},
+
+postNewReview(review){
+    return axios.post(`/review`, review)
 }
 }

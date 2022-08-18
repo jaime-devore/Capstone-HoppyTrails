@@ -30,10 +30,5 @@ namespace Capstone.Controllers
         {
             return Ok(trailDao.GetTrailByTrailID(trailID));
         }
-
-
-
-
-
     }
 }

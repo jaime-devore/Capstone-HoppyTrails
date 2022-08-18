@@ -20,9 +20,9 @@
                   <li class="nav-item text-nowrap">
                     <router-link to="/trails" class="nav-link">See All Trails</router-link>
                   </li>
-              <li class="nav-item text-nowrap">
+              <!-- <li class="nav-item text-nowrap">
                     <a class="nav-link" href="#">Find A Brewery Near You</a>
-                  </li>
+                  </li> -->
 
                 </ul>
 
@@ -32,7 +32,7 @@
       </nav>
             <div class=" ">
         <router-link to="/" class="">
-        <img src="../img/MainLogoFlat.png" alt="logo" class="img-responsive" height="50px">
+        <img src="../img/MainLogoGrayHop.png" alt="logo" class="img-responsive" height="50px">
         </router-link>
       </div>
     </div>
@@ -55,8 +55,8 @@
 
 
         <span class="signInUp" v-else>
-        <router-link class="btn text-white bg-HunterGreen rounded-pill me-md-2" to="register" >Sign Up</router-link>
-        <router-link class="btn btn-outline-dark rounded-pill" to="login">Log In</router-link>
+        <router-link class="btn text-white bg-HunterGreen rounded-pill me-md-2 " to="/register" >Sign Up</router-link>
+        <router-link class="btn btn-outline-dark rounded-pill ht-link" to="/login">Log In</router-link>
         </span>
       </div>
 
@@ -104,6 +104,11 @@ export default {
    background-color: #F0F0F0;
    cursor: pointer;
    border-radius: 10px;
+ }
+
+ .ht-link{
+  background-color: transparent !important;
+  color: #2a453d;
  }
 
  .dd-item{

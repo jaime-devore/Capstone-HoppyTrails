@@ -6,13 +6,16 @@ using Capstone.Models;
 using Capstone.DAO;
 
 
+
 namespace Capstone.Controllers
 {
+
     [Route("[controller]")]
     [ApiController]
     public class ReviewController : ControllerBase
     {
         private readonly IReviewDAO reviewDao;
+
 
         public ReviewController(IReviewDAO _reviewDao)
         {
@@ -45,9 +48,11 @@ namespace Capstone.Controllers
             return Ok(allReviews);
         }
 
+
         [HttpPost()]
         public ActionResult<Review> CreateNewReview(Review review)
         {
+            
             Review newReview = reviewDao.CreateReview(review);
 
             return Created($"{newReview.ReviewId}", newReview);

@@ -10,7 +10,7 @@ namespace Capstone.DAO
     public class UserSqlDao : IUserDao
     {
         private readonly string connectionString;
-        private ITrailDAO trailDAO;
+        
 
         public UserSqlDao(string dbConnectionString)
         {
@@ -82,7 +82,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM users JOIN user_review ON users.user_id = user_review.user_id JOIN review ON user_review.review_id = review.review_id WHERE review.review_id = @REVIEWID", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM users JOIN review ON users.user_id = review.user_id WHERE review.review_id = @REVIEWID", conn);
                 cmd.Parameters.AddWithValue("@REVIEWID", reviewID);
 
                 SqlDataReader reader = cmd.ExecuteReader();

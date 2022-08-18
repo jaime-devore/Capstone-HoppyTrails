@@ -17,24 +17,26 @@
                               <div class="card-body brewery-card-body">
                                   <img class="img-thumbnail brewery-card-image mb-3" v-bind:src="brewery.image" />
                                   
-                                  <div class="d-flex">
+                                  <div class="d-flex mb-2">
                                       <i class="bi bi-telephone"></i>
                                       <span class="fw-bold px-2" >  PHONE: </span>
                                           <span class="text-small" >{{brewery.phoneNumber}}</span>
                                   </div>
-                                  <div class="d-flex">
+                                  <div class="d-flex mb-2">
                                     <i class="bi bi-signpost"></i>
                                     <span class="fw-bold px-2" >  ADDRESS:</span> 
                                         <span class="text-small" >{{brewery.address}}</span>
                                   </div>
-                                  <div class="d-flex">
+                                  <div class="d-flex mb-3">
                                     <i class="bi bi-building"></i>
                                     <span class="fw-bold px-2" >  City:</span> 
                                         <span class="text-small" >{{brewery.city}}</span>
                                   </div>
                                   <div class="d-flex">
-                                    <span class="fw-bold px-2" >  Star Rating:</span> 
-                                        <span class="text-small" >{{brewery.rating}}</span>
+                                    <!-- <span class="fw-bold px-2" >  Star Rating:</span> 
+                                         <span class="text-warning text-end" v-html="starrating(5)" >
+                                          </span> -->
+                                          &nbsp;
                                   </div>
                                   
                               </div>
@@ -90,19 +92,38 @@
 import BreweryAPI from "../services/BreweryService"
 
 
-
 export default {
     
     data() {
         return{
             allBreweries: [],
+            breweryReviews:[],
             hover: false,
+            stars: [
+                '<i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>',
+                '<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>',                
+            ],
         }
     },
+    computed:{
+        
+    },
   methods: {
-  debug (event) {
-    console.log(event.target.name)
-  }
+    debug (event) {
+      console.log(event.target.name)
+    },
+    starrating(index){
+              
+              return this.stars[index];
+          },
 },
     
     created(){
