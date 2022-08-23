@@ -1,10 +1,15 @@
 <template>
   <div class="view-root p-1">
     <!-- <h1 class="text-center">All Breweries</h1> -->
-    
+    <div class="form-floating mb-3 w-50 mx-auto">
+      <input type="text" class="form-control"  
+        v-model="search" 
+        id="floatingInput" placeholder="Search...">
+      <label for="floatingInput text-bold">Search</label>
+    </div>
   <div class="row justify-content-center">
 
-      <div class="flip-card col-lg-3 mb-4" v-for="brewery in allBreweries" v-bind:key="brewery.id">
+      <div class="flip-card col-lg-3 mb-4" v-for="brewery in filteredList" v-bind:key="brewery.id">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             
@@ -102,6 +107,7 @@ export default {
         return{
             allBreweries: [],
             breweryReviews:[],
+            search: '',
             hover: false,
             stars: [
                 '<i class="bi bi-star-half"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i><i class="bi bi-star"></i>',
@@ -118,7 +124,11 @@ export default {
         }
     },
     computed:{
-        
+      filteredList() {
+        return this.allBreweries.filter(brewery => {
+          return brewery.name.toLowerCase().includes(this.search.toLowerCase())
+        })
+      }
     },
   methods: {
     debug (event) {
