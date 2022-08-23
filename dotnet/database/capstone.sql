@@ -80,16 +80,7 @@ CREATE TABLE brewery_tag ( --assigning breweries to tags
 	CONSTRAINT tag_fk FOREIGN KEY (tag_id) REFERENCES tag (tag_id),
 	CONSTRAINT Brewery_fk FOREIGN KEY (brewery_id) REFERENCES brewery (id)
 )
-/*
-CREATE TABLE user_review ( --useres that have made reviews
-	user_review_id int Identity (1,1),
-	user_id int,
-	review_id int,
-	CONSTRAINT user_review_pk PRIMARY KEY (user_review_id),
-	CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
-	CONSTRAINT review_id_fk FOREIGN KEY (review_id) REFERENCES review (review_id)
-)
-*/
+
 CREATE TABLE trails (
 	trail_id int IDENTITY (6000, 1),
 	is_completed bit DEFAULT 0,
@@ -275,79 +266,7 @@ INSERT INTO review (user_id, brewery_id, rating, date, content) VALUES
 	(7,1026, 10,'2022-05-01', 'Really excellent experience. Great food the smoked Pork chop is incredible, longish and giant pierogi also winners! Ipa was fresh and very competent and tasty.'),
 	(8,1026, 6,'2022-04-13', 'Stopped here with a group and the atmosphere was nice but the food was mediocre at best. The beer selection was great but nothing hit my fancy. Service was great. May try again in a non group setting.')
 
-	/*
-	--assigning reviews to useres
-	INSERT INTO user_review (user_id, review_id) VALUES (1, 3000);
-	INSERT INTO user_review (user_id, review_id) VALUES (3, 3001);
-	INSERT INTO user_review (user_id, review_id) VALUES (4, 3002);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3003);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3004);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3005);
-	INSERT INTO user_review (user_id, review_id) VALUES (6, 3006);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3007);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3008);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3009);
-	INSERT INTO user_review (user_id, review_id) VALUES (12, 3010);
-	INSERT INTO user_review (user_id, review_id) VALUES (13, 3011);
-	INSERT INTO user_review (user_id, review_id) VALUES (3, 3012);
-	INSERT INTO user_review (user_id, review_id) VALUES (4, 3013);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3014);
-	INSERT INTO user_review (user_id, review_id) VALUES (6, 3015);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3016);
-	INSERT INTO user_review (user_id, review_id) VALUES (8, 3017);
-	INSERT INTO user_review (user_id, review_id) VALUES (9, 3018);
-	INSERT INTO user_review (user_id, review_id) VALUES (10, 3019);
-	INSERT INTO user_review (user_id, review_id) VALUES (11, 3020);
-	INSERT INTO user_review (user_id, review_id) VALUES (12, 3021);
-	INSERT INTO user_review (user_id, review_id) VALUES (13, 3022);
-	INSERT INTO user_review (user_id, review_id) VALUES (14, 3023);
-	INSERT INTO user_review (user_id, review_id) VALUES (15, 3024);
-	INSERT INTO user_review (user_id, review_id) VALUES (16, 3025);
-	INSERT INTO user_review (user_id, review_id) VALUES (17, 3026);
-	INSERT INTO user_review (user_id, review_id) VALUES (18, 3027);
-	INSERT INTO user_review (user_id, review_id) VALUES (19, 3028);
-	INSERT INTO user_review (user_id, review_id) VALUES (13, 3029);
-	INSERT INTO user_review (user_id, review_id) VALUES (14, 3030);
-	INSERT INTO user_review (user_id, review_id) VALUES (3, 3031);
-	INSERT INTO user_review (user_id, review_id) VALUES (4, 3032);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3033);
-	INSERT INTO user_review (user_id, review_id) VALUES (6, 3034);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3035);
-	INSERT INTO user_review (user_id, review_id) VALUES (8, 3036);
-	INSERT INTO user_review (user_id, review_id) VALUES (9, 3037);
-	INSERT INTO user_review (user_id, review_id) VALUES (10, 3038);
-	INSERT INTO user_review (user_id, review_id) VALUES (11, 3039);
-	INSERT INTO user_review (user_id, review_id) VALUES (12, 3040);
-	INSERT INTO user_review (user_id, review_id) VALUES (13, 3041);
-	INSERT INTO user_review (user_id, review_id) VALUES (14, 3042);
-	INSERT INTO user_review (user_id, review_id) VALUES (15, 3043);
-	INSERT INTO user_review (user_id, review_id) VALUES (16, 3044);
-	INSERT INTO user_review (user_id, review_id) VALUES (17, 3045);
-	INSERT INTO user_review (user_id, review_id) VALUES (18, 3046);
-	INSERT INTO user_review (user_id, review_id) VALUES (19, 3047);
-	INSERT INTO user_review (user_id, review_id) VALUES (3, 3048);
-	INSERT INTO user_review (user_id, review_id) VALUES (4, 3049);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3050);
-	INSERT INTO user_review (user_id, review_id) VALUES (6, 3051);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3052);
-	INSERT INTO user_review (user_id, review_id) VALUES (8, 3053);
-	INSERT INTO user_review (user_id, review_id) VALUES (9, 3054);
-	INSERT INTO user_review (user_id, review_id) VALUES (10, 3055);
-	INSERT INTO user_review (user_id, review_id) VALUES (11, 3056);
-	INSERT INTO user_review (user_id, review_id) VALUES (12, 3057);
-	INSERT INTO user_review (user_id, review_id) VALUES (13, 3058);
-	INSERT INTO user_review (user_id, review_id) VALUES (14, 3059);
-	INSERT INTO user_review (user_id, review_id) VALUES (15, 3060);
-	INSERT INTO user_review (user_id, review_id) VALUES (16, 3061);
-	INSERT INTO user_review (user_id, review_id) VALUES (17, 3062);
-	INSERT INTO user_review (user_id, review_id) VALUES (18, 3063);
-	INSERT INTO user_review (user_id, review_id) VALUES (19, 3064);
-	INSERT INTO user_review (user_id, review_id) VALUES (3, 3065);
-	INSERT INTO user_review (user_id, review_id) VALUES (4, 3066);
-	INSERT INTO user_review (user_id, review_id) VALUES (5, 3067);
-	INSERT INTO user_review (user_id, review_id) VALUES (6, 3068);
-	INSERT INTO user_review (user_id, review_id) VALUES (7, 3069);
-	*/
+
 --assigning tags to brweries
 INSERT INTO brewery_tag (tag_id, brewery_id) VALUES
 	(2000, 1001), (2001, 1001), (2003, 1001),
